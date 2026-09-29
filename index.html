@@ -169,12 +169,6 @@
     .care-lane[data-lane="swift"]::before { background: #1E453F; }
     .care-lane[data-lane="gp"]::before { background: #C9D8D4; }
   }
-  /* Seasonal campaign slot: the hero question and search never change; a campaign takes the photo side */
-  .campaign-card { display: none; }
-  .has-campaign #heroCaption, .has-campaign .hero-shade { display: none; }
-  .has-campaign #campaignCard { display: block; }
-  /* Give the art room above the card on smaller screens */
-  @media (max-width: 1023px) { .has-campaign #heroFrame { height: 520px; } }
   /* Layering: base (paper) -> surface (white / foam cards) -> floating (hero badge, verdict) */
   .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
   .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
@@ -294,48 +288,65 @@
 
 <main>
 
-  <!-- Hero: the question patients arrive with, answered right there -->
-  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 lg:pt-14 pb-14 sm:pb-20">
-    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-      <div class="lg:col-span-7 flex flex-col">
-        <h1 id="heroHeadline" class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[4rem] tracking-[-0.03em] text-ink" style="animation-delay:.05s">
-          Is urgent care right for me?
-        </h1>
-        <p id="heroSubhead" class="hero-in mt-5 text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.18s">
-          Search a symptom to see where to go. SWIFT treats urgent illness and injury for ages 3 months and up, with no referral needed.
-        </p>
-        <!-- Symptom search: answers the headline. Results highlight in the three columns below. -->
-        <div id="careFinder" class="hero-in mt-8" style="animation-delay:.3s">
-          <label for="careSearch" class="sr-only">Search a symptom</label>
-          <div class="relative">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;sprained ankle&rdquo; or &ldquo;fever&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
-            <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </button>
+  <!-- Hero: full-width photo with SWIFT's promise. A seasonal campaign swaps the image, headline,
+       subtitle and button (see SwiftCampaign below); the triage panel underneath never changes. -->
+  <section id="heroFrame" class="relative px-3 sm:px-5 pt-3 sm:pt-5">
+    <div class="relative max-w-[1360px] mx-auto rounded-[28px] overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex flex-col justify-end">
+      <img id="heroImg" src="brand_assets/hero-doctor-patient.jpg" alt="A doctor sitting with an older patient" class="absolute inset-0 w-full h-full object-cover hero-img-zoom" style="object-position:62% 35%">
+      <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.14]" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-transparent" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" aria-hidden="true"></div>
+      <div class="relative max-w-6xl w-full mx-auto px-5 sm:px-8 pt-24 pb-36 sm:pb-44 lg:pb-48">
+        <div class="max-w-3xl">
+          <h1 id="heroHeadline" class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[4rem] lg:text-[4.5rem] tracking-[-0.03em] text-white" style="animation-delay:.05s">
+            Emergency doctors, no appointment needed.
+          </h1>
+          <p id="heroSubhead" class="hero-in mt-5 text-lg text-white/85 leading-[1.7] max-w-xl" style="animation-delay:.18s">
+            Walk-in urgent care in Rouse Hill for illness and injury, ages 3 months and up.
+          </p>
+          <div class="hero-in mt-8 flex flex-wrap items-center gap-x-7 gap-y-3" style="animation-delay:.3s">
+            <a id="heroPrimaryCta" href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full bg-white hover:bg-mint hover:scale-[1.03] active:scale-[0.97] text-teal900 font-medium px-6 py-3.5 transition-[transform,background-color] duration-300 shadow-[0_14px_30px_-12px_rgba(0,0,0,0.5)]">
+              Call (02) 8859 9099
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="hero-link focus-ring rounded font-medium text-white underline underline-offset-[6px] decoration-white/40 hover:decoration-white active:text-white/80 transition-colors">
+              Get directions
+            </a>
           </div>
-          <div class="mt-3 flex flex-wrap gap-2" aria-label="Common symptoms">
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="sprain" aria-pressed="false">Sprain</button>
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="fever" aria-pressed="false">Fever</button>
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="cut" aria-pressed="false">Deep cut</button>
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="chest pain" aria-pressed="false">Chest pain</button>
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="prescription" aria-pressed="false">Prescription</button>
-            <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="broken" aria-pressed="false">Broken bone</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Triage panel: rises into the bottom of the hero so the search is on the first screen -->
+  <section class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
+    <div class="grid lg:grid-cols-12 gap-4">
+      <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
+        <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is urgent care right for me?</h2>
+        <p class="mt-2 text-ink/70 leading-relaxed">Search a symptom to see whether to call 000, come to SWIFT or see your GP.</p>
+          <!-- Symptom search: answers the headline. Results highlight in the three columns below. -->
+          <div id="careFinder" class="mt-6">
+            <label for="careSearch" class="sr-only">Search a symptom</label>
+            <div class="relative">
+              <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;sprained ankle&rdquo; or &ldquo;fever&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
+              <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2" aria-label="Common symptoms">
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="sprain" aria-pressed="false">Sprain</button>
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="fever" aria-pressed="false">Fever</button>
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="cut" aria-pressed="false">Deep cut</button>
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="chest pain" aria-pressed="false">Chest pain</button>
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="prescription" aria-pressed="false">Prescription</button>
+              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="broken" aria-pressed="false">Broken bone</button>
+            </div>
+
+            <!-- Verdict (filled by script) -->
+            <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
           </div>
-
-          <!-- Verdict (filled by script) -->
-          <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
-        </div>
-        <div class="hero-in mt-7 flex flex-wrap items-center gap-x-7 gap-y-3" style="animation-delay:.42s">
-          <a id="heroPrimaryCta" href="tel:0288599099" class="focus-ring spring inline-flex items-center gap-2 rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-6 py-3.5 transition-[transform,background-color] duration-300 shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]">
-            Call (02) 8859 9099
-          </a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring rounded font-medium text-ink underline underline-offset-[6px] decoration-ink/25 hover:decoration-teal700 hover:text-teal700 active:text-teal900 transition-colors">
-            Get directions
-          </a>
-        </div>
-
-        <div class="hero-in mt-10 lg:mt-auto lg:pt-10 grid sm:grid-cols-2 gap-4" style="animation-delay:.55s">
+      </div>
+      <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:pt-32" style="animation-delay:.5s">
           <div class="rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 flex items-start gap-3">
             <span class="relative mt-1.5 flex h-2.5 w-2.5 shrink-0">
               <span id="openDotPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal500 opacity-60"></span>
@@ -357,24 +368,6 @@
               <span class="block text-sm text-teal700 group-hover:text-teal900 mt-0.5">Meet the team</span>
             </span>
           </a>
-        </div>
-      </div>
-
-      <div class="lg:col-span-5 relative">
-        <div id="heroFrame" class="hero-in relative h-[320px] sm:h-[440px] lg:h-full lg:min-h-[600px] rounded-[28px] overflow-hidden shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-28px_rgba(30,69,63,0.55)]" style="animation-delay:.12s">
-          <img id="heroImg" src="brand_assets/hero-doctor-patient.jpg" alt="A doctor sitting with an older patient" class="absolute inset-0 w-full h-full object-cover object-[52%_40%] hero-img-zoom">
-          <div class="hero-shade absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.12]" aria-hidden="true"></div>
-          <div class="hero-shade absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" aria-hidden="true"></div>
-          <p id="heroCaption" class="absolute left-6 right-6 bottom-6 text-white">
-            <span class="block font-display font-semibold text-lg">Walk in, no appointment needed</span>
-          </p>
-          <!-- Seasonal campaign card, all screen sizes. Filled by SwiftCampaign.show(); hidden when no campaign runs. -->
-          <div id="campaignCard" class="campaign-card absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4 sm:max-w-md rounded-[20px] bg-white/95 backdrop-blur p-5 sm:p-6 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_18px_40px_-20px_rgba(30,69,63,0.45)]">
-            <p class="campaign-title font-display font-bold text-xl sm:text-2xl leading-[1.12] tracking-[-0.02em] text-ink"></p>
-            <p class="campaign-text mt-2 text-[15px] text-ink/70 leading-relaxed"></p>
-            <a class="campaign-cta focus-ring spring mt-4 inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300" href="#"></a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1244,40 +1237,41 @@
     renderTile();
   })();
 
-  // Seasonal campaign slot. The hero question and search always stay; a campaign takes the photo frame
-  // (art plus a card with title, text and button) at every screen size. To run one on the live site, set
-  // SITE_CAMPAIGN to { title, text, ctaText, ctaHref, image, imageAlt, imagePos: '70% 50%' }.
-  // Campaign art works best tall (about 4:5). null shows the everyday photo.
+  // Seasonal campaigns take over the hero: image, headline, subtitle and main button. The triage
+  // panel below never changes. To run one on the live site, set SITE_CAMPAIGN to
+  // { title, text, ctaText, ctaHref, image, imageAlt, imagePos: '70% 50%' }. Wide art with the
+  // subject on the right works best, since the text sits on the left. null shows the everyday hero.
   var SITE_CAMPAIGN = null;
   (function () {
-    var frame = document.getElementById('heroFrame');
     var img = document.getElementById('heroImg');
-    if (!frame || !img) return;
-    var section = frame.closest('section');
-    var original = { src: img.getAttribute('src'), alt: img.alt, pos: img.style.objectPosition };
-    var cards = section.querySelectorAll('.campaign-card');
+    var title = document.getElementById('heroHeadline');
+    var text = document.getElementById('heroSubhead');
+    var cta = document.getElementById('heroPrimaryCta');
+    if (!img || !title || !text || !cta) return;
+    var original = {
+      src: img.getAttribute('src'), alt: img.alt, pos: img.style.objectPosition,
+      title: title.textContent.trim(), text: text.textContent.trim(),
+      ctaText: cta.textContent.trim(), ctaHref: cta.getAttribute('href')
+    };
 
-    function show(c) {
+    function apply(c) {
       img.src = c.image;
       img.alt = c.imageAlt || '';
       img.style.objectPosition = c.imagePos || '50% 50%';
-      cards.forEach(function (card) {
-        card.querySelector('.campaign-title').textContent = c.title;
-        card.querySelector('.campaign-text').textContent = c.text;
-        card.querySelector('.campaign-cta').textContent = c.ctaText;
-        card.querySelector('.campaign-cta').setAttribute('href', c.ctaHref);
-      });
-      section.classList.add('has-campaign');
-    }
-    function clear() {
-      img.src = original.src;
-      img.alt = original.alt;
-      img.style.objectPosition = original.pos;
-      section.classList.remove('has-campaign');
+      title.textContent = c.title;
+      text.textContent = c.text;
+      cta.textContent = c.ctaText;
+      cta.setAttribute('href', c.ctaHref);
     }
 
-    window.SwiftCampaign = { show: show, clear: clear };
-    if (SITE_CAMPAIGN) show(SITE_CAMPAIGN);
+    window.SwiftCampaign = {
+      show: apply,
+      clear: function () {
+        apply({ image: original.src, imageAlt: original.alt, imagePos: original.pos, title: original.title,
+                text: original.text, ctaText: original.ctaText, ctaHref: original.ctaHref });
+      }
+    };
+    if (SITE_CAMPAIGN) apply(SITE_CAMPAIGN);
   })();
 </script>
 
