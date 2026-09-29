@@ -346,7 +346,7 @@
             <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
           </div>
       </div>
-      <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:pt-32" style="animation-delay:.5s">
+      <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 content-start items-start gap-4 lg:pt-32" style="animation-delay:.5s">
           <div class="rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 flex items-start gap-3">
             <span class="relative mt-1.5 flex h-2.5 w-2.5 shrink-0">
               <span id="openDotPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal500 opacity-60"></span>
@@ -372,56 +372,13 @@
     </div>
   </section>
 
-  <!-- Quick routes: four tiles, like the reference's image row. Tablet and up only: on phones they repeat sections below. -->
-  <section class="hidden md:block max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="quickRoutesHeading">
-    <h2 id="quickRoutesHeading" class="sr-only">Quick links</h2>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-      <a href="services.html#paediatrics" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] active:scale-[0.98]">
-        <img src="brand_assets/clinic-waiting-area.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[30%_50%] transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.15]" aria-hidden="true"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" aria-hidden="true"></div>
-        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="absolute left-4 right-4 bottom-4 text-white">
-          <span class="block font-display font-semibold text-lg leading-tight">Kids and families</span>
-          <span class="block text-sm text-white/80 mt-1 leading-snug">From 3 months, in a calmer waiting area</span>
-        </span>
-      </a>
-      <a href="team.html" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-gradient-to-b from-foam to-mint active:scale-[0.98]">
-        <img src="brand_assets/team/nina-dhaliwal.jpg" alt="" aria-hidden="true" class="absolute inset-x-0 bottom-0 w-full h-[88%] object-cover object-top mix-blend-multiply transition-transform duration-500 group-hover:scale-105 origin-bottom">
-        <div class="absolute inset-0 bg-gradient-to-t from-teal900/85 via-teal900/10 to-transparent" aria-hidden="true"></div>
-        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="absolute left-4 right-4 bottom-4 text-white">
-          <span class="block font-display font-semibold text-lg leading-tight">Emergency doctors</span>
-          <span class="block text-sm text-white/80 mt-1 leading-snug">Led by emergency physicians</span>
-        </span>
-      </a>
-      <a href="#visit" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-teal900 text-white p-5 flex flex-col justify-between active:scale-[0.98]">
-        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="block mt-12">
-          <span class="block font-display font-bold text-xl sm:text-[1.7rem] leading-[1.1] tracking-[-0.02em]">No appointment needed</span>
-          <span class="block text-sm text-white/75 mt-3 leading-relaxed">Walk in any day. See what happens from arrival to going home.</span>
-        </span>
-      </a>
-      <a href="#other-care" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] active:scale-[0.98]">
-        <img src="brand_assets/Tests.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[60%_50%] transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.15]" aria-hidden="true"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" aria-hidden="true"></div>
-        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="absolute left-4 right-4 bottom-4 text-white">
-          <span class="block font-display font-semibold text-lg leading-tight">Scans and tests</span>
-          <span class="block text-sm text-white/80 mt-1 leading-snug">X-ray, CT, ultrasound and pathology on-site</span>
-        </span>
-      </a>
-    </div>
-  </section>
-
   <!-- Right care: 000 vs SWIFT vs GP decision guide.
        Clinical wording should be reviewed by SWIFT's medical team before launch. -->
   <section id="right-care" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="rightCareHeading">
     <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-start mb-8 sm:mb-10">
       <h2 id="rightCareHeading" class="lg:col-span-6 text-balance font-display font-bold text-3xl sm:text-[2.75rem] leading-[1.08] tracking-[-0.03em] text-ink">Where to go, from most to least urgent</h2>
       <div class="lg:col-span-6">
-        <p class="text-ink/70 leading-[1.7] max-w-lg">Search a symptom above, or scan the three columns. Anything serious always points to 000 first. Still not sure? A registered nurse can help, free and 24/7.</p>
+        <p class="text-ink/70 leading-[1.7] max-w-lg">Your search highlights matching symptoms here. Anything serious always points to 000 first. Still not sure? A registered nurse can help, free and 24/7.</p>
         <a href="tel:1800022222" class="focus-ring spring mt-4 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white hover:border-teal700 hover:text-teal900 active:scale-[0.97] text-ink font-medium px-5 py-2.5 text-[15px] transition-[transform,border-color,color] duration-300">
           Call healthdirect on 1800 022 222
         </a>
@@ -429,7 +386,7 @@
     </div>
 
     <!-- Urgency scale: one band whose colours sit over the three columns below -->
-    <div id="careScale" class="care-scale hidden md:block relative h-12 rounded-full bg-line/50 overflow-hidden mb-5" aria-hidden="true">
+    <div id="careScale" class="care-scale scroll-mt-[130px] hidden md:block relative h-12 rounded-full bg-line/50 overflow-hidden mb-5" aria-hidden="true">
       <span class="care-scale-fill absolute inset-0 rounded-full"></span>
       <span class="relative h-full flex items-center justify-between px-6 text-sm font-medium">
         <span class="text-white">Most urgent</span>
@@ -438,7 +395,7 @@
     </div>
 
     <!-- Lanes -->
-    <div id="careLanes" class="care-lanes grid md:grid-cols-3 gap-4 md:gap-5 relative pl-5 md:pl-0 items-stretch">
+    <div id="careLanes" class="care-lanes scroll-mt-[130px] grid md:grid-cols-3 gap-4 md:gap-5 relative pl-5 md:pl-0 items-stretch">
 
       <!-- 000 -->
       <div class="care-lane care-pre flex flex-col rounded-2xl bg-white border border-line border-t-4 border-t-urgent shadow-[0_2px_10px_-4px_rgba(178,58,58,0.18)] p-5 sm:p-6" data-lane="ed">
@@ -542,6 +499,49 @@
       </div>
     </div>
     <p class="mt-6 text-sm text-ink/70">This guide doesn't replace medical advice. If you're worried, call 000.</p>
+  </section>
+
+  <!-- Quick routes: four tiles, like the reference's image row. Tablet and up only: on phones they repeat sections below. -->
+  <section class="hidden md:block max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="quickRoutesHeading">
+    <h2 id="quickRoutesHeading" class="sr-only">Quick links</h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <a href="services.html#paediatrics" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] active:scale-[0.98]">
+        <img src="brand_assets/clinic-waiting-area.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[30%_50%] transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.15]" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" aria-hidden="true"></div>
+        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="absolute left-4 right-4 bottom-4 text-white">
+          <span class="block font-display font-semibold text-lg leading-tight">Kids and families</span>
+          <span class="block text-sm text-white/80 mt-1 leading-snug">From 3 months, in a calmer waiting area</span>
+        </span>
+      </a>
+      <a href="team.html" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-gradient-to-b from-foam to-mint active:scale-[0.98]">
+        <img src="brand_assets/team/nina-dhaliwal.jpg" alt="" aria-hidden="true" class="absolute inset-x-0 bottom-0 w-full h-[88%] object-cover object-top mix-blend-multiply transition-transform duration-500 group-hover:scale-105 origin-bottom">
+        <div class="absolute inset-0 bg-gradient-to-t from-teal900/85 via-teal900/10 to-transparent" aria-hidden="true"></div>
+        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="absolute left-4 right-4 bottom-4 text-white">
+          <span class="block font-display font-semibold text-lg leading-tight">Emergency doctors</span>
+          <span class="block text-sm text-white/80 mt-1 leading-snug">Led by emergency physicians</span>
+        </span>
+      </a>
+      <a href="#fees" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-gradient-to-br from-foam to-mint p-5 flex flex-col justify-between active:scale-[0.98]">
+        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="block mt-12">
+          <span class="block font-display font-bold text-xl sm:text-[1.7rem] leading-[1.1] tracking-[-0.02em] text-ink">Fees, up front</span>
+          <span class="block text-sm text-ink/70 mt-3 leading-relaxed">What a walk-in visit costs, with or without a Medicare card.</span>
+        </span>
+      </a>
+      <a href="#other-care" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] active:scale-[0.98]">
+        <img src="brand_assets/Tests.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[60%_50%] transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.15]" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" aria-hidden="true"></div>
+        <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="absolute left-4 right-4 bottom-4 text-white">
+          <span class="block font-display font-semibold text-lg leading-tight">Scans and tests</span>
+          <span class="block text-sm text-white/80 mt-1 leading-snug">X-ray, CT, ultrasound and pathology on-site</span>
+        </span>
+      </a>
+    </div>
   </section>
 
   <!-- Your visit: the page's one dark panel -->
@@ -1036,31 +1036,44 @@
 
     function verdictHtml(lane, label, edItems) {
       var what = '<p class="text-sm opacity-75">For &ldquo;' + esc(label) + '&rdquo;</p>';
+      // Jumps to the three columns, where the matching symptoms are already highlighted
+      var see = '<a href="#careLanes" data-see-matches class="inline-block mt-2 py-1 text-[15px] font-medium underline underline-offset-4 decoration-current/40 hover:decoration-current focus-ring rounded">See matching symptoms</a>';
       if (lane === 'mixed') {
         return '<div class="verdict-in rounded-2xl bg-white border-2 border-urgent p-5 text-ink shadow-[0_14px_30px_-14px_rgba(178,58,58,0.4)]">' + what +
           '<p class="font-display font-bold text-xl mt-0.5">It depends how serious it is</p>' +
           '<p class="text-[15px] mt-2"><span class="font-medium text-urgentDk">Call 000</span> for ' + edItems.map(function (t) { return esc(t.charAt(0).toLowerCase() + t.slice(1)); }).join('; ') + '.</p>' +
-          '<p class="text-[15px] text-ink/70 mt-1">Otherwise, check the highlighted items below.</p>' +
+          '<p class="text-[15px] text-ink/70 mt-1">Otherwise, check the highlighted symptoms.</p>' + see.replace('font-medium', 'font-medium text-teal700') +
           '<a href="tel:000" class="' + btnBase + ' mt-4 bg-urgent text-white hover:bg-urgentDk">Call 000</a></div>';
       }
       if (lane === 'ed') {
         return '<div class="verdict-in rounded-2xl bg-urgent text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]">' +
-          '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">Call 000 now</p><p class="text-white/85 text-[15px] mt-1">' + edNote() + '</p></div>' +
+          '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">Call 000 now</p><p class="text-white/85 text-[15px] mt-1">' + edNote() + '</p>' + see + '</div>' +
           '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>';
       }
       if (lane === 'swift') {
         return '<div class="verdict-in rounded-2xl bg-teal900 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]">' +
-          '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">SWIFT can help with this</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p></div>' +
+          '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">SWIFT can help with this</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p>' + see + '</div>' +
           '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>';
       }
       if (lane === 'gp') {
         return '<div class="verdict-in rounded-2xl bg-white border border-line p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">' +
-          '<div class="text-ink">' + what + '<p class="font-display font-bold text-xl mt-0.5">Your GP is best for this</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can’t get in soon, come to SWIFT.</p></div></div>';
+          '<div class="text-ink">' + what + '<p class="font-display font-bold text-xl mt-0.5">Your GP is best for this</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can’t get in soon, come to SWIFT.</p>' + see.replace('font-medium', 'font-medium text-teal700') + '</div></div>';
       }
       return '<div class="verdict-in rounded-2xl bg-mint border border-line p-5 text-ink">' +
         '<p class="font-medium">No match for &ldquo;' + esc(label) + '&rdquo;</p>' +
         '<p class="text-ink/70 text-[15px] mt-1">If it’s severe or getting worse fast, call 000. Otherwise call us on <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 focus-ring rounded">(02) 8859 9099</a> and we’ll tell you if we can help.</p></div>';
     }
+
+    // Show the band on wider screens (it sits above the columns), the columns themselves on phones
+    verdictEl.addEventListener('click', function (e) {
+      var link = e.target.closest('[data-see-matches]');
+      if (!link) return;
+      e.preventDefault();
+      var scale = document.getElementById('careScale');
+      var target = scale && scale.offsetParent ? scale : lanesEl;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
 
     function run(raw) {
       var q = raw.trim().toLowerCase();
