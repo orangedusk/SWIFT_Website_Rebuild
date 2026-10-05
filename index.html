@@ -7,12 +7,12 @@
 <meta name="robots" content="noindex, nofollow">
 <script src="demo/gate.js"></script>
 <title>SWIFT Emergency &amp; Urgent Care — Rouse Hill, NSW</title>
-<meta name="description" content="Walk-in emergency and urgent care in Rouse Hill, NSW. No appointment needed for urgent illness or injury, ages 3 months and up. Open every day, 10am–10pm.">
+<meta name="description" content="Walk-in emergency and specialist urgent care in Rouse Hill, NSW. No appointment needed for urgent illness or injury, ages 3 months and up. Open every day, 10am–10pm.">
 <link rel="icon" href="brand_assets/swift-icon-dark.png" type="image/png">
 
 <!-- Open Graph -->
 <meta property="og:title" content="SWIFT Emergency & Urgent Care — Rouse Hill, NSW">
-<meta property="og:description" content="Walk-in urgent care for illness and injury that can't wait. No appointment needed. Open every day, 10am–10pm.">
+<meta property="og:description" content="Walk-in specialist urgent care for illness and injury that can't wait. No appointment needed. Open every day, 10am–10pm.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   "name": "SWIFT Emergency & Urgent Care",
-  "description": "Emergency-physician-led walk-in urgent care clinic treating non-life-threatening illness and injury for ages 3 months and up.",
+  "description": "Emergency-physician-led walk-in specialist urgent care clinic treating non-life-threatening illness and injury for ages 3 months and up.",
   "telephone": "+61288599099",
   "email": "info@swifteuc.com.au",
   "address": {
@@ -81,7 +81,7 @@
   },
   "medicalSpecialty": ["Emergency Medicine", "Orthopaedics", "Paediatrics", "Cardiology", "Physiotherapy"],
   "availableService": [
-    {"@type":"MedicalProcedure","name":"Walk-in urgent care"},
+    {"@type":"MedicalProcedure","name":"Walk-in specialist urgent care"},
     {"@type":"MedicalProcedure","name":"Fracture and sports injury care"},
     {"@type":"MedicalProcedure","name":"Iron infusion clinic"}
   ]
@@ -305,7 +305,7 @@
             Emergency doctors, no appointment needed.
           </h1>
           <p id="heroSubhead" class="hero-in mt-5 text-lg text-white/85 leading-[1.7] max-w-xl" style="animation-delay:.18s">
-            Walk-in urgent care in Rouse Hill for illness and injury, ages 3 months and up.
+            Walk-in specialist urgent care in Rouse Hill for illness and injury, ages 3 months and up.
           </p>
           <div class="hero-in mt-8 flex flex-wrap items-center gap-x-7 gap-y-3" style="animation-delay:.3s">
             <a id="heroPrimaryCta" href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full bg-white hover:bg-mint hover:scale-[1.03] active:scale-[0.97] text-teal900 font-medium px-6 py-3.5 transition-[transform,background-color] duration-300 shadow-[0_14px_30px_-12px_rgba(0,0,0,0.5)]">
@@ -324,14 +324,14 @@
   <section class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
     <div class="grid lg:grid-cols-12 gap-4">
       <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
-        <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is urgent care right for me?</h2>
+        <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is specialist urgent care right for me?</h2>
         <p class="mt-2 text-ink/70 leading-relaxed">Type a symptom and we&rsquo;ll tell you where to go.</p>
           <!-- Symptom search: terms and routing live in symptoms.js. Results highlight in the three columns below. -->
           <div id="careFinder" class="mt-6">
             <label for="careSearch" class="sr-only">Search a symptom</label>
             <div class="relative">
               <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo; or &ldquo;sprained ankle&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
+              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
               <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </button>
@@ -937,7 +937,7 @@
         <span class="font-display font-bold text-lg">SWIFT</span>
       </div>
       <p class="text-white/55 text-sm mt-4 max-w-sm leading-relaxed">
-        Emergency-physician-led urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
+        Emergency-physician-led specialist urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
       </p>
     </div>
     <div>

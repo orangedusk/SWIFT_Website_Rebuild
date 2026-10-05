@@ -170,5 +170,5 @@ main = '''
 
 build('fees.html',
       'Fees — SWIFT Emergency &amp; Urgent Care, Rouse Hill',
-      'SWIFT fees for urgent care, infusions, wound care and on-site imaging, with and without Medicare. Walk-in facility fee $396 plus Medicare charges.',
+      'SWIFT fees for specialist urgent care, infusions, wound care and on-site imaging, with and without Medicare. Walk-in facility fee $396 plus Medicare charges.',
       main, active='fees.html')
