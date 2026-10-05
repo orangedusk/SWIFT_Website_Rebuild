@@ -33,6 +33,21 @@ def table(tid, heading, intro, items, caption):
         </div>
       </section>''' % (tid, heading, ('<p class="text-ink/70 mt-2 leading-[1.7]">' + intro + '</p>') if intro else '', CARD, caption, rows(items))
 
+# Item 6 (Dr Manivel, 3 Oct): what Medicare covers, pathology, how you pay. Client wording, exact.
+MEDICARE_COVERS = ['Doctor consultation', 'Any procedures performed']
+PATHOLOGY = ['Bloods, swabs and urine tests',
+             'Collected on site by your treating team',
+             'Processed in Australian clinical labs',
+             'Medicare card holders: bulk billed, no pathology charge',
+             'No Medicare card: extra charge, paid separately',
+             'Australian Clinical Labs (ACL) sends you its own invoice after your test']
+PAY_MEDICARE = ['Pay one amount: facility fee + Medicare charges', 'Get an instant refund of the Medicare part only']
+PAY_NO_MEDICARE = ['Pay one amount on discharge: facility fee + Medicare-equivalent charges', 'Pathology is billed separately by ACL']
+
+def bullets(items, dot='bg-teal500'):
+    return '<ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug">' + ''.join(
+        '<li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full %s" aria-hidden="true"></span><span>%s</span></li>' % (dot, i) for i in items) + '</ul>'
+
 emergency = table('emergency', 'Emergency &amp; urgent care', 'Walk-in visits for illness and injury.', [
     ('First visit', 'SWIFT facility fee', price('$396')),
     ('Return visit for the same issue', 'Within 24 hours', BULK),
@@ -82,6 +97,14 @@ FEE_ASIDE = '''          <!-- Headline fee -->
             <p class="relative text-ink/70 mt-2">plus standard Medicare charges</p>
           </div>'''
 
+pathology = '''
+      <section id="pathology" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
+        <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Pathology</h2>
+        <div class="mt-4 %s p-5 sm:p-6">
+          %s
+        </div>
+      </section>''' % (CARD, bullets(PATHOLOGY))
+
 main = '''
 %s
   <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24">
@@ -90,8 +113,9 @@ main = '''
       <!-- Jump menu -->
       <nav aria-label="On this page" class="lg:sticky lg:top-[132px] -mx-5 px-5 lg:mx-0 lg:px-0 overflow-x-auto">
         <ul class="flex lg:flex-col gap-2 lg:gap-1 text-[15px] whitespace-nowrap pb-1">
-          <li><a href="#medicare" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Medicare</a></li>
+          <li><a href="#medicare" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">How you pay</a></li>
           <li><a href="#emergency" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Urgent care</a></li>
+          <li><a href="#pathology" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Pathology</a></li>
           <li><a href="#infusion" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Infusions</a></li>
           <li><a href="#wound" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Wound care</a></li>
           <li><a href="#radiology" class="jump-link focus-ring block rounded-full lg:rounded-lg border border-line lg:border-0 bg-white lg:bg-transparent px-4 lg:px-3 py-1.5 lg:py-2 text-ink/75 hover:text-teal900 hover:bg-white active:scale-[0.97] transition-[transform,background-color,color] duration-200">Scans</a></li>
@@ -101,28 +125,22 @@ main = '''
 
       <div class="space-y-12 max-w-3xl">
 
-      <!-- Medicare -->
+      <!-- How you pay (item 6, block C) and what Medicare charges cover (block A) -->
       <section id="medicare" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
-        <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">How Medicare works at SWIFT</h2>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">How you pay</h2>
         <div class="mt-4 grid sm:grid-cols-2 gap-4">
-          <div class="flex gap-3 %s p-5">
-            <div class="w-10 h-10 rounded-full bg-mint flex items-center justify-center shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 7" stroke="#2C685E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <h3 class="font-display font-semibold text-ink">With a valid Medicare card</h3>
-              <p class="text-sm text-ink/70 mt-1 leading-relaxed">You get the Medicare part of your fee back. The facility fee is not covered.</p>
-            </div>
+          <div class="%s p-5 sm:p-6">
+            <h3 class="font-display font-semibold text-lg text-ink">Medicare card holders</h3>
+            %s
           </div>
-          <div class="flex gap-3 %s p-5">
-            <div class="w-10 h-10 rounded-full bg-mint flex items-center justify-center shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#2C685E" stroke-width="1.6"/><path d="M9.5 9.5l5 5m0-5l-5 5" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <h3 class="font-display font-semibold text-ink">Without a Medicare card</h3>
-              <p class="text-sm text-ink/70 mt-1 leading-relaxed">You pay the full fee on the day: the SWIFT fee plus the Medicare-equivalent charges.</p>
-            </div>
+          <div class="%s p-5 sm:p-6">
+            <h3 class="font-display font-semibold text-lg text-ink">No Medicare card</h3>
+            %s
           </div>
+        </div>
+        <div class="mt-4 rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 sm:p-6">
+          <h3 class="font-display font-semibold text-ink">What Medicare charges cover</h3>
+          %s
         </div>
       </section>
 %s
@@ -148,7 +166,7 @@ main = '''
       </div>
     </div>
   </section>
-''' % (intro('Fees', 'Fees', "What you'll pay at SWIFT, with or without a Medicare card. No referral needed.", FEE_ASIDE), CARD, CARD, emergency, infusion, wound, radiology)
+''' % (intro('Fees', 'Fees', "What you'll pay at SWIFT, with or without a Medicare card. No referral needed.", FEE_ASIDE), CARD, bullets(PAY_MEDICARE), CARD, bullets(PAY_NO_MEDICARE), bullets(MEDICARE_COVERS), emergency + pathology, infusion, wound, radiology)
 
 build('fees.html',
       'Fees — SWIFT Emergency &amp; Urgent Care, Rouse Hill',
