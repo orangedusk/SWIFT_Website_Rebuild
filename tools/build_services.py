@@ -111,7 +111,7 @@ SWIFT_SERVICES = [
      'Advice on preventing the next injury'],
     [btn(DIRECTIONS, 'Get directions'), CALL]),
   section('paediatrics', 'Paediatrics', icon_for('paediatrics'), [WALK, APPT],
-    'Urgent care for children 3 months and up, with follow-up clinics so care doesn\'t stop when you go home.',
+    'Specialist urgent care for children 3 months and up, with follow-up clinics so care doesn\'t stop when you go home.',
     ['Walk in when your child is sick or hurt',
      'Paediatric follow-up clinics, booked ahead',
      'Specialist care through Children\'s Health Hub, run by paediatricians affiliated with The Children\'s Hospital at Westmead',
@@ -214,5 +214,5 @@ css = '''
 
 build('services.html',
       'Services — SWIFT Emergency &amp; Urgent Care, Rouse Hill',
-      'Emergency and urgent care, orthopaedics, sports injuries, paediatrics, cardiology, infusions, physiotherapy and pathology at SWIFT Rouse Hill.',
+      'Emergency and specialist urgent care, orthopaedics, sports injuries, paediatrics, cardiology, infusions, physiotherapy and pathology at SWIFT Rouse Hill.',
       main, active='services.html', css=css)
