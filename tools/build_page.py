@@ -13,7 +13,7 @@ footer = between('<!-- Footer -->', '</footer>', incl_b=True)
 menu_js = between('  (function () {\n    var btn = document.getElementById(\'menuBtn\');', '  })();', incl_b=True)
 
 # Design tokens shared by every sub page (match the homepage)
-SURFACE = 'shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]'
+SURFACE = 'shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]'
 CARD = 'bg-white rounded-[20px] border border-line ' + SURFACE
 H2 = 'font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink'
 BTN = 'focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 '

@@ -99,7 +99,7 @@ main = '''
   </div>
 
   <!-- Profile dialog -->
-  <dialog id="profile" class="team-dialog p-0 m-auto w-[calc(100%%-2rem)] max-w-3xl rounded-[28px] overflow-hidden bg-white text-ink shadow-[0_30px_80px_-20px_rgba(24,37,36,0.55)] backdrop:bg-ink/55 backdrop:backdrop-blur-sm" aria-labelledby="profileName">
+  <dialog id="profile" class="team-dialog p-0 m-auto w-[calc(100%%-2rem)] max-w-3xl rounded-[28px] overflow-hidden bg-white text-ink shadow-[0_30px_80px_-20px_rgba(27,39,51,0.55)] backdrop:bg-ink/55 backdrop:backdrop-blur-sm" aria-labelledby="profileName">
     <div class="grid sm:grid-cols-[260px_1fr]">
       <div id="profilePhoto" class="aspect-square sm:aspect-auto sm:h-full bg-mint"></div>
       <div class="relative p-6 sm:p-8">

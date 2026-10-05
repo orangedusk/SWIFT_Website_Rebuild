@@ -30,17 +30,19 @@
   tailwind.config = {
     theme: {
       extend: {
+        // SWIFT logo palette. Token names kept from the original teal scheme:
+        // teal900 = logo navy, teal700/600 = deep logo blue, teal500 = logo blue, tealGlow = logo green.
         colors: {
-          ink:      '#182524',
-          teal900:  '#1E453F',
-          teal700:  '#2C685E',
-          teal600:  '#377E71',
-          teal500:  '#4B9587',
-          tealGlow: '#6FB3A3',
-          paper:    '#F6F8F7',
-          mint:     '#EAF1EF',
-          foam:     '#E1F0EA',
-          line:     '#D9E3E0',
+          ink:      '#1B2733',
+          teal900:  '#2B415C',
+          teal700:  '#00728F',
+          teal600:  '#00809F',
+          teal500:  '#0098BA',
+          tealGlow: '#8EC448',
+          paper:    '#F6F8FA',
+          mint:     '#EAF1F6',
+          foam:     '#E2EEF4',
+          line:     '#D8E1E9',
           urgent:   '#B23A3A',
           urgentDk: '#8C2C2C',
         },
@@ -64,9 +66,9 @@
 
 <style>
   :root { scroll-behavior: smooth; }
-  body { background: #F6F8F7; }
-  ::selection { background: #6FB3A3; color: #182524; }
-  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  body { background: #F6F8FA; }
+  ::selection { background: #8EC448; color: #1B2733; }
+  .focus-ring:focus-visible { outline: 2px solid #0098BA; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   }
@@ -76,7 +78,7 @@
   .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
 
   /* Mobile menu */
-  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D8E1E9; }
   #menuBtn [data-bar="top"] { transform: translateY(-5px); }
   #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
   #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
@@ -84,34 +86,34 @@
   #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
 
   /* Shared with the homepage: layered cards, chips, section headings */
-  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
-  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
+  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(43,65,92,.05), 0 12px 28px -20px rgba(43,65,92,.35); }
+  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(43,65,92,.06), 0 22px 40px -22px rgba(43,65,92,.45); }
   .card-link:active { transform: scale(.98); }
-  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(30,69,63,.14); color: #1E453F; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
-  .chip-solid { background: #1E453F; border-color: #1E453F; color: #fff; }
-  .chip-quiet { background: #F6F8F7; color: rgba(24,37,36,.75); }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(43,65,92,.14); color: #2B415C; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
+  .chip-solid { background: #2B415C; border-color: #2B415C; color: #fff; }
+  .chip-quiet { background: #F6F8FA; color: rgba(27,39,51,.75); }
 
   /* Service picker tiles */
   .service-tile { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .2s ease, background-color .2s ease; }
-  .service-tile:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(30,69,63,0.28); }
+  .service-tile:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(43,65,92,0.28); }
   .service-tile:active { transform: scale(0.98); }
-  .service-input:focus-visible + .service-tile { outline: 2px solid #4B9587; outline-offset: 2px; }
-  .service-input:checked + .service-tile { border-color: #2C685E; background: #EAF1EF; box-shadow: inset 0 0 0 1px #2C685E; }
+  .service-input:focus-visible + .service-tile { outline: 2px solid #0098BA; outline-offset: 2px; }
+  .service-input:checked + .service-tile { border-color: #00728F; background: #EAF1F6; box-shadow: inset 0 0 0 1px #00728F; }
   .service-tile .tick { opacity: 0; transform: scale(.6); transition: opacity .2s ease, transform .3s cubic-bezier(.34,1.56,.64,1); }
   .service-input:checked + .service-tile .tick { opacity: 1; transform: scale(1); }
-  .service-input:checked + .service-tile .tile-icon { background: #2C685E; color: #fff; }
+  .service-input:checked + .service-tile .tile-icon { background: #00728F; color: #fff; }
 
   /* Segmented choices */
-  .seg-input:checked + .seg { background: #2C685E; color: #fff; border-color: #2C685E; }
-  .seg-input:focus-visible + .seg { outline: 2px solid #4B9587; outline-offset: 2px; }
+  .seg-input:checked + .seg { background: #00728F; color: #fff; border-color: #00728F; }
+  .seg-input:focus-visible + .seg { outline: 2px solid #0098BA; outline-offset: 2px; }
   .seg { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
-  .seg:hover { border-color: #4B9587; }
+  .seg:hover { border-color: #0098BA; }
   .seg:active { transform: scale(0.97); }
 
   /* Text fields */
   .field { transition: border-color .2s ease, box-shadow .2s ease; }
-  .field:hover { border-color: #4B9587; }
-  .field:focus { outline: none; border-color: #2C685E; box-shadow: 0 0 0 3px rgba(75,149,135,0.25); }
+  .field:hover { border-color: #0098BA; }
+  .field:focus { outline: none; border-color: #00728F; box-shadow: 0 0 0 3px rgba(0,152,186,0.25); }
   .field[aria-invalid="true"] { border-color: #B23A3A; }
   .field[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px rgba(178,58,58,0.18); }
 
@@ -179,7 +181,7 @@
 </header>
 
 <!-- Mobile floating bottom bar -->
-<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(43,65,92,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
   <div class="grid grid-cols-4">
     <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -238,7 +240,7 @@
              To go live: paste the embed code from Best Practice inside #bookingEmbedMount,
              then set BOOKING_EMBED_ENABLED = true in the script at the bottom of this page.
              While disabled, the request form below is shown instead. -->
-        <div id="bookingEmbed" class="hidden bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.45)] p-5 sm:p-8">
+        <div id="bookingEmbed" class="hidden bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(43,65,92,0.06),0_30px_60px_-30px_rgba(43,65,92,0.45)] p-5 sm:p-8">
           <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Choose a time</h2>
           <p class="text-sm text-ink/70 mt-1">Pick an available appointment and you'll get a confirmation straight away.</p>
           <div id="bookingEmbedMount" class="mt-6 min-h-[480px]">
@@ -251,7 +253,7 @@
           </p>
         </div>
 
-        <form id="apptForm" novalidate class="bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.45)] p-5 sm:p-8">
+        <form id="apptForm" novalidate class="bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(43,65,92,0.06),0_30px_60px_-30px_rgba(43,65,92,0.45)] p-5 sm:p-8">
 
           <!-- Service -->
           <fieldset>
@@ -262,7 +264,7 @@
             <div class="mt-5 grid sm:grid-cols-2 gap-3" id="serviceGroup">
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Doctor consultation" data-key="consult" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="20" cy="11" r="2" stroke="currentColor" stroke-width="1.7"/></svg>
                   </span>
@@ -278,7 +280,7 @@
 
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Iron infusion" data-key="infusion" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3s5.5 6 5.5 10a5.5 5.5 0 0 1-11 0C6.5 9 12 3 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
                   </span>
@@ -294,7 +296,7 @@
 
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Physiotherapy" data-key="physio" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1.7"/><path d="M9 21l2.5-6.5L14 17v4M7 12l3-4.5h4l2.5 3.5L19 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -310,7 +312,7 @@
 
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Orthopaedic follow-up" data-key="ortho" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 5.5a2.5 2.5 0 1 0-3 3l10 10a2.5 2.5 0 1 0 3-3l-10-10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
                   </span>
@@ -326,7 +328,7 @@
 
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Cardiology review" data-key="cardiology" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 12h2.5l1.2-2 2 4 1.3-2H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -342,7 +344,7 @@
 
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Something else" data-key="other" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-dashed border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
+                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-dashed border-line p-4 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                   </span>
@@ -445,14 +447,14 @@
           <!-- Consent + submit -->
           <div>
             <label class="flex items-start gap-3 cursor-pointer">
-              <input id="consent" name="consent" type="checkbox" required class="mt-0.5 w-5 h-5 shrink-0 rounded border-line text-teal700 accent-[#2C685E] focus-ring" aria-describedby="consentError">
+              <input id="consent" name="consent" type="checkbox" required class="mt-0.5 w-5 h-5 shrink-0 rounded border-line text-teal700 accent-[#00728F] focus-ring" aria-describedby="consentError">
               <span class="text-sm text-ink/70 leading-relaxed">I agree to SWIFT contacting me about this request by phone, SMS or email, and to my details being stored securely for this purpose.</span>
             </label>
             <p id="consentError" class="err hidden mt-1.5 ml-8 text-sm text-urgent">Tick the box so we can contact you about your request.</p>
 
             <div class="mt-7 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4">
               <p class="text-sm text-ink/65">This is a request, not a confirmed booking.</p>
-              <button id="submitBtn" type="submit" class="focus-ring spring inline-flex items-center justify-center gap-2 rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] text-white font-medium px-7 py-3.5 transition-[transform,background-color] duration-300 active:scale-[0.97] shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)] disabled:opacity-60 disabled:pointer-events-none">
+              <button id="submitBtn" type="submit" class="focus-ring spring inline-flex items-center justify-center gap-2 rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] text-white font-medium px-7 py-3.5 transition-[transform,background-color] duration-300 active:scale-[0.97] shadow-[0_14px_30px_-12px_rgba(43,65,92,0.55)] disabled:opacity-60 disabled:pointer-events-none">
                 <span id="submitLabel">Send request</span>
               </button>
             </div>
@@ -461,7 +463,7 @@
         </form>
 
         <!-- Success state -->
-        <div id="apptSuccess" class="hidden bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.45)] p-6 sm:p-10" tabindex="-1" aria-live="polite">
+        <div id="apptSuccess" class="hidden bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(43,65,92,0.06),0_30px_60px_-30px_rgba(43,65,92,0.45)] p-6 sm:p-10" tabindex="-1" aria-live="polite">
           <span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal700">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -477,7 +479,7 @@
 
       <!-- Sidebar -->
       <aside class="space-y-6 lg:sticky lg:top-[132px]">
-        <div class="rounded-[20px] bg-teal900 text-white p-6 shadow-[0_24px_48px_-28px_rgba(30,69,63,0.7)]">
+        <div class="rounded-[20px] bg-teal900 text-white p-6 shadow-[0_24px_48px_-28px_rgba(43,65,92,0.7)]">
           <h2 class="font-display font-bold text-xl tracking-[-0.01em] text-white">What happens next</h2>
           <ol class="mt-4 space-y-4">
             <li class="flex gap-3">
@@ -497,10 +499,10 @@
           </ol>
         </div>
 
-        <div class="rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-6 space-y-4">
+        <div class="rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-5 sm:p-6 space-y-4">
           <div class="flex items-start gap-3">
             <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-mint">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="#2C685E" stroke-width="1.6"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="#00728F" stroke-width="1.6"/></svg>
             </span>
             <div class="text-[15px]">
               <p class="text-ink/70">Prefer to talk?</p>
@@ -509,13 +511,13 @@
           </div>
           <div class="flex items-start gap-3">
             <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-mint">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#2C685E" stroke-width="1.6"/><path d="M12 8v4.5l3 2" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#00728F" stroke-width="1.6"/><path d="M12 8v4.5l3 2" stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
             <p class="text-[15px] text-ink/75">Open every day, 10am – 10pm</p>
           </div>
           <div class="flex items-start gap-3">
             <span class="shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-mint">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="#2C685E" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="#2C685E" stroke-width="1.6"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="#00728F" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="#00728F" stroke-width="1.6"/></svg>
             </span>
             <p class="text-[15px] text-ink/75">G38, 32 Civic Way<br>Rouse Hill, NSW 2155</p>
           </div>
@@ -537,7 +539,7 @@
 <footer class="relative bg-ink text-white overflow-hidden">
   <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
     <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
-      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      stroke="#8EC448" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div class="lg:col-span-2">

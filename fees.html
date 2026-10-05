@@ -30,17 +30,19 @@
   tailwind.config = {
     theme: {
       extend: {
+        // SWIFT logo palette. Token names kept from the original teal scheme:
+        // teal900 = logo navy, teal700/600 = deep logo blue, teal500 = logo blue, tealGlow = logo green.
         colors: {
-          ink:      '#182524',
-          teal900:  '#1E453F',
-          teal700:  '#2C685E',
-          teal600:  '#377E71',
-          teal500:  '#4B9587',
-          tealGlow: '#6FB3A3',
-          paper:    '#F6F8F7',
-          mint:     '#EAF1EF',
-          foam:     '#E1F0EA',
-          line:     '#D9E3E0',
+          ink:      '#1B2733',
+          teal900:  '#2B415C',
+          teal700:  '#00728F',
+          teal600:  '#00809F',
+          teal500:  '#0098BA',
+          tealGlow: '#8EC448',
+          paper:    '#F6F8FA',
+          mint:     '#EAF1F6',
+          foam:     '#E2EEF4',
+          line:     '#D8E1E9',
           urgent:   '#B23A3A',
           urgentDk: '#8C2C2C',
         },
@@ -64,9 +66,9 @@
 
 <style>
   :root { scroll-behavior: smooth; }
-  body { background: #F6F8F7; }
-  ::selection { background: #6FB3A3; color: #182524; }
-  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  body { background: #F6F8FA; }
+  ::selection { background: #8EC448; color: #1B2733; }
+  .focus-ring:focus-visible { outline: 2px solid #0098BA; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   }
@@ -76,7 +78,7 @@
   .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
 
   /* Mobile menu */
-  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D8E1E9; }
   #menuBtn [data-bar="top"] { transform: translateY(-5px); }
   #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
   #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
@@ -84,12 +86,12 @@
   #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
 
   /* Shared with the homepage: layered cards, chips, section headings */
-  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
-  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
+  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(43,65,92,.05), 0 12px 28px -20px rgba(43,65,92,.35); }
+  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(43,65,92,.06), 0 22px 40px -22px rgba(43,65,92,.45); }
   .card-link:active { transform: scale(.98); }
-  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(30,69,63,.14); color: #1E453F; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
-  .chip-solid { background: #1E453F; border-color: #1E453F; color: #fff; }
-  .chip-quiet { background: #F6F8F7; color: rgba(24,37,36,.75); }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(43,65,92,.14); color: #2B415C; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
+  .chip-solid { background: #2B415C; border-color: #2B415C; color: #fff; }
+  .chip-quiet { background: #F6F8FA; color: rgba(27,39,51,.75); }
 
 </style>
 </head>
@@ -156,7 +158,7 @@
 </header>
 
 <!-- Mobile floating bottom bar -->
-<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(43,65,92,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
   <div class="grid grid-cols-4">
     <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -226,11 +228,11 @@
       <section id="medicare" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">How you pay</h2>
         <div class="mt-4 grid sm:grid-cols-2 gap-4">
-          <div class="bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-6">
+          <div class="bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-5 sm:p-6">
             <h3 class="font-display font-semibold text-lg text-ink">Medicare card holders</h3>
             <ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug"><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Pay one amount: facility fee + Medicare charges</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Get an instant refund of the Medicare part only</span></li></ul>
           </div>
-          <div class="bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-6">
+          <div class="bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-5 sm:p-6">
             <h3 class="font-display font-semibold text-lg text-ink">No Medicare card</h3>
             <ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug"><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Pay one amount on discharge: facility fee + Medicare-equivalent charges</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Pathology is billed separately by ACL</span></li></ul>
           </div>
@@ -244,7 +246,7 @@
       <section id="emergency" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Emergency &amp; urgent care</h2>
         <p class="text-ink/70 mt-2 leading-[1.7]">Walk-in visits for illness and injury.</p>
-        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] px-5 sm:px-6">
+        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">Emergency and urgent care fees</caption>
             <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
@@ -267,7 +269,7 @@
       </section>
       <section id="pathology" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Pathology</h2>
-        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-5 sm:p-6">
+        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-5 sm:p-6">
           <ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug"><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Bloods, swabs and urine tests</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Collected on site by your treating team</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Processed in Australian clinical labs</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Medicare card holders: bulk billed, no pathology charge</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>No Medicare card: extra charge, paid separately</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Australian Clinical Labs (ACL) sends you its own invoice after your test</span></li></ul>
         </div>
       </section>
@@ -275,7 +277,7 @@
       <section id="infusion" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Infusion clinic</h2>
         <p class="text-ink/70 mt-2 leading-[1.7]">By appointment.</p>
-        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] px-5 sm:px-6">
+        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">Infusion clinic fees</caption>
             <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
@@ -304,7 +306,7 @@
       <section id="wound" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Wound care clinic</h2>
         
-        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] px-5 sm:px-6">
+        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">Wound care clinic fees</caption>
             <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Service</th><th scope="col" class="text-right font-normal py-3">Cost</th></tr></thead>
@@ -329,7 +331,7 @@
       <section id="radiology" class="scroll-mt-[125px] sm:scroll-mt-[129px]">
         <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Scans and imaging</h2>
         <p class="text-ink/70 mt-2 leading-[1.7]">Provided on-site by Imaging Specialists, an independent practice. Questions about scans: <a href="tel:0286148400" class="focus-ring rounded font-medium text-teal700 hover:text-teal900">(02) 8614 8400</a>.</p>
-        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] px-5 sm:px-6">
+        <div class="mt-4 bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] px-5 sm:px-6">
           <table class="w-full">
             <caption class="sr-only">Radiology hours and fees for patients with Medicare</caption>
             <thead><tr class="border-b border-line text-sm text-ink/65"><th scope="col" class="text-left font-normal py-3">Scan and hours</th><th scope="col" class="text-right font-normal py-3">With Medicare</th></tr></thead>
@@ -367,7 +369,7 @@
       </section>
 
       <!-- Questions -->
-      <div class="rounded-[28px] bg-teal900 text-white p-6 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between shadow-[0_24px_48px_-24px_rgba(30,69,63,0.6)]">
+      <div class="rounded-[28px] bg-teal900 text-white p-6 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between shadow-[0_24px_48px_-24px_rgba(43,65,92,0.6)]">
         <div>
           <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em]">Questions about fees?</h2>
           <p class="text-white/75 mt-1">Call us before you come in and we'll talk you through it.</p>
@@ -385,7 +387,7 @@
 <footer class="relative bg-ink text-white overflow-hidden">
   <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
     <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
-      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      stroke="#8EC448" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div class="lg:col-span-2">
