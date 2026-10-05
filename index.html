@@ -233,7 +233,7 @@
     </a>
 
     <nav class="hidden lg:flex items-center gap-8 text-[15px]">
-      <a href="#right-care" class="hover:text-teal700 focus-ring rounded">Find care</a>
+      <a href="#where-to-go" class="hover:text-teal700 focus-ring rounded">Where to go</a>
       <a href="#services" class="hover:text-teal700 focus-ring rounded">Services</a>
       <a href="#fees" class="hover:text-teal700 focus-ring rounded">Fees</a>
       <a href="#location" class="hover:text-teal700 focus-ring rounded">Location</a>
@@ -259,7 +259,7 @@
   <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.22,1,.36,1)] border-t border-transparent">
     <div class="overflow-hidden">
       <nav class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-1 text-[15px]">
-        <a href="#right-care" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Find care</a>
+        <a href="#where-to-go" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Where to go</a>
         <a href="#services" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Services</a>
         <a href="#fees" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Fees</a>
         <a href="#location" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Location</a>
@@ -280,9 +280,9 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
       <span class="text-[11px] font-medium">Call</span>
     </a>
-    <a href="#right-care" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+    <a href="#where-to-go" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="text-[11px] font-medium">Find care</span>
+      <span class="text-[11px] font-medium">Where to go</span>
     </a>
     <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -327,7 +327,7 @@
   </section>
 
   <!-- Triage panel: rises into the bottom of the hero so the search is on the first screen -->
-  <section class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
+  <section id="where-to-go" class="relative z-10 scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
     <div class="grid lg:grid-cols-12 gap-4 lg:items-start">
       <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
         <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is specialist urgent care right for me?</h2>
@@ -549,11 +549,29 @@
           <span class="block text-sm text-white/80 mt-1 leading-snug">Led by emergency physicians</span>
         </span>
       </a>
-      <a href="#fees" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-gradient-to-br from-foam to-mint p-5 flex flex-col justify-between active:scale-[0.98]">
+      <a href="#fees" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] bg-gradient-to-br from-foam to-mint p-5 flex flex-col justify-end active:scale-[0.98]">
         <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="block mt-12">
+        <!-- Illustration: a receipt with a teal header band and the total line, plus a payment card -->
+        <svg class="absolute right-5 top-5 w-[48%] max-w-[128px] transition-transform duration-500 group-hover:-rotate-2 group-hover:scale-105" viewBox="0 0 160 150" fill="none" aria-hidden="true">
+          <path d="M28 10h84a6 6 0 0 1 6 6v118l-12-8-12 8-12-8-12 8-12-8-12 8-12-8-12 8V16a6 6 0 0 1 6-6Z" fill="#fff" stroke="#1E453F" stroke-opacity=".14" stroke-width="2"/>
+          <rect x="22" y="10" width="96" height="26" rx="6" fill="#1E453F"/>
+          <path d="M40 23h4M42 21v4" stroke="#6FB3A3" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="52" y="20" width="44" height="6" rx="3" fill="#fff" fill-opacity=".85"/>
+          <rect x="36" y="50" width="52" height="6" rx="3" fill="#1E453F" fill-opacity=".18"/>
+          <rect x="36" y="64" width="40" height="6" rx="3" fill="#1E453F" fill-opacity=".18"/>
+          <rect x="36" y="78" width="46" height="6" rx="3" fill="#1E453F" fill-opacity=".18"/>
+          <path d="M36 98h68" stroke="#1E453F" stroke-opacity=".2" stroke-width="2" stroke-dasharray="4 4"/>
+          <rect x="36" y="108" width="28" height="8" rx="4" fill="#1E453F" fill-opacity=".35"/>
+          <rect x="74" y="105" width="30" height="13" rx="4" fill="#4B9587"/>
+          <g transform="rotate(-12 128 112)">
+            <rect x="98" y="92" width="58" height="38" rx="7" fill="#2C685E"/>
+            <rect x="98" y="100" width="58" height="7" fill="#1E453F"/>
+            <rect x="106" y="114" width="14" height="10" rx="2" fill="#6FB3A3"/>
+          </g>
+        </svg>
+        <span class="relative block">
           <span class="block font-display font-bold text-xl sm:text-[1.7rem] leading-[1.1] tracking-[-0.02em] text-ink">Fees, up front</span>
-          <span class="block text-sm text-ink/70 mt-3 leading-relaxed">What a walk-in visit costs, with or without a Medicare card.</span>
+          <span class="block text-sm text-ink/70 mt-2 leading-relaxed">What a walk-in visit costs, with or without a Medicare card.</span>
         </span>
       </a>
       <a href="#other-care" class="tile group relative rounded-[20px] overflow-hidden focus-ring min-h-[220px] sm:min-h-[260px] active:scale-[0.98]">
@@ -588,7 +606,7 @@
               <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="3" aria-label="Step 4: See the doctor">4</button>
               <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="4" aria-label="Step 5: Tests and imaging">5</button>
               <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="5" aria-label="Step 6: Treatment">6</button>
-              <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="6" aria-label="Step 7: Going home">7</button>
+              <button type="button" class="visit-node focus-ring shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full text-sm font-display font-semibold transition-[transform,background-color,color,box-shadow] duration-300 spring" data-step="6" aria-label="Step 7: Go home">7</button>
             </div>
           </div>
 
@@ -638,12 +656,12 @@
           <img src="brand_assets/emergency_care.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[50%_25%] transition-transform duration-500 group-hover:scale-105">
         </span></span>
       </a>
-      <a href="services.html#orthopaedics" class="card-link group flex flex-col rounded-[20px] bg-gradient-to-b from-foam to-mint p-5 sm:p-6 focus-ring">
-        <h3 class="font-display font-semibold text-xl tracking-[-0.01em] text-ink">Fractures &amp; orthopaedics</h3>
-        <p class="mt-1.5 text-[15px] text-ink/70 leading-relaxed">Specialist orthopaedic follow-up within 24 hours if needed.</p>
-        <span class="mt-4 flex flex-wrap gap-2"><span class="chip chip-solid">Walk in</span><span class="chip">Follow-up</span></span>
+      <a href="services.html#sports" class="card-link group flex flex-col rounded-[20px] bg-gradient-to-b from-foam to-mint p-5 sm:p-6 focus-ring">
+        <h3 class="font-display font-semibold text-xl tracking-[-0.01em] text-ink">Sports injuries</h3>
+        <p class="mt-1.5 text-[15px] text-ink/70 leading-relaxed">Ankle, wrist, knee and back injuries, assessed and treated fast.</p>
+        <span class="mt-4 flex flex-wrap gap-2"><span class="chip chip-solid">Walk in</span><span class="chip">Orthopaedic follow-up</span></span>
         <span class="mt-auto pt-5 block"><span class="block relative h-44 rounded-[14px] overflow-hidden">
-          <img src="brand_assets/Treatment.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[65%_40%] transition-transform duration-500 group-hover:scale-105">
+          <img src="brand_assets/services/sports.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[50%_40%] transition-transform duration-500 group-hover:scale-105">
         </span></span>
       </a>
       <a href="services.html#cardiology" class="card-link group flex flex-col rounded-[20px] bg-gradient-to-b from-foam to-mint p-5 sm:p-6 focus-ring">
@@ -656,14 +674,10 @@
       </a>
     </div>
 
-    <div class="mt-4 grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+    <div class="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
       <a href="services.html#paediatrics" class="card-link rounded-[20px] bg-white border border-line p-5 focus-ring">
         <h3 class="font-display font-semibold text-ink">Paediatrics</h3>
         <p class="text-sm text-ink/70 mt-1.5 leading-relaxed">In-house care for children who fall sick or get hurt.</p>
-      </a>
-      <a href="services.html#sports" class="card-link rounded-[20px] bg-white border border-line p-5 focus-ring">
-        <h3 class="font-display font-semibold text-ink">Sports injuries</h3>
-        <p class="text-sm text-ink/70 mt-1.5 leading-relaxed">Ankle, wrist, knee and back injuries, treated fast.</p>
       </a>
       <a href="services.html#infusion" class="card-link rounded-[20px] bg-white border border-line p-5 focus-ring">
         <h3 class="font-display font-semibold text-ink">Infusion clinic</h3>
@@ -673,7 +687,7 @@
         <h3 class="font-display font-semibold text-ink">Physiotherapy</h3>
         <p class="text-sm text-ink/70 mt-1.5 leading-relaxed">Post-injury and post-procedure recovery, on-site.</p>
       </a>
-      <a href="services.html#pathology" class="card-link col-span-2 lg:col-span-1 rounded-[20px] bg-white border border-line p-5 focus-ring">
+      <a href="services.html#pathology" class="card-link rounded-[20px] bg-white border border-line p-5 focus-ring">
         <h3 class="font-display font-semibold text-ink">Pathology</h3>
         <p class="text-sm text-ink/70 mt-1.5 leading-relaxed">On-site collection to support your treatment.</p>
       </a>
@@ -743,9 +757,24 @@
       <!-- Pathology (block B) -->
       <div class="md:col-span-2 lg:col-span-7 rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] p-6 sm:p-7">
         <h3 class="font-display font-semibold text-lg text-ink">Pathology</h3>
-        <ul class="mt-3 md:columns-2 gap-x-8 [&>li]:mb-2 [&>li]:break-inside-avoid text-[15px] text-ink/80 leading-snug"><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Bloods, swabs and urine tests</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Collected on site by your treating team</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Processed in Australian clinical labs</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Medicare card holders: bulk billed, no pathology charge</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>No Medicare card: extra charge, paid separately</span></li><li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Australian Clinical Labs (ACL) sends you its own invoice after your test</span></li></ul>
+        <div class="mt-3 grid md:grid-cols-2 gap-5 md:gap-6">
+          <ul class="space-y-2 text-[15px] text-ink/80 leading-snug">
+            <li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Bloods, swabs and urine tests</span></li>
+            <li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Collected on site by your treating team</span></li>
+            <li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full bg-teal500" aria-hidden="true"></span><span>Processed in Australian clinical labs</span></li>
+          </ul>
+          <!-- What pathology costs: pulled out of the list so it stands out -->
+          <div class="rounded-[14px] bg-gradient-to-br from-foam to-mint p-4">
+            <h4 class="font-medium text-ink">What it costs</h4>
+            <dl class="mt-3 space-y-3 text-[15px] leading-snug">
+              <div class="flex items-start justify-between gap-3"><dt class="text-ink/80">Medicare card holders</dt><dd class="shrink-0"><span class="chip chip-solid">Bulk billed</span></dd></div>
+              <div><dt class="text-ink/80">No Medicare card</dt><dd class="mt-0.5 font-medium text-ink">Extra charge, paid separately</dd></div>
+            </dl>
+            <p class="mt-3 pt-3 border-t border-teal900/10 text-sm text-ink/70 leading-snug">Australian Clinical Labs (ACL) sends you its own invoice after your test</p>
+          </div>
+        </div>
       </div>
-      <div class="md:col-span-2 lg:col-span-5 rounded-[20px] bg-teal900 text-white p-6 sm:p-7">
+      <div class="md:col-span-2 lg:col-span-5 lg:self-start rounded-[20px] bg-teal900 text-white p-6 sm:p-7">
         <h3 class="font-display font-semibold text-lg">What to bring</h3>
         <ul class="mt-4 space-y-3 text-[15px] text-white/85">
           <li class="flex gap-2.5"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow shrink-0" aria-hidden="true"></span>Your Medicare card, if you have one</li>
@@ -949,7 +978,7 @@
     <div>
       <p class="font-medium text-white/90 mb-3">Explore</p>
       <ul class="space-y-0.5 text-sm text-white/55">
-        <li><a href="#right-care" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Find care</a></li>
+        <li><a href="#where-to-go" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Where to go</a></li>
         <li><a href="#services" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Services</a></li>
         <li><a href="#fees" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Fees</a></li>
         <li><a href="team.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Our team</a></li>
@@ -1306,7 +1335,7 @@
         image: 'brand_assets/Tests.jpeg', pos: '65% 30%' },
       { title: 'Treatment', desc: 'Treatment might be a cast or splint, stitches, a drip or medicine — whatever your visit needs.', tip: 'Tell us about any allergies or medicines you’re taking.',
         image: 'brand_assets/Treatment.jpeg', pos: '75% 15%' },
-      { title: 'Going home', desc: 'We explain how to care for yourself at home, and what follow-up you need, if any.', tip: 'Same problem within 24 hours? That visit is bulk-billed.',
+      { title: 'Go home', desc: 'We explain how to care for yourself at home, and what follow-up you need, if any.', tip: 'Same problem within 24 hours? That visit is bulk-billed.',
         image: 'brand_assets/Go_Home.jpeg', pos: '75% 15%' },
     ];
 
