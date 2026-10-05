@@ -32,7 +32,7 @@ NURSES = [
   ('edsel-de-mesa', 'Edsel de Mesa', '', 'Registered Nurse', ''),
 ]
 
-# From the current live site's Our Advisors page
+# From the current live site's Our Advisors page (photos too, in brand_assets/team/)
 ADVISORS = [
   ('lea-mitchell', 'Lea Mitchell', '', 'Director of Nursing', ''),
   ('peter-roberts', 'Dr Peter Roberts', 'FACEM OAM', 'Senior Emergency Physician', ''),
@@ -48,7 +48,7 @@ TEAM = [
   ('Our Nurses', 'Emergency nurses and nurse practitioners', NURSES),
   ('Our Advisors', 'Experts in their fields, committed to the health of our community', ADVISORS),
 ]
-NO_PHOTO = {'earl-butler', 'lea-mitchell', 'peter-roberts', 'john-adie'}
+NO_PHOTO = {'earl-butler'}
 
 def initials(name):
     parts = [p for p in name.replace('Dr ', '').split() if p[0].isupper()]
