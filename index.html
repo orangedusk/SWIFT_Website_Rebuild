@@ -498,7 +498,7 @@
         <p class="mt-6 text-sm text-ink/70 leading-relaxed">Can't get in with your GP and it can't wait? <a href="#location" class="inline-block py-1.5 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Come to SWIFT.</a></p>
       </div>
     </div>
-    <p class="mt-6 text-sm text-ink/70">This guide doesn't replace medical advice. If you're worried, call 000.</p>
+    <p class="mt-6 text-[15px] text-ink/75">If you are unsure, <a href="tel:0288599099" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">call SWIFT</a> first. This guide doesn't replace medical advice.</p>
   </section>
 
   <!-- Quick routes: four tiles, like the reference's image row. Tablet and up only: on phones they repeat sections below. -->
@@ -1038,26 +1038,32 @@
       var what = '<p class="text-sm opacity-75">For &ldquo;' + esc(label) + '&rdquo;</p>';
       // Jumps to the three columns, where the matching symptoms are already highlighted
       var see = '<a href="#careLanes" data-see-matches class="inline-block mt-2 py-1 text-[15px] font-medium underline underline-offset-4 decoration-current/40 hover:decoration-current focus-ring rounded">See matching symptoms</a>';
+      // Safety line under every result (client instruction, exact wording)
+      function safety(dark) {
+        return '<p class="mt-4 pt-3 border-t ' + (dark ? 'border-white/20 text-white/85' : 'border-line text-ink/75') + ' text-sm">If you are unsure, ' +
+          '<a href="tel:0288599099" class="font-medium underline underline-offset-2 ' + (dark ? 'decoration-white/50 hover:decoration-white' : 'text-teal700 decoration-teal500/40 hover:decoration-teal700') + ' focus-ring rounded">call SWIFT</a> first.</p>';
+      }
+      var row = 'flex flex-col sm:flex-row sm:items-center gap-4 justify-between';
       if (lane === 'mixed') {
         return '<div class="verdict-in rounded-2xl bg-white border-2 border-urgent p-5 text-ink shadow-[0_14px_30px_-14px_rgba(178,58,58,0.4)]">' + what +
           '<p class="font-display font-bold text-xl mt-0.5">It depends how serious it is</p>' +
           '<p class="text-[15px] mt-2"><span class="font-medium text-urgentDk">Call 000</span> for ' + edItems.map(function (t) { return esc(t.charAt(0).toLowerCase() + t.slice(1)); }).join('; ') + '.</p>' +
           '<p class="text-[15px] text-ink/70 mt-1">Otherwise, check the highlighted symptoms.</p>' + see.replace('font-medium', 'font-medium text-teal700') +
-          '<a href="tel:000" class="' + btnBase + ' mt-4 bg-urgent text-white hover:bg-urgentDk">Call 000</a></div>';
+          '<div><a href="tel:000" class="' + btnBase + ' mt-4 bg-urgent text-white hover:bg-urgentDk">Call 000</a></div>' + safety(false) + '</div>';
       }
       if (lane === 'ed') {
-        return '<div class="verdict-in rounded-2xl bg-urgent text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]">' +
+        return '<div class="verdict-in rounded-2xl bg-urgent text-white p-5 shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]"><div class="' + row + '">' +
           '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">Call 000 now</p><p class="text-white/85 text-[15px] mt-1">' + edNote() + '</p>' + see + '</div>' +
-          '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>';
+          '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>' + safety(true) + '</div>';
       }
       if (lane === 'swift') {
-        return '<div class="verdict-in rounded-2xl bg-teal900 text-white p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]">' +
+        return '<div class="verdict-in rounded-2xl bg-teal900 text-white p-5 shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]"><div class="' + row + '">' +
           '<div>' + what + '<p class="font-display font-bold text-xl mt-0.5">SWIFT can help with this</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p>' + see + '</div>' +
-          '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>';
+          '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>' + safety(true) + '</div>';
       }
       if (lane === 'gp') {
-        return '<div class="verdict-in rounded-2xl bg-white border border-line p-5 flex flex-col sm:flex-row sm:items-center gap-4 justify-between shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">' +
-          '<div class="text-ink">' + what + '<p class="font-display font-bold text-xl mt-0.5">Your GP is best for this</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can’t get in soon, come to SWIFT.</p>' + see.replace('font-medium', 'font-medium text-teal700') + '</div></div>';
+        return '<div class="verdict-in rounded-2xl bg-white border border-line p-5 shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]">' +
+          '<div class="text-ink">' + what + '<p class="font-display font-bold text-xl mt-0.5">Your GP is best for this</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can’t get in soon, come to SWIFT.</p>' + see.replace('font-medium', 'font-medium text-teal700') + '</div>' + safety(false) + '</div>';
       }
       return '<div class="verdict-in rounded-2xl bg-mint border border-line p-5 text-ink">' +
         '<p class="font-medium">No match for &ldquo;' + esc(label) + '&rdquo;</p>' +
