@@ -61,7 +61,8 @@ brand_assets/         Logo marks and real clinic photography
 
 ## Brand assets
 
-- `swift-icon-dark.png` / `swift-icon-white.png` — the SWIFT cross/arrow mark, cleanly cropped from the original logo export (the full wordmark export is clipped mid-text at the source and unusable — see `swift-original-logo-export-CLIPPED-reference-only.png`)
+- `SWIFT_7.png` (full colour logo) and `SwiftLogoA.jpg` (round mark): the official logos, supplied by SWIFT. Web versions in `logo/`: `swift-logo.png` (header and password screen), `swift-mark.png` (the cross alone, for the footer and the Come to SWIFT badge), favicons and `apple-touch-icon.png` (from the round mark), and `social-preview.png` (1200 × 630 link preview; its URL in the page head points at the live domain, so update it if the site launches elsewhere)
+- `swift-icon-dark.png` / `swift-icon-white.png`: older single-colour crops, no longer used
 - `clinic-reception.jpg`, `clinic-waiting-area.jpg` — real architectural renders of the actual Rouse Hill clinic, sourced from the current live site
 - `hero-doctor-patient.jpg` — supplied by the client, used in the hero and the featured services tile
 - `clinic-reception-photo.jpg` — real photo of SWIFT's reception (with the SWIFT sign), from the current live site; used in the clinic facilities gallery
