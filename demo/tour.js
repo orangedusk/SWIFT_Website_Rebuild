@@ -44,7 +44,7 @@
     { page: 'fees.html', target: q('section#emergency'), title: 'Detailed fee tables', body: 'Every fee from the current site: urgent care, infusions, wound care and scans. The menu on the left jumps between them.' },
 
     // Team
-    { page: 'team.html', target: function () { var g = document.getElementById('grp0'); return g && g.closest('section'); }, title: 'Meet the team', body: 'All 17 staff with photos, grouped into leadership, doctors and nurses.' },
+    { page: 'team.html', target: function () { var g = document.getElementById('grp0'); return g && g.closest('section'); }, title: 'Meet the team', body: 'Doctors, nurses and advisors, with Dr Manivel and Dr Shahpuri first and everyone else A to Z by surname.' },
     { page: 'team.html', target: q('#vijay-manivel'), title: 'Staff profiles', body: 'Each card opens a profile with a larger photo and bio, and has its own link to share.' },
 
     // Request appointment
