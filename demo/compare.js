@@ -2,8 +2,8 @@
    Only shows on the pages being compared. Add a prototype by adding a line to VERSIONS. */
 (function () {
   var VERSIONS = [
-    { file: 'index.html', label: 'Logo colours' },
-    { file: 'prototype-teal.html', label: 'Teal' },
+    { file: 'index.html', label: 'Teal' },
+    { file: 'prototype-logo-colours.html', label: 'Logo colours' },
     { file: 'prototype-split-hero.html', label: 'Split hero' }
   ];
   var page = location.pathname.split('/').pop() || 'index.html';
