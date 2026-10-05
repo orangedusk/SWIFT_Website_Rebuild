@@ -48,7 +48,7 @@
   };
 
   // The tour loads last so the elements it points at (campaign and viewport buttons) already exist
-  var tools = ['campaigns.js', 'viewport.js', 'compare.js', 'tour.js'];
+  var tools = ['campaigns.js', 'viewport.js', 'compare.js', 'samples.js', 'tour.js'];
   (function next(i) {
     if (i >= tools.length) return;
     var s = document.createElement('script');
