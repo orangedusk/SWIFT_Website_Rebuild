@@ -2,32 +2,53 @@ import sys, html, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file_
 
 # Names and roles from the current live site. Bios there are placeholder text, so
 # 'bio' is left empty until SWIFT supplies real ones; the profile shows a neutral note meanwhile.
-TEAM = [
-  ('Leadership', 'Founders and clinical leads', [
-    ('vijay-manivel', 'Dr Vijay Manivel', 'Co-Founder and Director', ''),
-    ('gopinath-betarayappa', 'Dr Gopinath Betarayappa', 'Co-Founder and Director', ''),
-    ('berinder-shahpuri', 'Dr Berinder Shahpuri', 'Deputy Clinical Director, Emergency Physician', ''),
-  ]),
-  ('Emergency doctors', 'Emergency physicians who see every walk-in patient', [
-    ('nina-dhaliwal', 'Dr Nina Dhaliwal', 'Emergency Physician and Toxicologist', ''),
-    ('pramod-chandru', 'Dr Pramod Chandru', 'Emergency Physician and Toxicologist', ''),
-    ('earl-butler', 'Dr Earl Butler', 'Emergency Physician and Toxicologist', ''),
-    ('stephen-madden', 'Dr Stephen Madden', 'Senior Emergency Doctor', ''),
-    ('athar-khan', 'Dr Athar Khan', 'Senior Emergency Doctor', ''),
-    ('mahesh-jagada-gangadharaiah', 'Dr Mahesh Jagada Gangadharaiah', 'Emergency Physician', ''),
-    ('behzad-mirmiran', 'Dr Behzad Mirmiran', 'Emergency Physician', ''),
-    ('nasim-erfani', 'Dr Nasim Erfani', 'Emergency Physician', ''),
-  ]),
-  ('Nursing team', 'Emergency nurses and nurse practitioners', [
-    ('gisha-george', 'Gisha George', 'Nurse Unit Manager', ''),
-    ('farai-mupedzi', 'Farai Mupedzi', 'Transitional Nurse Practitioner', ''),
-    ('natalie-weitenberg', 'Natalie Weitenberg', 'Transitional Nurse Practitioner', ''),
-    ('geetha-ganesan', 'Geetha Ganesan', 'Emergency Registered Nurse', ''),
-    ('stuart-dawkins', 'Stuart Dawkins', 'Emergency Registered Nurse', ''),
-    ('edsel-de-mesa', 'Edsel de Mesa', 'Registered Nurse', ''),
-  ]),
+# Each person: (slug, name, qualifications, title and position, bio).
+# Qualifications show under the name only when filled in (Dr Manivel is supplying them, item 5.3).
+DOCTORS = [
+  ('vijay-manivel', 'Dr Vijay Manivel', '', 'Co-Founder and Director', ''),
+  ('berinder-shahpuri', 'Dr Berinder Shahpuri', '', 'Deputy Clinical Director, Emergency Physician', ''),
+  ('gopinath-betarayappa', 'Dr Gopinath Betarayappa', '', 'Co-Founder and Director', ''),
+  ('nina-dhaliwal', 'Dr Nina Dhaliwal', '', 'Emergency Physician and Toxicologist', ''),
+  ('pramod-chandru', 'Dr Pramod Chandru', '', 'Emergency Physician and Toxicologist', ''),
+  ('earl-butler', 'Dr Earl Butler', '', 'Emergency Physician and Toxicologist', ''),
+  ('stephen-madden', 'Dr Stephen Madden', '', 'Senior Emergency Doctor', ''),
+  ('athar-khan', 'Dr Athar Khan', '', 'Senior Emergency Doctor', ''),
+  ('mahesh-jagada-gangadharaiah', 'Dr Mahesh Jagada Gangadharaiah', '', 'Emergency Physician', ''),
+  ('behzad-mirmiran', 'Dr Behzad Mirmiran', '', 'Emergency Physician', ''),
+  ('nasim-erfani', 'Dr Nasim Erfani', '', 'Emergency Physician', ''),
 ]
-NO_PHOTO = {'earl-butler'}
+# Item 5.2: Dr Manivel first, Dr Shahpuri second, everyone else A to Z by surname (ignoring 'Dr')
+FIXED_FIRST = ['vijay-manivel', 'berinder-shahpuri']
+def surname(person): return person[1].split()[-1].lower()
+DOCTORS = ([d for f in FIXED_FIRST for d in DOCTORS if d[0] == f] +
+           sorted([d for d in DOCTORS if d[0] not in FIXED_FIRST], key=surname))
+
+NURSES = [
+  ('gisha-george', 'Gisha George', '', 'Nurse Unit Manager', ''),
+  ('farai-mupedzi', 'Farai Mupedzi', '', 'Transitional Nurse Practitioner', ''),
+  ('natalie-weitenberg', 'Natalie Weitenberg', '', 'Transitional Nurse Practitioner', ''),
+  ('geetha-ganesan', 'Geetha Ganesan', '', 'Emergency Registered Nurse', ''),
+  ('stuart-dawkins', 'Stuart Dawkins', '', 'Emergency Registered Nurse', ''),
+  ('edsel-de-mesa', 'Edsel de Mesa', '', 'Registered Nurse', ''),
+]
+
+# From the current live site's Our Advisors page
+ADVISORS = [
+  ('lea-mitchell', 'Lea Mitchell', '', 'Director of Nursing', ''),
+  ('peter-roberts', 'Dr Peter Roberts', 'FACEM OAM', 'Senior Emergency Physician', ''),
+  ('john-adie', 'John Adie', 'FRNZCUC FRACGP FACRRM', 'RNZCUC Australian Convenor', ''),
+]
+
+# Item 5.1 section order: Practice Manager, Our Doctors, Our Nurses, Our Admin Staff, Our Advisors,
+# Contracting Doctors. Practice Manager, Admin Staff and Contracting Doctors are added once SWIFT
+# supplies the names; empty sections are not shown.
+ADVISOR_SLUGS = {a[0] for a in ADVISORS}
+TEAM = [
+  ('Our Doctors', 'Emergency physicians who see every walk-in patient', DOCTORS),
+  ('Our Nurses', 'Emergency nurses and nurse practitioners', NURSES),
+  ('Our Advisors', 'Experts in their fields, committed to the health of our community', ADVISORS),
+]
+NO_PHOTO = {'earl-butler', 'lea-mitchell', 'peter-roberts', 'john-adie'}
 
 def initials(name):
     parts = [p for p in name.replace('Dr ', '').split() if p[0].isupper()]
@@ -39,26 +60,27 @@ def photo(slug, name, cls):
     return ('<div class="%s relative overflow-hidden rounded-[14px] bg-gradient-to-b from-foam to-mint">'
             '<img src="brand_assets/team/%s.jpg" alt="Portrait of %s" loading="lazy" width="480" height="480" class="team-img w-full h-full object-cover object-top mix-blend-multiply"></div>') % (cls, slug, html.escape(name))
 
-def card(slug, name, role, bio):
+def card(slug, name, quals, role, bio):
     return ('''        <li class="flex">
           <button type="button" id="%s" class="team-card card-link group w-full h-full flex flex-col text-left focus-ring rounded-[20px] bg-white border border-line p-2.5 sm:p-3 scroll-mt-[140px]"
-            data-slug="%s" data-name="%s" data-role="%s" data-bio="%s" data-photo="%s" data-initials="%s" aria-haspopup="dialog">
+            data-slug="%s" data-advisor="%s" data-name="%s" data-quals="%s" data-role="%s" data-bio="%s" data-photo="%s" data-initials="%s" aria-haspopup="dialog">
             %s
             <span class="flex-1 flex flex-col px-2 pt-4 pb-2 sm:px-3">
               <span class="block font-display font-semibold text-[17px] leading-snug text-ink">%s</span>
-              <span class="block text-sm text-ink/70 mt-1">%s</span>
+              %s<span class="block text-sm text-ink/70 mt-1">%s</span>
               <span class="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-teal700 group-hover:text-teal900">View profile
                 <svg class="transition-transform duration-300 group-hover:translate-x-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </span>
           </button>
-        </li>''' % (slug, slug, html.escape(name), html.escape(role), html.escape(bio),
+        </li>''' % (slug, slug, 'true' if slug in ADVISOR_SLUGS else '', html.escape(name), html.escape(quals), html.escape(role), html.escape(bio),
                      '' if slug in NO_PHOTO else 'brand_assets/team/%s.jpg' % slug, initials(name),
-                     photo(slug, name, 'aspect-square'), html.escape(name), html.escape(role)))
+                     photo(slug, name, 'aspect-square'), html.escape(name),
+                     ('<span class="block text-sm font-medium text-teal700 mt-1">%s</span>' % html.escape(quals)) if quals else '', html.escape(role)))
 
 groups = []
 for i, (title, sub, people) in enumerate(TEAM):
-    cols = 'grid-cols-2 lg:grid-cols-3' if i == 0 else 'grid-cols-2 lg:grid-cols-4'
+    cols = 'grid-cols-2 lg:grid-cols-4'
     groups.append('''
     <section class="%s" aria-labelledby="grp%d">
       <div class="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-1 mb-6">
@@ -85,9 +107,10 @@ main = '''
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
         <h2 id="profileName" class="font-display font-bold text-2xl sm:text-3xl tracking-tight text-ink pr-10"></h2>
-        <p id="profileRole" class="text-teal700 font-medium mt-1"></p>
+        <p id="profileQuals" class="text-teal700 font-medium mt-1"></p>
+        <p id="profileRole" class="text-ink/75 mt-1"></p>
         <p id="profileBio" class="mt-5 text-ink/75 leading-relaxed"></p>
-        <div class="mt-7 pt-5 border-t border-line flex flex-wrap gap-3">
+        <div id="profileActions" class="mt-7 pt-5 border-t border-line flex flex-wrap gap-3">
           <a href="request-appointment.html" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 bg-teal900 hover:bg-teal700 text-white transition-[transform,background-color]">Request appointment</a>
           <a href="tel:0288599099" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 transition-[transform,border-color,color]">Call (02) 8859 9099</a>
         </div>
@@ -115,7 +138,11 @@ js = '''  (function () {
     function open(card, push) {
       var d = card.dataset;
       document.getElementById('profileName').textContent = d.name;
+      document.getElementById('profileQuals').textContent = d.quals;
+      document.getElementById('profileQuals').hidden = !d.quals;
       document.getElementById('profileRole').textContent = d.role;
+      // Advisors don't see patients, so no booking buttons on their profiles
+      document.getElementById('profileActions').hidden = d.advisor === 'true';
       document.getElementById('profileBio').textContent = d.bio ||
         'A full profile for ' + d.name + ' is coming soon.';
       photoEl.innerHTML = '';
