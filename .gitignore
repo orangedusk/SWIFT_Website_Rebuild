@@ -1,3 +1,6 @@
 node_modules/
 temporary screenshots/
 .DS_Store
+
+# Generated copy decks (send to the client; regenerate with tools/copy_deck.py)
+SWIFT_copy_deck*.xlsx
