@@ -3,10 +3,10 @@
 (function () {
   var style = document.createElement('style');
   style.textContent =
-    '.viewport-btn { color: rgba(27,39,51,0.5); }' +
-    '.viewport-btn:hover { color: rgba(27,39,51,0.8); background: #EAF1F6; }' +
-    '.viewport-btn[aria-pressed="true"] { background: #00728F; color: #fff; }' +
-    '.viewport-btn[aria-pressed="true"]:hover { background: #00728F; color: #fff; }';
+    '.viewport-btn { color: rgba(24,37,36,0.5); }' +
+    '.viewport-btn:hover { color: rgba(24,37,36,0.8); background: #EAF1EF; }' +
+    '.viewport-btn[aria-pressed="true"] { background: #2C685E; color: #fff; }' +
+    '.viewport-btn[aria-pressed="true"]:hover { background: #2C685E; color: #fff; }';
   document.head.appendChild(style);
 
   var wrap = document.createElement('div');

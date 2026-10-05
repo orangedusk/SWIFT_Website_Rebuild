@@ -2,19 +2,19 @@ import sys, re, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)
 
 # Service icons, kept here so homepage redesigns can't break this build
 ICONS = {
-    'emergency-health-care': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    'specialty-orthopaedics': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 16.5 16.5 7.5"/><circle cx="6" cy="18" r="2.3"/><circle cx="18" cy="6" r="2.3"/></g></svg>',
-    'sports-injuries': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="5" r="1.8"/><path d="M13 8l-3 3 1 4-3 4M13 8l3 1 2 5M10 11l3-1"/></g></svg>',
-    'paediatrics': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#00728F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="7" cy="6.5" r="2"/><circle cx="17" cy="6.5" r="2"/><path d="M9.5 14c.7.8 1.6 1.2 2.5 1.2s1.8-.4 2.5-1.2"/></g><circle cx="9.5" cy="12" r=".7" fill="#00728F" stroke="none"/><circle cx="14.5" cy="12" r=".7" fill="#00728F" stroke="none"/></svg>',
-    'cardiology': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.6-9.3-9.3C1.2 7.6 3 4.5 6.2 4.2c1.8-.2 3.4.7 4.3 2.1a4.9 4.9 0 0 1 3-2c3.2-.5 5.4 2.6 4 5.9C15.8 15 12 20 12 20Z" stroke="#00728F" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11h2.5l1.3-2.4L11.5 13l1.2-2h3.3" stroke="#0098BA" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    'infusion-clinic': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4h8l-1 5H9L8 4Z" stroke="#00728F" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 9h6l-.8 7.5a2.2 2.2 0 0 1-4.4 0L9 9Z" stroke="#00728F" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 17v3" stroke="#00728F" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="21.2" r=".9" fill="#0098BA" stroke="none"/></svg>',
-    'physiotherapy': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16a7 7 0 0 1 12.6-4.2" stroke="#00728F" stroke-width="1.6" stroke-linecap="round"/><path d="M17.6 8.5 18.5 12l-3.6-.7" stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5" cy="16" r="1.4" fill="#0098BA" stroke="none"/></svg>',
-    'pathology': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 3h4M10.5 3v11.5a3.5 3.5 0 1 0 3 0V3" stroke="#00728F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 13.5h3" stroke="#0098BA" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    'emergency-health-care': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'specialty-orthopaedics': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 16.5 16.5 7.5"/><circle cx="6" cy="18" r="2.3"/><circle cx="18" cy="6" r="2.3"/></g></svg>',
+    'sports-injuries': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="5" r="1.8"/><path d="M13 8l-3 3 1 4-3 4M13 8l3 1 2 5M10 11l3-1"/></g></svg>',
+    'paediatrics': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#2C685E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="7" cy="6.5" r="2"/><circle cx="17" cy="6.5" r="2"/><path d="M9.5 14c.7.8 1.6 1.2 2.5 1.2s1.8-.4 2.5-1.2"/></g><circle cx="9.5" cy="12" r=".7" fill="#2C685E" stroke="none"/><circle cx="14.5" cy="12" r=".7" fill="#2C685E" stroke="none"/></svg>',
+    'cardiology': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.6-9.3-9.3C1.2 7.6 3 4.5 6.2 4.2c1.8-.2 3.4.7 4.3 2.1a4.9 4.9 0 0 1 3-2c3.2-.5 5.4 2.6 4 5.9C15.8 15 12 20 12 20Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 11h2.5l1.3-2.4L11.5 13l1.2-2h3.3" stroke="#4B9587" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    'infusion-clinic': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4h8l-1 5H9L8 4Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 9h6l-.8 7.5a2.2 2.2 0 0 1-4.4 0L9 9Z" stroke="#2C685E" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 17v3" stroke="#2C685E" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="21.2" r=".9" fill="#4B9587" stroke="none"/></svg>',
+    'physiotherapy': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16a7 7 0 0 1 12.6-4.2" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round"/><path d="M17.6 8.5 18.5 12l-3.6-.7" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5" cy="16" r="1.4" fill="#4B9587" stroke="none"/></svg>',
+    'pathology': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 3h4M10.5 3v11.5a3.5 3.5 0 1 0 3 0V3" stroke="#2C685E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 13.5h3" stroke="#4B9587" stroke-width="1.6" stroke-linecap="round"/></svg>',
     'imaging': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v10M9 9.5h6M9.5 12.5h5M10 15.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
 }
 def icon_for(slug):
     return ICONS[slug]
-DENTAL_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c-2.2 0-3.6 1-4.6 1-1.3 0-2.4 1.3-2.4 3.4 0 3 1 5.7 1.6 8.3.4 1.7.8 3.3 2 3.3 1.3 0 1.4-2.6 1.9-4.4.3-1.1.7-2 1.5-2s1.2.9 1.5 2c.5 1.8.6 4.4 1.9 4.4 1.2 0 1.6-1.6 2-3.3.6-2.6 1.6-5.3 1.6-8.3 0-2.1-1.1-3.4-2.4-3.4-1 0-2.4-1-4.6-1Z" stroke="#00728F" stroke-width="1.4" stroke-linejoin="round"/></svg>'
+DENTAL_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c-2.2 0-3.6 1-4.6 1-1.3 0-2.4 1.3-2.4 3.4 0 3 1 5.7 1.6 8.3.4 1.7.8 3.3 2 3.3 1.3 0 1.4-2.6 1.9-4.4.3-1.1.7-2 1.5-2s1.2.9 1.5 2c.5 1.8.6 4.4 1.9 4.4 1.2 0 1.6-1.6 2-3.3.6-2.6 1.6-5.3 1.6-8.3 0-2.1-1.1-3.4-2.4-3.4-1 0-2.4-1-4.6-1Z" stroke="#2C685E" stroke-width="1.4" stroke-linejoin="round"/></svg>'
 
 WALK = ('Walk in', 'chip-solid')
 APPT = ('By appointment', '')
@@ -56,7 +56,7 @@ def section(sid, name, icon, tags, summary, points, ctas, extra=''):
     pad = 'p-3 sm:p-3' if img else 'p-5 sm:p-8'
     inner = 'px-2 pt-5 pb-2 sm:px-5 sm:pt-6 sm:pb-5' if img else ''
     return '''
-        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] %s">%s
+        <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] %s">%s
           <div class="%s">
           <div class="flex items-start gap-4">
             <span class="shrink-0 hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-foam to-mint">%s</span>
@@ -90,7 +90,7 @@ SWIFT_SERVICES = [
     extra='''
           <details class="svc-more mt-5 rounded-[14px] bg-paper border border-line">
             <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-[14px] hover:bg-mint/60 transition-colors">Our orthopaedic surgeons
-              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#00728F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <ul class="px-4 pb-4 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
               <li><span class="block text-ink font-medium">Dr Mohammed Baba</span><span class="text-ink/70">Shoulder, elbow, wrist and hand</span></li>
@@ -138,7 +138,7 @@ SWIFT_SERVICES = [
     extra='''
           <details class="svc-more mt-5 rounded-[14px] bg-paper border border-line">
             <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-[14px] hover:bg-mint/60 transition-colors">Before a zoledronate infusion
-              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#00728F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="chev shrink-0 transition-transform duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="#2C685E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <ul class="px-4 pb-4 space-y-1.5 text-sm text-ink/75 list-disc pl-8">
               <li>Stop oral osteoporosis tablets (oral bisphosphonates)</li>
@@ -209,7 +209,7 @@ css = '''
   .svc-more summary { list-style: none; cursor: pointer; }
   .svc-more summary::-webkit-details-marker { display: none; }
   .svc-more[open] .chev { transform: rotate(180deg); }
-  .svc:target { box-shadow: 0 0 0 2px #0098BA, 0 14px 28px -10px rgba(43,65,92,0.25); }
+  .svc:target { box-shadow: 0 0 0 2px #4B9587, 0 14px 28px -10px rgba(30,69,63,0.25); }
 '''
 
 build('services.html',

@@ -9,13 +9,13 @@
       id: 'default',
       label: 'Everyday care',
       desc: 'No campaign: the standard hero photo',
-      swatch: '#00728F'
+      swatch: '#2C685E'
     },
     {
       id: 'flu',
       label: 'Flu shot season',
       desc: 'Seasonal vaccination campaign',
-      swatch: '#0098BA',
+      swatch: '#4B9587',
       title: 'Flu shots are here',
       text: 'Protect yourself and your family this flu season.',
       ctaText: 'Request a flu shot',
@@ -28,7 +28,7 @@
       id: 'kids',
       label: 'School holidays',
       desc: 'Paediatric-focused campaign',
-      swatch: '#00809F',
+      swatch: '#377E71',
       title: 'School holidays? We\u2019ve got the kids covered.',
       text: 'From sprains to fevers, we treat children 3 months and up, every day of the holidays.',
       ctaText: 'See kids\u2019 care',

@@ -155,7 +155,7 @@ main = '''
       </section>
 
       <!-- Questions -->
-      <div class="rounded-[28px] bg-teal900 text-white p-6 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between shadow-[0_24px_48px_-24px_rgba(43,65,92,0.6)]">
+      <div class="rounded-[28px] bg-teal900 text-white p-6 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between shadow-[0_24px_48px_-24px_rgba(30,69,63,0.6)]">
         <div>
           <h2 class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em]">Questions about fees?</h2>
           <p class="text-white/75 mt-1">Call us before you come in and we'll talk you through it.</p>
