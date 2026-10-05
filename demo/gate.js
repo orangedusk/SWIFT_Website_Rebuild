@@ -45,7 +45,7 @@
     gate.id = 'demoGate';
     gate.innerHTML =
       '<form novalidate>' +
-        '<div class="gate-logo"><img src="brand_assets/swift-icon-dark.png" alt="" width="32" height="32">SWIFT</div>' +
+        '<div class="gate-logo"><img src="brand_assets/logo/swift-logo.png" alt="SWIFT Emergency &amp; Urgent Care" width="168" height="60"></div>' +
         '<h1>Website preview</h1>' +
         '<p>This is a private preview of the new SWIFT website. Enter the password you were given to view it.</p>' +
         '<label for="demoGatePassword">Password</label>' +
