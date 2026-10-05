@@ -58,7 +58,7 @@ infusion = table('infusion', 'Infusion clinic', 'By appointment.', [
     ('Iron infusion', 'You bring your own Ferinject or iron medicine', price('$246')),
     ('Iron infusion', 'We supply Ferinject 1g for $77', price('$246 + $77')),
     ('IV antibiotics', 'After a SWIFT consultation, or prescribed by your GP', price('$150')),
-    ('Other infusions', None, '<a href="tel:0288599099" class="focus-ring rounded text-[15px] font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700">Call us</a>'),
+    ('Other infusions', None, '<a href="tel:0288599099" class="inline-block py-1 focus-ring rounded text-[15px] font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700">Call us</a>'),
 ], 'Infusion clinic fees')
 
 wound = table('wound', 'Wound care clinic', None, [

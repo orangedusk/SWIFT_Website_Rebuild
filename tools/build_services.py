@@ -59,7 +59,7 @@ def section(sid, name, icon, tags, summary, points, ctas, extra=''):
         <article id="%s" class="svc scroll-mt-[125px] sm:scroll-mt-[129px] bg-white rounded-[20px] border border-line shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)] %s">%s
           <div class="%s">
           <div class="flex items-start gap-4">
-            <span class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-foam to-mint">%s</span>
+            <span class="shrink-0 hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-foam to-mint">%s</span>
             <div class="flex-1 min-w-0">
               <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <h2 class="font-display font-bold text-xl sm:text-2xl tracking-[-0.02em] text-ink">%s</h2>

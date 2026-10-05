@@ -22,8 +22,8 @@ BTN_SECONDARY = BTN + 'border border-ink/15 bg-white text-ink hover:border-teal7
 
 def intro(crumb, title, text, aside=''):
     """Page intro in the homepage's section style: big heading left, text (or an aside) right."""
-    bc = ('      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-6" style="animation-delay:.02s">\n'
-          '        <a href="index.html" class="hover:text-teal700 focus-ring rounded">Home</a>\n'
+    bc = ('      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-5" style="animation-delay:.02s">\n'
+          '        <a href="index.html" class="inline-block py-1 hover:text-teal700 active:text-teal900 focus-ring rounded">Home</a>\n'
           '        <span aria-hidden="true" class="mx-1.5">/</span>\n'
           '        <span class="text-ink/80" aria-current="page">%s</span>\n      </nav>\n') % crumb
     h1 = ('<h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">%s</h1>' % title)
