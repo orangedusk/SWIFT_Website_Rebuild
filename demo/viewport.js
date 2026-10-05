@@ -11,7 +11,7 @@
 
   var wrap = document.createElement('div');
   wrap.innerHTML =
-    '<div id="viewportSwitcher" class="fixed z-[80] top-[120px] right-4 hidden lg:flex items-center gap-0.5 rounded-full bg-white border border-dashed border-ink/25 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] p-1">' +
+    '<div id="viewportSwitcher" class="fixed z-[80] bottom-5 right-4 hidden lg:flex items-center gap-0.5 rounded-full bg-white border border-dashed border-ink/25 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] p-1">' +
     '  <button type="button" data-viewport="desktop" class="viewport-btn focus-ring flex items-center gap-1.5 rounded-full text-xs font-medium px-3 py-1.5 transition-colors" aria-pressed="true">' +
     '    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.2" stroke="currentColor" stroke-width="1.6"/><path d="M9 20h6M12 16v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
     '    Desktop' +

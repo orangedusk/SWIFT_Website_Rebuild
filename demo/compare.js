@@ -13,7 +13,7 @@
   bar.id = 'compareSwitcher';
   bar.setAttribute('role', 'group');
   bar.setAttribute('aria-label', 'Compare homepage versions');
-  bar.className = 'fixed z-[80] top-[120px] left-4 hidden lg:flex items-center gap-0.5 rounded-full bg-white border border-dashed border-ink/25 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] p-1';
+  bar.className = 'fixed z-[80] bottom-[108px] left-4 hidden lg:flex items-center gap-0.5 rounded-full bg-white border border-dashed border-ink/25 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.2)] p-1';
   bar.innerHTML = '<span class="text-xs text-ink/70 pl-3 pr-2">Compare</span>' + VERSIONS.map(function (v) {
     var on = v === here;
     return '<a href="' + v.file + '"' + (on ? ' aria-current="page"' : '') +
