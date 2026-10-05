@@ -584,7 +584,7 @@
           </div>
 
           <!-- Tile -->
-          <div class="relative rounded-2xl shadow-[0_10px_28px_-10px_rgba(30,69,63,0.35)] p-6 sm:p-8 mt-5 overflow-hidden min-h-[340px] sm:min-h-[300px] flex flex-col justify-end">
+          <div id="visitTile" class="relative rounded-2xl shadow-[0_10px_28px_-10px_rgba(30,69,63,0.35)] p-6 sm:p-8 mt-5 overflow-hidden min-h-[340px] sm:min-h-[300px] flex flex-col justify-end">
             <img id="visitTileImg" src="brand_assets/Arrive.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25" aria-hidden="true"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-transparent" aria-hidden="true"></div>
@@ -1368,6 +1368,35 @@
 
     renderNodes();
     renderTile();
+
+    // Keep the tile the same height on all seven steps: size it to the tallest step's text,
+    // and re-measure when the width changes (text wraps differently) or the web fonts arrive.
+    var tile = document.getElementById('visitTile');
+    function lockHeight() {
+      if (!tile) return;
+      var keep = current, tallest = 0;
+      tile.style.minHeight = '';
+      for (var i = 0; i < steps.length; i++) {
+        current = i;
+        counterEl.textContent = 'Step ' + (i + 1) + ' of ' + steps.length;
+        titleEl.textContent = steps[i].title;
+        descEl.textContent = steps[i].desc;
+        tipEl.innerHTML = '<span class="font-medium">Good to know:</span> ' + steps[i].tip;
+        tallest = Math.max(tallest, tile.offsetHeight);
+      }
+      current = keep;
+      renderTile();
+      tile.style.minHeight = tallest + 'px';
+    }
+    lockHeight();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockHeight);
+    var lastWidth = window.innerWidth, resizeTimer;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(lockHeight, 150);
+    });
   })();
 
   // Seasonal campaigns take over the hero: image, headline, subtitle and main button. The triage
