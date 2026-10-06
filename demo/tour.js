@@ -32,7 +32,6 @@
     { page: 'index.html', target: q('#faq'), title: 'Common questions', body: 'Short answers to what patients ask most.' },
     { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays. It takes over the whole hero: image, headline and button. The symptom search below stays put. Not shown to patients.' },
     { page: 'index.html', target: q('#viewportSwitcher'), title: 'Device preview (demo tool)', body: 'Shows the site at tablet and mobile sizes without leaving your desk.' },
-    { page: 'index.html', target: q('#compareSwitcher'), title: 'Compare versions (demo tool)', body: 'Switches between this homepage and the saved prototypes: the logo-colour version and the split hero. A campaign you pick carries across.' },
     { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, where to go, directions and the menu are always one tap away.' },
 
     // Services
