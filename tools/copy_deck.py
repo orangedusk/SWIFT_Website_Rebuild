@@ -16,7 +16,7 @@ from html.parser import HTMLParser
 
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '')
 PAGES = [('index.html', 'Home'), ('services.html', 'Services'), ('fees.html', 'Fees'),
-         ('team.html', 'Team'), ('request-appointment.html', 'Request appointment')]
+         ('team.html', 'Team'), ('gallery.html', 'Gallery'), ('request-appointment.html', 'Request appointment')]
 
 # Elements that hold one piece of copy each
 LEAF = {'h1', 'h2', 'h3', 'h4', 'p', 'li', 'a', 'button', 'summary', 'label', 'dt', 'dd',

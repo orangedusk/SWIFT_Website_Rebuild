@@ -21,7 +21,7 @@
     { page: 'index.html', target: function () { var h = document.getElementById('whatWeDoHeading'); return h && h.parentElement; }, title: 'What we do', body: 'Two lines under the hero that say what SWIFT is: a private walk-in clinic led by emergency doctors, for care that can’t wait for a GP but doesn’t need a hospital.' },
     { page: 'index.html', target: q('#where-to-go'), title: 'Where to go', body: 'Three columns, from most to least urgent. Each starts with a simple rule, then the most common reasons, with the rest one tap away.' },
     { page: 'index.html', target: byText('#where-to-go p', 'If you are unsure'), title: 'Safety line', body: 'The guide ends the same way every time: if you are unsure, call SWIFT first. One tap calls the clinic.' },
-    { page: 'index.html', target: q('[aria-labelledby="quickRoutesHeading"]'), title: 'Quick links', body: 'Four shortcuts for the most common reasons to visit: kids and families, the team, fees and scans.' },
+    { page: 'index.html', target: q('[aria-labelledby="quickRoutesHeading"]'), title: 'Quick links', body: 'Three shortcuts: a look around the clinic, fees and scans.' },
     { page: 'index.html', target: q('#visitStepper'), title: 'What happens when you visit', body: 'Seven steps from arrival to going home, so first-time patients know what to expect.' },
     { page: 'index.html', target: q('#services'), title: 'Services', body: 'Each tile opens that service on the Services page.' },
     { page: 'index.html', target: q('#other-care'), title: 'Here for something else?', body: 'Scans, dental and booked care, for visitors who aren’t here for urgent care.' },
@@ -51,6 +51,9 @@
     { page: 'team.html', target: function () { var g = document.getElementById('grp0'); return g && g.closest('section'); }, title: 'Meet the team', body: 'Doctors, nurses and advisors. Dr Manivel and Dr Shahpuri come first, then everyone else A to Z by surname. Qualifications show under each name.' },
     { page: 'team.html', target: q('#vijay-manivel'), title: 'Staff profiles', body: 'Each card opens a profile with a larger photo and bio, and has its own link to share.' },
 
+    // Gallery
+    { page: 'gallery.html', target: function () { var g = document.getElementById('photosHeading'); return g && g.closest('section'); }, title: 'Clinic facilities', body: 'Photos of the clinic. Tap one to see it full size, then swipe or use the arrows. The drone and walkthrough videos go below when they arrive.' },
+
     // Request appointment
     { page: 'request-appointment.html', target: byText('main .hero-in', 'need an appointment'), title: 'Request an appointment', body: 'Reminds urgent patients they can just walk in, before they start a form.' },
     { page: 'request-appointment.html', target: q('#serviceGroup'), title: 'Choose a service', body: 'One tap to pick what to book. Links from other pages can preselect a service.' },
@@ -58,7 +61,7 @@
     { page: 'request-appointment.html', title: 'That’s the tour', body: 'Every page and feature, start to finish. Press Finish to go back to the homepage.', finish: true },
   ];
 
-  var PAGE_NAMES = { 'index.html': 'Homepage', 'services.html': 'Services', 'fees.html': 'Fees', 'team.html': 'Team', 'request-appointment.html': 'Appointments' };
+  var PAGE_NAMES = { 'index.html': 'Homepage', 'services.html': 'Services', 'fees.html': 'Fees', 'team.html': 'Team', 'gallery.html': 'Gallery', 'request-appointment.html': 'Appointments' };
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var css = [
