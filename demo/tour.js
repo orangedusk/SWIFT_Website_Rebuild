@@ -98,7 +98,16 @@
   launch.className = 'tour-launch';
   launch.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Take the tour';
   launch.addEventListener('click', function () { go(0); });
-  document.body.appendChild(launch);
+  if (window.SwiftDemoEmbedded) {
+    // Inside the tablet/mobile preview: no button; the preview's top bar starts and stops the tour
+    window.addEventListener('message', function (e) {
+      if (e.origin !== location.origin || !e.data) return;
+      if (e.data.type === 'swift-demo-tour') go(0);
+      if (e.data.type === 'swift-demo-tour-end' && card) end();
+    });
+  } else {
+    document.body.appendChild(launch);
+  }
 
   // On small screens the floating button would cover page content, so the tour lives in the mobile menu instead
   if (window.SwiftDemo && document.querySelector('#mobileMenu nav')) {
@@ -244,7 +253,7 @@
     window.removeEventListener('resize', place);
     document.documentElement.classList.remove('tour-active');
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
-    else launch.focus({ preventScroll: true });
+    else if (launch.isConnected) launch.focus({ preventScroll: true });
   }
 
   // Resume a tour that navigated here from another page

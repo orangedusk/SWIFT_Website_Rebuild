@@ -55,6 +55,16 @@
     campaignBtn.addEventListener('click', window.SwiftDemoCampaigns.open);
     label.parentNode.insertBefore(campaignBtn, label.nextSibling);
   }
+  // The tour can run inside the preview, at tablet or phone size
+  var tourBtn = document.createElement('button');
+  tourBtn.type = 'button';
+  tourBtn.className = 'focus-ring inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 text-white px-3 py-1.5 text-xs transition-colors';
+  tourBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Take the tour';
+  tourBtn.addEventListener('click', function () {
+    if (frame.contentWindow) frame.contentWindow.postMessage({ type: 'swift-demo-tour' }, location.origin);
+    frame.focus();
+  });
+  label.parentNode.insertBefore(tourBtn, label.nextSibling);
   var closeBtn = document.getElementById('viewportClose');
 
   var sizes = {
@@ -81,6 +91,7 @@
   }
 
   function showDesktop() {
+    if (frame.contentWindow) frame.contentWindow.postMessage({ type: 'swift-demo-tour-end' }, location.origin);
     overlay.classList.add('hidden');
     document.body.style.overflow = '';
     setActive('desktop');

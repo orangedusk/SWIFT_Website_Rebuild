@@ -2,16 +2,19 @@
    Each page includes just this one script. It sets up the shared "Demo tools" group in the
    mobile menu, then loads each tool, which builds its own buttons and dialogs.
    Inside the viewport-preview iframe no controls are added, so the preview shows the real site;
-   only the campaign follower loads, so a campaign picked outside also shows in the preview. */
+   only the campaign follower and the tour load, driven from the preview's top bar. */
 (function () {
   var base = (document.currentScript && document.currentScript.src || '').replace(/[^/]*$/, '');
 
-  // Inside the tablet/mobile preview: show the real site, but let it follow the campaign picked outside
+  // Inside the tablet/mobile preview: show the real site, but let it follow the campaign picked outside,
+  // and run the tour when it is started from the preview's top bar
   if (window.top !== window.self) {
     window.SwiftDemoEmbedded = true;
-    var follower = document.createElement('script');
-    follower.src = base + 'campaigns.js';
-    document.body.appendChild(follower);
+    ['campaigns.js', 'tour.js'].forEach(function (f) {
+      var s = document.createElement('script');
+      s.src = base + f;
+      document.body.appendChild(s);
+    });
     return;
   }
   var group = null;
