@@ -25,7 +25,7 @@
     { page: 'index.html', target: q('#visitStepper'), title: 'What happens when you visit', body: 'Seven steps from arrival to going home, so first-time patients know what to expect.' },
     { page: 'index.html', target: q('#services'), title: 'Services', body: 'Each tile opens that service on the Services page.' },
     { page: 'index.html', target: q('#other-care'), title: 'Here for something else?', body: 'Scans, dental and the infusion clinic (the only care SWIFT books), for visitors who aren’t here for urgent care.' },
-    { page: 'index.html', target: q('#fees'), title: 'Fees at a glance', body: 'A receipt for a walk-in visit. Visitors pick whether they have a Medicare card and see their own bill: the $396 facility fee, doctor charges, pathology and how they pay.' },
+    { page: 'index.html', target: q('#fees'), title: 'Fees at a glance', body: 'A receipt for a walk-in visit. Visitors pick whether they have a Medicare card and see their own bill: the $396 facility fee in large type, then doctor charges, pathology, imaging and how they pay.' },
     { page: 'index.html', target: q('#doctors'), title: 'Our doctors', body: 'Names the co-founders and links to the full team, where every doctor, nurse and advisor has a profile.' },
     { page: 'index.html', target: q('#facilities'), title: 'Our clinic facilities', body: 'Real photos of the Rouse Hill clinic. More can be added as they come in.' },
     { page: 'index.html', target: q('#location'), title: 'Location', body: 'Address, hours and a map, with one-tap directions.' },
