@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Demo branch only: keep this preview site out of search engines. Never merge to main. -->
 <meta name="robots" content="noindex, nofollow">
-<!-- Saved prototype: the full-hero homepage in SWIFT logo colours (navy, blue, green). Demo branch only. -->
+<!-- Saved prototype: the full-hero homepage in SWIFT logo colours (deep logo teal, logo teal, green). Demo branch only. -->
 <script src="demo/gate.js"></script>
 <title>Prototype 2 (logo colours) — SWIFT Emergency &amp; Urgent Care — Rouse Hill, NSW</title>
 <meta name="description" content="Walk-in emergency and specialist urgent care in Rouse Hill, NSW. No appointment needed for urgent illness or injury, ages 3 months and up. Open every day, 10am–10pm.">
@@ -33,10 +33,10 @@
     theme: {
       extend: {
         // SWIFT logo palette. Token names kept from the original teal scheme:
-        // teal900 = logo navy, teal700/600 = deep logo blue, teal500 = logo blue, tealGlow = logo green.
+        // teal900 = deep logo teal, teal700/600 = deep logo blue, teal500 = logo blue, tealGlow = logo green.
         colors: {
           ink:      '#1B2733',
-          teal900:  '#2B415C',
+          teal900:  '#0B5C6E',
           teal700:  '#00728F',
           teal600:  '#00809F',
           teal500:  '#0098BA',
@@ -164,7 +164,7 @@
   .care-chip { transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
   .care-chip:hover { border-color: #0098BA; background: #fff; }
   .care-chip:active { transform: scale(0.96); }
-  .care-chip[aria-pressed="true"] { background: #2B415C; border-color: #2B415C; color: #fff; }
+  .care-chip[aria-pressed="true"] { background: #0B5C6E; border-color: #0B5C6E; color: #fff; }
   #careSearch::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
   #careSearch:focus { outline: none; border-color: #00728F; box-shadow: 0 0 0 3px rgba(0,152,186,0.25); }
   @keyframes verdictIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
@@ -173,25 +173,25 @@
   /* Right care intro: scale draws left to right, lanes follow in urgency order (plays once) */
   /* Urgency colours: red 000, deep teal SWIFT, pale GP. Each third of the band sits over one column,
      so the colour changes land in the gaps between them. */
-  .care-scale-fill { background: linear-gradient(90deg, #B23A3A 0%, #B23A3A 32.6%, #2B415C 34%, #2B415C 65.9%, #C8D6E2 67.3%, #DCE6EE 100%); }
+  .care-scale-fill { background: linear-gradient(90deg, #B23A3A 0%, #B23A3A 32.6%, #0B5C6E 34%, #0B5C6E 65.9%, #C8D6E2 67.3%, #DCE6EE 100%); }
   /* Phones and tablets: the columns stack, so each gets its own segment of the scale down the left edge */
   @media (max-width: 1023px) {
     .care-lane { position: relative; }
     .care-lane::before { content: ""; position: absolute; left: -20px; top: 0; bottom: 0; width: 6px; border-radius: 999px; }
     .care-lane[data-lane="ed"]::before { background: #B23A3A; }
-    .care-lane[data-lane="swift"]::before { background: #2B415C; }
+    .care-lane[data-lane="swift"]::before { background: #0B5C6E; }
     .care-lane[data-lane="gp"]::before { background: #C8D6E2; }
   }
   /* Layering: base (paper) -> surface (white / foam cards) -> floating (hero badge, verdict) */
-  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(43,65,92,.05), 0 12px 28px -20px rgba(43,65,92,.35); }
-  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(43,65,92,.06), 0 22px 40px -22px rgba(43,65,92,.45); }
+  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(11,92,110,.05), 0 12px 28px -20px rgba(11,92,110,.35); }
+  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(11,92,110,.06), 0 22px 40px -22px rgba(11,92,110,.45); }
   .card-link:active { transform: scale(.98); }
   .card-cta { margin-top: 1.25rem; font-size: .875rem; font-weight: 500; color: #00728F; }
-  .card-link:hover .card-cta { color: #2B415C; }
-  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(43,65,92,.14); color: #2B415C; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
-  .chip-solid { background: #2B415C; border-color: #2B415C; color: #fff; }
+  .card-link:hover .card-cta { color: #0B5C6E; }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(11,92,110,.14); color: #0B5C6E; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
+  .chip-solid { background: #0B5C6E; border-color: #0B5C6E; color: #fff; }
   .tile { transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
-  .tile-arrow { position: absolute; left: 14px; top: 14px; z-index: 1; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 999px; background: #fff; color: #2B415C; box-shadow: 0 6px 16px -8px rgba(0,0,0,.4); transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .tile-arrow { position: absolute; left: 14px; top: 14px; z-index: 1; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 999px; background: #fff; color: #0B5C6E; box-shadow: 0 6px 16px -8px rgba(0,0,0,.4); transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
   .tile:hover .tile-arrow { transform: rotate(45deg); }
   .care-scale-fill { transform: scaleX(0); transform-origin: left center; transition: transform .9s cubic-bezier(.22,1,.36,1); }
   .care-scale.is-in .care-scale-fill { transform: scaleX(1); }
@@ -277,7 +277,7 @@
 </header>
 
 <!-- Mobile floating bottom bar -->
-<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(43,65,92,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(11,92,110,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
   <div class="grid grid-cols-4">
     <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -332,7 +332,7 @@
   <!-- Triage panel: rises into the bottom of the hero so the search is on the first screen -->
   <section id="where-to-go" class="relative z-10 scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
     <div class="grid lg:grid-cols-12 gap-4 lg:items-start">
-      <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(43,65,92,0.06),0_30px_60px_-30px_rgba(43,65,92,0.55)]" style="animation-delay:.4s">
+      <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(11,92,110,0.06),0_30px_60px_-30px_rgba(11,92,110,0.55)]" style="animation-delay:.4s">
         <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is specialist urgent care right for me?</h2>
         <p class="mt-2 text-ink/70 leading-relaxed">Type a symptom and we&rsquo;ll tell you where to go.</p>
           <!-- Symptom search: terms and routing live in symptoms.js. Results highlight in the three columns below. -->
@@ -340,7 +340,7 @@
             <label for="careSearch" class="sr-only">Search a symptom</label>
             <div class="relative">
               <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(43,65,92,0.06),0_16px_36px_-20px_rgba(43,65,92,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
+              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(11,92,110,0.06),0_16px_36px_-20px_rgba(11,92,110,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
               <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </button>
@@ -371,7 +371,7 @@
               <p class="text-sm text-ink/70 mt-0.5 leading-relaxed">Every day, 10am to 10pm. Last registration 9pm.</p>
             </div>
           </div>
-          <a href="team.html" class="group rounded-[20px] bg-white border border-line p-5 flex items-center gap-4 focus-ring hover:border-teal500/60 active:scale-[0.98] transition-[transform,border-color] duration-300 shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-18px_rgba(43,65,92,0.3)]">
+          <a href="team.html" class="group rounded-[20px] bg-white border border-line p-5 flex items-center gap-4 focus-ring hover:border-teal500/60 active:scale-[0.98] transition-[transform,border-color] duration-300 shadow-[0_1px_2px_rgba(11,92,110,0.05),0_12px_28px_-18px_rgba(11,92,110,0.3)]">
             <span class="flex -space-x-2.5 shrink-0" aria-hidden="true">
               <img src="brand_assets/team/nina-dhaliwal.jpg" alt="" class="w-9 h-9 rounded-full object-cover object-top ring-2 ring-white bg-mint">
               <img src="brand_assets/team/pramod-chandru.jpg" alt="" class="w-9 h-9 rounded-full object-cover object-top ring-2 ring-white bg-mint">
@@ -445,7 +445,7 @@
       </div>
 
       <!-- SWIFT -->
-      <div class="care-lane care-pre care-lane-dark relative flex flex-col rounded-2xl bg-teal900 text-white shadow-[0_24px_48px_-18px_rgba(43,65,92,0.6),0_8px_16px_-8px_rgba(43,65,92,0.3)] p-5 sm:p-6 lg:-my-3 lg:py-9" data-lane="swift">
+      <div class="care-lane care-pre care-lane-dark relative flex flex-col rounded-2xl bg-teal900 text-white shadow-[0_24px_48px_-18px_rgba(11,92,110,0.6),0_8px_16px_-8px_rgba(11,92,110,0.3)] p-5 sm:p-6 lg:-my-3 lg:py-9" data-lane="swift">
         <div class="flex items-center gap-3">
           <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-white">
             <img src="brand_assets/logo/swift-mark.png" alt="" class="w-7 h-7" aria-hidden="true">
@@ -556,19 +556,19 @@
         <span class="tile-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <!-- Illustration: a receipt with a teal header band and the total line, plus a payment card -->
         <svg class="absolute right-5 top-5 w-[48%] max-w-[128px] transition-transform duration-500 group-hover:-rotate-2 group-hover:scale-105" viewBox="0 0 160 150" fill="none" aria-hidden="true">
-          <path d="M28 10h84a6 6 0 0 1 6 6v118l-12-8-12 8-12-8-12 8-12-8-12 8-12-8-12 8V16a6 6 0 0 1 6-6Z" fill="#fff" stroke="#2B415C" stroke-opacity=".14" stroke-width="2"/>
-          <rect x="22" y="10" width="96" height="26" rx="6" fill="#2B415C"/>
+          <path d="M28 10h84a6 6 0 0 1 6 6v118l-12-8-12 8-12-8-12 8-12-8-12 8-12-8-12 8V16a6 6 0 0 1 6-6Z" fill="#fff" stroke="#0B5C6E" stroke-opacity=".14" stroke-width="2"/>
+          <rect x="22" y="10" width="96" height="26" rx="6" fill="#0B5C6E"/>
           <path d="M40 23h4M42 21v4" stroke="#8EC448" stroke-width="2.4" stroke-linecap="round"/>
           <rect x="52" y="20" width="44" height="6" rx="3" fill="#fff" fill-opacity=".85"/>
-          <rect x="36" y="50" width="52" height="6" rx="3" fill="#2B415C" fill-opacity=".18"/>
-          <rect x="36" y="64" width="40" height="6" rx="3" fill="#2B415C" fill-opacity=".18"/>
-          <rect x="36" y="78" width="46" height="6" rx="3" fill="#2B415C" fill-opacity=".18"/>
-          <path d="M36 98h68" stroke="#2B415C" stroke-opacity=".2" stroke-width="2" stroke-dasharray="4 4"/>
-          <rect x="36" y="108" width="28" height="8" rx="4" fill="#2B415C" fill-opacity=".35"/>
+          <rect x="36" y="50" width="52" height="6" rx="3" fill="#0B5C6E" fill-opacity=".18"/>
+          <rect x="36" y="64" width="40" height="6" rx="3" fill="#0B5C6E" fill-opacity=".18"/>
+          <rect x="36" y="78" width="46" height="6" rx="3" fill="#0B5C6E" fill-opacity=".18"/>
+          <path d="M36 98h68" stroke="#0B5C6E" stroke-opacity=".2" stroke-width="2" stroke-dasharray="4 4"/>
+          <rect x="36" y="108" width="28" height="8" rx="4" fill="#0B5C6E" fill-opacity=".35"/>
           <rect x="74" y="105" width="30" height="13" rx="4" fill="#0098BA"/>
           <g transform="rotate(-12 128 112)">
             <rect x="98" y="92" width="58" height="38" rx="7" fill="#00728F"/>
-            <rect x="98" y="100" width="58" height="7" fill="#2B415C"/>
+            <rect x="98" y="100" width="58" height="7" fill="#0B5C6E"/>
             <rect x="106" y="114" width="14" height="10" rx="2" fill="#8EC448"/>
           </g>
         </svg>
@@ -592,7 +592,7 @@
 
   <!-- Your visit: the page's one dark panel -->
   <section id="visit" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24">
-    <div class="rounded-[28px] bg-teal900 text-white px-5 py-8 sm:p-10 lg:p-12 grid xl:grid-cols-12 gap-8 xl:gap-12 shadow-[0_30px_60px_-30px_rgba(43,65,92,0.7)]">
+    <div class="rounded-[28px] bg-teal900 text-white px-5 py-8 sm:p-10 lg:p-12 grid xl:grid-cols-12 gap-8 xl:gap-12 shadow-[0_30px_60px_-30px_rgba(11,92,110,0.7)]">
       <div class="xl:col-span-4">
         <h2 class="font-display font-bold text-3xl sm:text-[2.5rem] leading-[1.08] tracking-[-0.03em]">What happens when you visit</h2>
         <p class="mt-4 text-white/75 leading-[1.7]">Seven steps, from walking in to going home. Tap a step to see what to expect.</p>
@@ -614,7 +614,7 @@
           </div>
 
           <!-- Tile -->
-          <div id="visitTile" class="relative rounded-2xl shadow-[0_10px_28px_-10px_rgba(43,65,92,0.35)] p-6 sm:p-8 mt-5 overflow-hidden min-h-[340px] sm:min-h-[300px] flex flex-col justify-end">
+          <div id="visitTile" class="relative rounded-2xl shadow-[0_10px_28px_-10px_rgba(11,92,110,0.35)] p-6 sm:p-8 mt-5 overflow-hidden min-h-[340px] sm:min-h-[300px] flex flex-col justify-end">
             <img id="visitTileImg" src="brand_assets/Arrive.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25" aria-hidden="true"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-transparent" aria-hidden="true"></div>
@@ -740,7 +740,7 @@
         <a href="fees.html" class="relative focus-ring spring mt-8 self-start inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300">See detailed pricing</a>
       </div>
       <!-- How you pay (item 6, block C): two columns so patients find their own case -->
-      <div class="md:col-span-2 lg:col-span-7 rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-6 sm:p-7">
+      <div class="md:col-span-2 lg:col-span-7 rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(11,92,110,0.05),0_12px_28px_-20px_rgba(11,92,110,0.35)] p-6 sm:p-7">
         <h3 class="font-display font-semibold text-lg text-ink">How you pay</h3>
         <div class="mt-4 grid sm:grid-cols-2 gap-6">
           <div>
@@ -758,7 +758,7 @@
         </div>
       </div>
       <!-- Pathology (block B) -->
-      <div class="md:col-span-2 lg:col-span-7 rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)] p-6 sm:p-7">
+      <div class="md:col-span-2 lg:col-span-7 rounded-[20px] bg-white border border-line shadow-[0_1px_2px_rgba(11,92,110,0.05),0_12px_28px_-20px_rgba(11,92,110,0.35)] p-6 sm:p-7">
         <h3 class="font-display font-semibold text-lg text-ink">Pathology</h3>
         <div class="mt-3 grid md:grid-cols-2 gap-5 md:gap-6">
           <ul class="space-y-2 text-[15px] text-ink/80 leading-snug">
@@ -789,7 +789,7 @@
 
   <!-- Our doctors: a slim strip; full profiles live on the Team page -->
   <section id="doctors" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="doctorsHeading">
-    <div class="rounded-[20px] bg-white border border-line px-6 py-7 sm:px-10 sm:py-9 grid lg:grid-cols-12 gap-6 lg:gap-12 items-center shadow-[0_1px_2px_rgba(43,65,92,0.05),0_12px_28px_-20px_rgba(43,65,92,0.35)]">
+    <div class="rounded-[20px] bg-white border border-line px-6 py-7 sm:px-10 sm:py-9 grid lg:grid-cols-12 gap-6 lg:gap-12 items-center shadow-[0_1px_2px_rgba(11,92,110,0.05),0_12px_28px_-20px_rgba(11,92,110,0.35)]">
       <div class="lg:col-span-8">
         <h2 id="doctorsHeading" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Our doctors</h2>
         <p class="mt-3 text-ink/70 leading-[1.7] max-w-2xl">Led by co-founders Dr Vijay Manivel and Dr Gopinath Betarayappa, with a team of emergency physicians and emergency nurses.</p>
@@ -808,7 +808,7 @@
       <p class="lg:col-span-6 text-ink/70 leading-[1.7] max-w-lg">Inside SWIFT's Rouse Hill clinic, with imaging, pathology and dental in the same building.</p>
     </div>
     <div class="grid md:grid-cols-5 gap-4">
-      <figure class="group md:col-span-3 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(43,65,92,0.05),0_18px_40px_-26px_rgba(43,65,92,0.45)]">
+      <figure class="group md:col-span-3 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(11,92,110,0.05),0_18px_40px_-26px_rgba(11,92,110,0.45)]">
         <img src="brand_assets/clinic-reception-photo.jpg" alt="SWIFT's reception and waiting area, with the SWIFT logo on the wall, a curved timber counter and blue and green seating" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-[50%_50%] transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true"></div>
         <figcaption class="absolute left-5 right-5 bottom-5 text-white">
@@ -816,7 +816,7 @@
           <span class="block text-sm text-white/80 mt-0.5">Where you register when you walk in</span>
         </figcaption>
       </figure>
-      <figure class="group md:col-span-2 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(43,65,92,0.05),0_18px_40px_-26px_rgba(43,65,92,0.45)]">
+      <figure class="group md:col-span-2 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(11,92,110,0.05),0_18px_40px_-26px_rgba(11,92,110,0.45)]">
         <img src="brand_assets/clinic-waiting-area.jpg" alt="The kids and family waiting area, with a tree mural, giraffe and small play table" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-[35%_50%] transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true"></div>
         <figcaption class="absolute left-5 right-5 bottom-5 text-white">
@@ -878,7 +878,7 @@
       <h2 class="reveal font-display font-bold text-2xl sm:text-3xl tracking-tight text-ink mb-1">Weighing up where to go?</h2>
       <p class="text-ink/70 mb-8 max-w-xl">Indicative wait times for nearby public emergency departments, for comparison.</p>
 
-      <div class="bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(43,65,92,0.15)] overflow-hidden">
+      <div class="bg-white rounded-2xl border border-line shadow-[0_2px_10px_-4px_rgba(11,92,110,0.15)] overflow-hidden">
         <div class="flex items-center gap-3 px-5 sm:px-7 py-4 bg-teal600/10 border-b-2 border-teal600">
           <span class="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-teal700 text-white">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -954,7 +954,7 @@
         <a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-6 py-3.5 transition-[transform,background-color] duration-300">Call (02) 8859 9099</a>
         <a href="request-appointment.html" class="focus-ring rounded font-medium text-ink underline underline-offset-[6px] decoration-ink/25 hover:decoration-teal700 hover:text-teal700 active:text-teal900 transition-colors">Request appointment</a>
       </div>
-      <figure class="hidden lg:block absolute right-8 top-8 bottom-8 w-[296px] rounded-[20px] overflow-hidden bg-gradient-to-b from-foam to-mint shadow-[0_18px_40px_-24px_rgba(43,65,92,0.5)]">
+      <figure class="hidden lg:block absolute right-8 top-8 bottom-8 w-[296px] rounded-[20px] overflow-hidden bg-gradient-to-b from-foam to-mint shadow-[0_18px_40px_-24px_rgba(11,92,110,0.5)]">
         <img src="brand_assets/team/gisha-george.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-top mix-blend-multiply">
       </figure>
     </div>
@@ -1174,25 +1174,25 @@
             '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Call 000, or the Poisons Information Centre</p><p class="text-white/85 text-[15px] mt-1">If the person is unwell, drowsy or not breathing normally, call 000. Otherwise call the Poisons Information Centre on <a href="tel:131126" class="font-semibold underline underline-offset-2 focus-ring rounded">13 11 26</a>, 24/7.</p></div>' +
             '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>', true);
         case 'out-of-scope':
-          return card('bg-white border-2 border-ink/15 text-ink shadow-[0_2px_10px_-4px_rgba(43,65,92,0.15)]',
+          return card('bg-white border-2 border-ink/15 text-ink shadow-[0_2px_10px_-4px_rgba(11,92,110,0.15)]',
             l + '<p class="font-display font-bold text-xl mt-0.5">This isn&rsquo;t a SWIFT walk-in</p><p class="text-ink/75 text-[15px] mt-1">Call us on <a href="' + SWIFT_TEL + '" class="font-medium text-teal700 underline underline-offset-2 focus-ring rounded">(02) 8859 9099</a> and we&rsquo;ll tell you where to go. In an emergency, call 000.</p>', false);
         case 'call-first':
-          return card('bg-teal700 text-white shadow-[0_14px_30px_-12px_rgba(43,65,92,0.55)]',
+          return card('bg-teal700 text-white shadow-[0_14px_30px_-12px_rgba(11,92,110,0.55)]',
             '<div class="' + row + '"><div>' + (label ? l : '<p class="text-sm opacity-75">No exact match</p>') +
             '<p class="font-display font-bold text-xl mt-0.5">Call SWIFT first</p><p class="text-white/85 text-[15px] mt-1">' +
             (label ? 'We&rsquo;ll ask a few questions and tell you whether to come in.' : 'Call us and we&rsquo;ll tell you whether to come in, or where to go instead.') + '</p>' +
             (age ? AGE : '') + (hasItem ? see(true) : '') + '</div>' +
             '<a href="' + SWIFT_TEL + '" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Call (02) 8859 9099</a></div>', true);
         case 'swift':
-          return card('bg-teal900 text-white shadow-[0_14px_30px_-12px_rgba(43,65,92,0.55)]',
+          return card('bg-teal900 text-white shadow-[0_14px_30px_-12px_rgba(11,92,110,0.55)]',
             '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Come to SWIFT</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p>' + (hasItem ? see(true) : '') + '</div>' +
             '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>', true);
         case 'dental':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(43,65,92,0.15)]',
+          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(11,92,110,0.15)]',
             '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">See the dentist in our building</p><p class="text-ink/70 text-[15px] mt-1">An independent dental practice shares our building. Book with them directly.</p></div>' +
             '<a href="services.html#dental" class="' + btnBase + ' shrink-0 bg-teal900 text-white hover:bg-teal700">About on-site dental</a></div>', false);
         case 'gp':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(43,65,92,0.15)]',
+          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(11,92,110,0.15)]',
             l + '<p class="font-display font-bold text-xl mt-0.5">See your GP</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can&rsquo;t get in soon, come to SWIFT.</p>' + (hasItem ? see(false) : ''), false);
       }
       return '';
