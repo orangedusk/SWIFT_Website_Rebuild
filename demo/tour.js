@@ -33,6 +33,7 @@
     { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays. It takes over the whole hero: image, headline and button. The symptom search below stays put. Not shown to patients.' },
     { page: 'index.html', target: q('#viewportSwitcher'), title: 'Device preview (demo tool)', body: 'Shows the site at tablet and mobile sizes without leaving your desk.' },
     { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, where to go, directions and the menu are always one tap away.' },
+    { page: 'index.html', target: q('#feeFab'), title: 'Fees button', body: 'Floats above the bar on every page, so fees are one tap away. It steps aside while the Fees section is on screen.' },
 
     // Services
     { page: 'services.html', target: q('nav[aria-label="Services on this page"]'), title: 'Services page', body: 'Every service on one page. This menu jumps straight to each one.' },
