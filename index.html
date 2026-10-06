@@ -148,6 +148,12 @@
 
   /* Mobile menu */
   #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  /* Reviews: one at a time, the next one peeks in at the edge */
+  .review-track { scrollbar-width: none; padding-bottom: 28px; margin-bottom: -22px; }
+  .review-track::-webkit-scrollbar { display: none; }
+  .review-slide { width: 88%; }
+  @media (min-width: 768px) { .review-slide { width: 72%; } }
+  @media (min-width: 1024px) { .review-slide { width: 64%; } }
   /* Floating Fees button (phones and tablets), above the bottom bar */
   .fee-fab { bottom: calc(env(safe-area-inset-bottom) + 76px); transition: opacity .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1); }
   .fee-fab.is-hidden { opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; }
@@ -794,6 +800,105 @@
     </div>
   </section>
 
+  <!-- What patients say: one review at a time, right after Fees so it answers "is it worth it?" (6 Oct meeting).
+       PLACEHOLDERS: replace each slide's quote and name with a real five-star Google review SWIFT has chosen,
+       then remove the Placeholder labels. Add or remove <figure> slides and update "N of 5" in aria-label. -->
+  <section id="reviews" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="reviewsHeading">
+    <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-end mb-8 sm:mb-10">
+      <h2 id="reviewsHeading" class="lg:col-span-6 font-display font-bold text-3xl sm:text-[2.75rem] leading-[1.08] tracking-[-0.03em] text-ink">What patients say</h2>
+      <div class="lg:col-span-6">
+        <p class="text-ink/70 leading-[1.7] max-w-lg">Reviews from patients on Google.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=SWIFT+Emergency+%26+Urgent+Care+Rouse+Hill" target="_blank" rel="noopener" class="inline-block mt-2 py-1 font-medium text-teal700 hover:text-teal900 active:text-teal900 underline underline-offset-4 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Read more reviews on Google</a>
+      </div>
+    </div>
+    <div class="relative" aria-roledescription="carousel" aria-label="Patient reviews">
+      <div id="reviewTrack" class="review-track flex gap-4 overflow-x-auto snap-x snap-mandatory" tabindex="0" aria-label="Patient reviews, scroll sideways for more">
+          <figure class="review-slide snap-start shrink-0" role="group" aria-roledescription="slide" aria-label="1 of 5">
+            <div class="h-full rounded-[24px] bg-white border border-line p-6 sm:p-10 flex flex-col shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex gap-0.5 text-teal700" role="img" aria-label="5 out of 5 stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg></span>
+                <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Placeholder</span>
+              </div>
+              <blockquote class="mt-6 flex-1 font-display font-semibold text-[1.35rem] sm:text-[1.75rem] leading-[1.3] tracking-[-0.015em] text-ink">
+                <p>&ldquo;A five-star Google review chosen by SWIFT will go here, in the patient&rsquo;s own words.&rdquo;</p>
+              </blockquote>
+              <figcaption class="mt-8 pt-5 border-t border-line flex items-center justify-between gap-4 text-[15px]">
+                <span class="font-medium text-ink">Reviewer&rsquo;s first name and initial</span>
+                <span class="text-ink/60">Google review</span>
+              </figcaption>
+            </div>
+          </figure>
+          <figure class="review-slide snap-start shrink-0" role="group" aria-roledescription="slide" aria-label="2 of 5">
+            <div class="h-full rounded-[24px] bg-white border border-line p-6 sm:p-10 flex flex-col shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex gap-0.5 text-teal700" role="img" aria-label="5 out of 5 stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg></span>
+                <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Placeholder</span>
+              </div>
+              <blockquote class="mt-6 flex-1 font-display font-semibold text-[1.35rem] sm:text-[1.75rem] leading-[1.3] tracking-[-0.015em] text-ink">
+                <p>&ldquo;A five-star Google review chosen by SWIFT will go here, in the patient&rsquo;s own words.&rdquo;</p>
+              </blockquote>
+              <figcaption class="mt-8 pt-5 border-t border-line flex items-center justify-between gap-4 text-[15px]">
+                <span class="font-medium text-ink">Reviewer&rsquo;s first name and initial</span>
+                <span class="text-ink/60">Google review</span>
+              </figcaption>
+            </div>
+          </figure>
+          <figure class="review-slide snap-start shrink-0" role="group" aria-roledescription="slide" aria-label="3 of 5">
+            <div class="h-full rounded-[24px] bg-white border border-line p-6 sm:p-10 flex flex-col shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex gap-0.5 text-teal700" role="img" aria-label="5 out of 5 stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg></span>
+                <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Placeholder</span>
+              </div>
+              <blockquote class="mt-6 flex-1 font-display font-semibold text-[1.35rem] sm:text-[1.75rem] leading-[1.3] tracking-[-0.015em] text-ink">
+                <p>&ldquo;A five-star Google review chosen by SWIFT will go here, in the patient&rsquo;s own words.&rdquo;</p>
+              </blockquote>
+              <figcaption class="mt-8 pt-5 border-t border-line flex items-center justify-between gap-4 text-[15px]">
+                <span class="font-medium text-ink">Reviewer&rsquo;s first name and initial</span>
+                <span class="text-ink/60">Google review</span>
+              </figcaption>
+            </div>
+          </figure>
+          <figure class="review-slide snap-start shrink-0" role="group" aria-roledescription="slide" aria-label="4 of 5">
+            <div class="h-full rounded-[24px] bg-white border border-line p-6 sm:p-10 flex flex-col shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex gap-0.5 text-teal700" role="img" aria-label="5 out of 5 stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg></span>
+                <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Placeholder</span>
+              </div>
+              <blockquote class="mt-6 flex-1 font-display font-semibold text-[1.35rem] sm:text-[1.75rem] leading-[1.3] tracking-[-0.015em] text-ink">
+                <p>&ldquo;A five-star Google review chosen by SWIFT will go here, in the patient&rsquo;s own words.&rdquo;</p>
+              </blockquote>
+              <figcaption class="mt-8 pt-5 border-t border-line flex items-center justify-between gap-4 text-[15px]">
+                <span class="font-medium text-ink">Reviewer&rsquo;s first name and initial</span>
+                <span class="text-ink/60">Google review</span>
+              </figcaption>
+            </div>
+          </figure>
+          <figure class="review-slide snap-start shrink-0" role="group" aria-roledescription="slide" aria-label="5 of 5">
+            <div class="h-full rounded-[24px] bg-white border border-line p-6 sm:p-10 flex flex-col shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+              <div class="flex items-center justify-between gap-4">
+                <span class="flex gap-0.5 text-teal700" role="img" aria-label="5 out of 5 stars"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z"/></svg></span>
+                <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Placeholder</span>
+              </div>
+              <blockquote class="mt-6 flex-1 font-display font-semibold text-[1.35rem] sm:text-[1.75rem] leading-[1.3] tracking-[-0.015em] text-ink">
+                <p>&ldquo;A five-star Google review chosen by SWIFT will go here, in the patient&rsquo;s own words.&rdquo;</p>
+              </blockquote>
+              <figcaption class="mt-8 pt-5 border-t border-line flex items-center justify-between gap-4 text-[15px]">
+                <span class="font-medium text-ink">Reviewer&rsquo;s first name and initial</span>
+                <span class="text-ink/60">Google review</span>
+              </figcaption>
+            </div>
+          </figure>
+      </div>
+      <div class="mt-5 flex items-center justify-between gap-4">
+        <p id="reviewCount" class="text-sm text-ink/65" aria-live="polite">1 of 5</p>
+        <div class="flex gap-2">
+          <button type="button" id="reviewPrev" class="focus-ring spring w-11 h-11 flex items-center justify-center rounded-full border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 active:scale-95 disabled:opacity-35 disabled:pointer-events-none transition-[transform,border-color,color,opacity] duration-200" aria-label="Previous review"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" id="reviewNext" class="focus-ring spring w-11 h-11 flex items-center justify-center rounded-full border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 active:scale-95 disabled:opacity-35 disabled:pointer-events-none transition-[transform,border-color,color,opacity] duration-200" aria-label="Next review"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Our doctors: a slim strip; full profiles live on the Team page -->
   <section id="doctors" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="doctorsHeading">
     <div class="rounded-[20px] bg-white border border-line px-6 py-7 sm:px-10 sm:py-9 grid lg:grid-cols-12 gap-6 lg:gap-12 items-center shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
@@ -804,36 +909,6 @@
       <div class="lg:col-span-4 lg:justify-self-end">
         <a href="team.html" class="focus-ring spring inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-6 py-3 transition-[transform,background-color] duration-300">Meet the full team</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Clinic facilities gallery: real photos of the Rouse Hill clinic only.
-       Add more <figure> items here as photos come in; the grid wraps on its own. -->
-  <section id="facilities" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="facilitiesHeading">
-    <div class="grid lg:grid-cols-12 gap-5 lg:gap-12 items-start mb-8 sm:mb-10">
-      <h2 id="facilitiesHeading" class="lg:col-span-6 font-display font-bold text-3xl sm:text-[2.75rem] leading-[1.08] tracking-[-0.03em] text-ink">Our clinic facilities</h2>
-      <div class="lg:col-span-6">
-        <p class="text-ink/70 leading-[1.7] max-w-lg">Inside SWIFT's Rouse Hill clinic, with imaging, pathology and dental in the same building.</p>
-        <a href="gallery.html" class="inline-block mt-2 py-1 font-medium text-teal700 hover:text-teal900 active:text-teal900 underline underline-offset-4 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">See all photos and videos</a>
-      </div>
-    </div>
-    <div class="grid md:grid-cols-5 gap-4">
-      <figure class="group md:col-span-3 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
-        <img src="brand_assets/clinic-reception-photo.jpg" alt="SWIFT's reception and waiting area, with the SWIFT logo on the wall, a curved timber counter and blue and green seating" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-[50%_50%] transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true"></div>
-        <figcaption class="absolute left-5 right-5 bottom-5 text-white">
-          <span class="block font-display font-semibold text-lg">Reception</span>
-          <span class="block text-sm text-white/80 mt-0.5">Where you register when you walk in</span>
-        </figcaption>
-      </figure>
-      <figure class="group md:col-span-2 relative rounded-[20px] overflow-hidden h-72 sm:h-96 md:h-[440px] shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
-        <img src="brand_assets/clinic-waiting-area.jpg" alt="The kids and family waiting area, with a tree mural, giraffe and small play table" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-[35%_50%] transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true"></div>
-        <figcaption class="absolute left-5 right-5 bottom-5 text-white">
-          <span class="block font-display font-semibold text-lg">Kids and family waiting area</span>
-          <span class="block text-sm text-white/80 mt-0.5">A calmer space for children while they wait</span>
-        </figcaption>
-      </figure>
     </div>
   </section>
 
@@ -995,6 +1070,7 @@
         <li><a href="#services" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Services</a></li>
         <li><a href="#fees" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Fees</a></li>
         <li><a href="team.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Our team</a></li>
+        <li><a href="gallery.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Gallery</a></li>
         <li><a href="#location" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Location</a></li>
         <li><a href="#faq" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">FAQs</a></li>
       </ul>
@@ -1086,6 +1162,41 @@
         btn.textContent = open ? btn.getAttribute('data-less') : btn.getAttribute('data-more');
       });
     });
+  })();
+
+  // Reviews: arrows move one review; the count follows swipes and scrolling
+  (function () {
+    var track = document.getElementById('reviewTrack');
+    if (!track) return;
+    var slides = track.querySelectorAll('.review-slide');
+    var prev = document.getElementById('reviewPrev'), next = document.getElementById('reviewNext');
+    var count = document.getElementById('reviewCount');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function current() {
+      var x = track.scrollLeft, best = 0;
+      slides.forEach(function (s, i) { if (Math.abs(s.offsetLeft - track.offsetLeft - x) < Math.abs(slides[best].offsetLeft - track.offsetLeft - x)) best = i; });
+      return best;
+    }
+    function update() {
+      prev.disabled = track.scrollLeft < 4;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      // At the far end the last review can't reach the left edge, so count it as current
+      var i = next.disabled ? slides.length - 1 : current();
+      count.textContent = (i + 1) + ' of ' + slides.length;
+    }
+    function go(d) {
+      var i = Math.max(0, Math.min(slides.length - 1, current() + d));
+      track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    });
+    var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(update, 60); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   (function () {
