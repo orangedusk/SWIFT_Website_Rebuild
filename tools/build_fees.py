@@ -42,7 +42,7 @@ PATHOLOGY = ['Bloods, swabs and urine tests',
              'No Medicare card: extra charge, paid separately',
              'Australian Clinical Labs (ACL) sends you its own invoice after your test']
 PAY_MEDICARE = ['Pay one amount: facility fee + Medicare charges', 'Get an instant refund of the Medicare part only']
-PAY_NO_MEDICARE = ['Pay one amount on discharge: facility fee + Medicare-equivalent charges', 'Pathology is billed separately by ACL']
+PAY_NO_MEDICARE = ['Pay one amount on discharge: facility fee + Medicare-equivalent charges', 'Pathology is billed separately by ACL', 'Imaging is billed separately by Imaging Specialists']
 
 def bullets(items, dot='bg-teal500'):
     return '<ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug">' + ''.join(
