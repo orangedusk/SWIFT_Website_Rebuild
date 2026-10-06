@@ -16,7 +16,7 @@ from html.parser import HTMLParser
 
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '')
 PAGES = [('index.html', 'Home'), ('services.html', 'Services'), ('fees.html', 'Fees'),
-         ('team.html', 'Team'), ('gallery.html', 'Gallery'), ('request-appointment.html', 'Request appointment')]
+         ('team.html', 'Team'), ('gallery.html', 'Gallery'), ('faq.html', 'FAQs'), ('request-appointment.html', 'Request appointment')]
 
 # Elements that hold one piece of copy each
 LEAF = {'h1', 'h2', 'h3', 'h4', 'p', 'li', 'a', 'button', 'summary', 'label', 'dt', 'dd',
@@ -212,7 +212,7 @@ SECTION_NAMES = {
     'what-we-do': 'What we do', 'where-to-go': 'Where to go (three columns)',
     'quickRoutesHeading': 'Quick-link tiles', 'visit': 'What happens when you visit', 'services': 'Our clinical team treats',
     'other-care': 'Here for something else?', 'fees': 'Fees, up front', 'doctors': 'Our doctors',
-    'reviews': 'What patients say', 'location': 'Find us', 'faq': 'Common questions',
+    'reviews': 'What patients say', 'location': 'Find us', 'faq': 'FAQs',
     'whatWeDoHeading': 'What we do', 'doctorsHeading': 'Our doctors',
     'reviewsHeading': 'What patients say', 'otherCareHeading': 'Here for something else?',
     'medicare': 'How you pay', 'pathology': 'Pathology', 'emergency': 'Emergency & urgent care',

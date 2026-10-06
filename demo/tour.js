@@ -29,7 +29,7 @@
     { page: 'index.html', target: q('#reviews'), title: 'What patients say', body: 'Right after fees, to answer “is it worth it?”. One review at a time: swipe or use the arrows. Placeholders until SWIFT picks its Google reviews.' },
     { page: 'index.html', target: q('#doctors'), title: 'Our doctors', body: 'Names the co-founders and links to the full team, where every doctor, nurse and advisor has a profile.' },
     { page: 'index.html', target: q('#location'), title: 'Location', body: 'Address, hours and a map, with one-tap directions.' },
-    { page: 'index.html', target: q('#faq'), title: 'Common questions', body: 'Short answers to what patients ask most.' },
+    { page: 'index.html', target: q('#faq'), title: 'FAQs', body: 'The five questions patients ask most, with a link to the full FAQ page.' },
     { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays. It takes over the whole hero: image, headline and button. The symptom search below stays put. Not shown to patients.' },
     { page: 'index.html', target: q('#viewportSwitcher'), title: 'Device preview (demo tool)', body: 'Shows the site at tablet and mobile sizes without leaving your desk.' },
     { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, where to go, directions and the menu are always one tap away.' },
@@ -54,6 +54,9 @@
     // Gallery
     { page: 'gallery.html', target: function () { var g = document.getElementById('photosHeading'); return g && g.closest('section'); }, title: 'Clinic facilities', body: 'Photos of the clinic. Tap one to see it full size, then swipe or use the arrows. The drone and walkthrough videos go below when they arrive.' },
 
+    // FAQs
+    { page: 'faq.html', target: q('#visiting'), title: 'FAQs', body: 'Every question in one place, grouped into visiting, fees and care. The homepage shows the top five. Each question has its own link, e.g. faq.html#q-cost.' },
+
     // Request appointment
     { page: 'request-appointment.html', target: byText('main .hero-in', 'need an appointment'), title: 'Request an appointment', body: 'Reminds urgent patients they can just walk in, before they start a form.' },
     { page: 'request-appointment.html', target: q('#serviceGroup'), title: 'Choose a service', body: 'One tap to pick what to book. Links from other pages can preselect a service.' },
@@ -61,7 +64,7 @@
     { page: 'request-appointment.html', title: 'That’s the tour', body: 'Every page and feature, start to finish. Press Finish to go back to the homepage.', finish: true },
   ];
 
-  var PAGE_NAMES = { 'index.html': 'Homepage', 'services.html': 'Services', 'fees.html': 'Fees', 'team.html': 'Team', 'gallery.html': 'Gallery', 'request-appointment.html': 'Appointments' };
+  var PAGE_NAMES = { 'index.html': 'Homepage', 'services.html': 'Services', 'fees.html': 'Fees', 'team.html': 'Team', 'gallery.html': 'Gallery', 'faq.html': 'FAQs', 'request-appointment.html': 'Appointments' };
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var css = [
