@@ -706,7 +706,15 @@
       <h2 class="lg:col-span-6 font-display font-bold text-3xl sm:text-[2.75rem] leading-[1.08] tracking-[-0.03em] text-ink">Fees, up front</h2>
       <p class="lg:col-span-6 text-ink/70 leading-[1.7] max-w-lg">Straightforward pricing, whether or not you have a valid Medicare card. Reception explains the fees before you're seen.</p>
     </div>
-    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+    <div class="grid lg:grid-cols-12 gap-4 lg:gap-6 items-start">
+      <!-- Headline fee: big and bold, outside the receipt (client asked for it, 6 Oct) -->
+      <div class="lg:col-span-5 relative overflow-hidden rounded-[20px] bg-gradient-to-br from-foam to-mint p-6 sm:p-8 flex flex-col justify-center lg:self-stretch">
+        <svg class="absolute -right-6 -top-6 w-36 h-36 text-teal900/[0.07]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2.5h10v19l-2.5-1.5-2 1.5-2-1.5-2.5 1.5V2.5Z"/><path d="M9.5 8h5M9.5 11.5h5M9.5 15h3"/></svg>
+        <p class="relative text-ink/70">Walk-in visit, facility fee</p>
+        <p class="relative font-display font-extrabold text-6xl sm:text-7xl tracking-[-0.04em] text-ink mt-2">$396</p>
+        <p class="relative mt-2 text-lg font-semibold text-ink">plus standard Medicare charges</p>
+        <a href="fees.html" class="relative focus-ring spring mt-8 self-start inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300">See detailed pricing</a>
+      </div>
       <div class="lg:col-span-7">
         <div id="feeCase" role="radiogroup" aria-label="Your situation" class="fee-switch grid grid-cols-2 sm:inline-grid gap-1 p-1 rounded-full bg-white border border-line w-full sm:w-auto">
           <button type="button" role="radio" aria-checked="true" data-case="medicare" class="fee-opt focus-ring"><span class="hidden sm:inline">I have a Medicare card</span><span class="sm:hidden">Medicare card</span></button>
@@ -720,12 +728,8 @@
               <span class="text-sm text-ink/60">SWIFT, Rouse Hill</span>
             </div>
             <div class="rcpt-case" data-case="medicare">
-              <div class="pb-5 mb-5 border-b border-dashed border-ink/20">
-                <p class="text-[15px] text-ink/70">Facility fee</p>
-                <p class="mt-1 font-display font-extrabold text-[3.5rem] sm:text-[4.25rem] leading-none tracking-[-0.04em] text-ink tabular-nums">$396</p>
-                <p class="mt-2 text-[15px] font-medium text-ink/80">plus Medicare charges</p>
-              </div>
               <dl class="space-y-3 text-[15px] leading-snug">
+                <div class="rcpt-row"><dt>Facility fee</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink tabular-nums">$396</span></dd></div>
                 <div class="rcpt-row"><dt>Doctor consultation and any procedures</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right">Medicare charges</span></dd></div>
                 <div class="rcpt-row"><dt>Pathology</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right"><span class="chip chip-solid">Bulk billed</span></span></dd></div>
                 <div class="rcpt-row"><dt>Imaging<span class="block mt-0.5 text-sm text-ink/60">X-ray, CT and weekday ultrasound</span></dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right"><span class="chip chip-solid">Bulk billed</span></span></dd></div>
@@ -736,12 +740,8 @@
               </div>
             </div>
             <div class="rcpt-case" data-case="no-medicare" data-alt>
-              <div class="pb-5 mb-5 border-b border-dashed border-ink/20">
-                <p class="text-[15px] text-ink/70">Facility fee</p>
-                <p class="mt-1 font-display font-extrabold text-[3.5rem] sm:text-[4.25rem] leading-none tracking-[-0.04em] text-ink tabular-nums">$396</p>
-                <p class="mt-2 text-[15px] font-medium text-ink/80">plus Medicare-equivalent charges</p>
-              </div>
               <dl class="space-y-3 text-[15px] leading-snug">
+                <div class="rcpt-row"><dt>Facility fee</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink tabular-nums">$396</span></dd></div>
                 <div class="rcpt-row"><dt>Doctor consultation and any procedures</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right">Medicare-equivalent charges</span></dd></div>
                 <div class="rcpt-row"><dt>Pathology</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right">Extra charge, invoiced separately by ACL</span></dd></div>
                 <div class="rcpt-row"><dt>Imaging</dt><span class="rcpt-dots" aria-hidden="true"></span><dd><span class="font-medium text-ink text-right">Extra charge, billed separately by Imaging Specialists</span></dd></div>
@@ -754,27 +754,23 @@
           </div>
         </div>
       </div>
-
-      <div class="lg:col-span-5 lg:pt-14 divide-y divide-line">
-        <div class="pb-6">
-          <h3 class="font-display font-semibold text-lg text-ink">What Medicare charges cover</h3>
-          <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Doctor consultation, and any procedures performed.</p>
-        </div>
-        <div class="py-6">
-          <h3 class="font-display font-semibold text-lg text-ink">Pathology</h3>
-          <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Bloods, swabs and urine tests, collected on site by your treating team and processed in Australian clinical labs.</p>
-        </div>
-        <div class="py-6">
-          <h3 class="font-display font-semibold text-lg text-ink">Imaging</h3>
-          <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">X-ray, CT and ultrasound on site, by Imaging Specialists, an independent practice.</p>
-        </div>
-        <div class="py-6">
-          <h3 class="font-display font-semibold text-lg text-ink">What to bring</h3>
-          <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Your Medicare card, if you have one, and a debit or credit card. SWIFT is cashless.</p>
-        </div>
-        <div class="pt-6">
-          <a href="fees.html" class="focus-ring spring inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 hover:scale-[1.03] active:scale-[0.97] text-white font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300">See detailed pricing</a>
-        </div>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 pt-8 border-t border-line">
+      <div>
+        <h3 class="font-display font-semibold text-lg text-ink">What Medicare charges cover</h3>
+        <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Doctor consultation, and any procedures performed.</p>
+      </div>
+      <div>
+        <h3 class="font-display font-semibold text-lg text-ink">Pathology</h3>
+        <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Bloods, swabs and urine tests, collected on site by your treating team and processed in Australian clinical labs.</p>
+      </div>
+      <div>
+        <h3 class="font-display font-semibold text-lg text-ink">Imaging</h3>
+        <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">X-ray, CT and ultrasound on site, by Imaging Specialists, an independent practice.</p>
+      </div>
+      <div>
+        <h3 class="font-display font-semibold text-lg text-ink">What to bring</h3>
+        <p class="mt-2 text-[15px] text-ink/75 leading-relaxed">Your Medicare card, if you have one, and a debit or credit card. SWIFT is cashless.</p>
       </div>
     </div>
   </section>
