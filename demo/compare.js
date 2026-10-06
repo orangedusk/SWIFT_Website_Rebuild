@@ -5,8 +5,7 @@
     { file: 'index.html', label: 'Teal' },
     { file: 'prototype-logo-colours.html', label: 'Logo colours' },
     { file: 'prototype-split-hero.html', label: 'Split hero' },
-    { file: 'prototype-fees-cards.html', label: 'Fees as cards' },
-    { file: 'prototype-screening.html', label: 'Screening pop-up' }
+    { file: 'prototype-fees-cards.html', label: 'Fees cards + screening' }
   ];
   var page = location.pathname.split('/').pop() || 'index.html';
   var here = VERSIONS.filter(function (v) { return v.file === page; })[0];

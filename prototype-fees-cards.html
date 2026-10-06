@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Demo branch only: keep this preview site out of search engines. Never merge to main. -->
 <meta name="robots" content="noindex, nofollow">
-<!-- Saved prototype: today's homepage with the "Fees, up front" section as it was before the receipt (git tag before-fees-receipt). Demo branch only. -->
+<!-- Saved prototype: today's homepage with two changes. 1) The symptom search opens a screening pop-up instead of the three columns (Dr Manivel's draft panels, items 3.3 to 3.5; screening-only version at git tag prototype-4-screening). 2) "Fees, up front" as cards, as it was before the receipt (git tag before-fees-receipt). Demo branch only. -->
 <script src="demo/gate.js"></script>
-<title>Prototype 3 (fees as cards) — SWIFT Emergency &amp; Urgent Care — Rouse Hill, NSW</title>
+<title>Prototype 3 (fees cards + screening) — SWIFT Emergency &amp; Urgent Care — Rouse Hill, NSW</title>
 <meta name="description" content="Walk-in emergency and specialist urgent care in Rouse Hill, NSW. No appointment needed for urgent illness or injury, ages 3 months and up. Open every day, 10am–10pm.">
 <link rel="icon" href="brand_assets/logo/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="brand_assets/logo/favicon-64.png" sizes="64x64" type="image/png">
@@ -198,7 +198,21 @@
   .js .rcpt.show-alt .rcpt-case[data-alt] { display: block; }
   .rcpt-case[data-alt] { margin-top: 1.5rem; }
   .js .rcpt-case[data-alt] { margin-top: 0; }
-  /* Layering: base (paper) -> surface (white / foam cards) -> floating (hero badge, verdict) */
+  /* Screening pop-up: centred dialog, bottom sheet on phones */
+  .screen-dialog { width: min(640px, calc(100% - 2rem)); max-height: min(88vh, 900px); border-radius: 24px; box-shadow: 0 30px 80px -20px rgba(24,37,36,.55); overflow: auto; }
+  .screen-dialog::backdrop { background: rgba(24,37,36,.55); backdrop-filter: blur(3px); }
+  .screen-dialog[open] { animation: screenIn .3s cubic-bezier(.22,1,.36,1); }
+  @keyframes screenIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 639px) {
+    .screen-dialog { width: 100%; max-width: 100%; margin: auto 0 0; border-radius: 24px 24px 0 0; max-height: 90vh; }
+    .screen-dialog[open] { animation-name: sheetIn; }
+    @keyframes sheetIn { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  }
+  .opt { border-radius: 18px; border: 1px solid #D9E3E0; padding: 16px 18px; }
+  .opt-000 { border-color: rgba(178,58,58,.35); background: rgba(178,58,58,.05); }
+  .opt-first { border-color: rgba(44,104,94,.35); background: #EAF1EF; }
+  .opt-swift { border-color: #1E453F; background: #1E453F; color: #fff; }
+ -> surface (white / foam cards) -> floating (hero badge, verdict) */
   .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
   .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
   .card-link:active { transform: scale(.98); }
@@ -351,13 +365,14 @@
       <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
         <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is specialist urgent care right for me?</h2>
         <p class="mt-2 text-ink/70 leading-relaxed">Type a symptom and we&rsquo;ll tell you where to go.</p>
-          <!-- Symptom search: terms and routing live in symptoms.js. Results highlight in the three columns below. -->
-          <div id="careFinder" class="mt-6">
+          <!-- Symptom search: terms and routing live in symptoms.js. Enter or a chip opens the screening pop-up. -->
+          <form id="careFinder" class="mt-6" role="search" novalidate>
             <label for="careSearch" class="sr-only">Search a symptom</label>
             <div class="relative">
               <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
-              <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
+              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-[168px] py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careHint">
+              <button type="submit" id="careGo" class="absolute right-2 top-1/2 -translate-y-1/2 focus-ring spring inline-flex items-center rounded-full bg-teal900 hover:bg-teal700 active:scale-[0.96] text-white text-[15px] font-medium px-4 py-2.5 transition-[transform,background-color] duration-200">Where to go</button>
+              <button type="button" id="careClear" class="hidden absolute right-[124px] top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </button>
             </div>
@@ -372,9 +387,10 @@
               <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="dizziness" aria-pressed="false">Dizziness</button>
             </div>
 
-            <!-- Verdict (filled by script) -->
-            <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
-          </div>
+            <!-- Prompt; results open in the #screen pop-up -->
+            <p id="careHint" class="mt-3 text-sm text-ink/70" aria-live="polite">Pick a common symptom, or type one and press Enter.</p>
+            <p class="mt-4 pt-4 border-t border-line text-[15px] text-ink/75">If you are unsure, <a href="tel:0288599099" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">call SWIFT</a> first. Outside our opening hours, a healthdirect nurse can help on <a href="tel:1800022222" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">1800 022 222</a>, free and 24/7.</p>
+          </form>
       </div>
       <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 content-start items-start gap-4 lg:pt-36" style="animation-delay:.5s">
           <div class="rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 flex items-start gap-3">
@@ -400,149 +416,6 @@
           </a>
       </div>
     </div>
-  </section>
-
-  <!-- Right care: the three columns the search above highlights. Each leads with its rule and a short
-       list, with the rest behind "more". Clinical wording is a draft until Dr Manivel signs it off. -->
-  <section id="right-care" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="rightCareHeading">
-    <h2 id="rightCareHeading" class="sr-only">Where to go, from most to least urgent</h2>
-
-    <!-- Urgency scale: one band whose colours sit over the three columns below -->
-    <div id="careScale" class="care-scale scroll-mt-[130px] hidden lg:block relative h-12 rounded-full bg-line/50 overflow-hidden mb-5" aria-hidden="true">
-      <span class="care-scale-fill absolute inset-0 rounded-full"></span>
-      <span class="relative h-full flex items-center justify-between px-6 text-sm font-medium">
-        <span class="text-white">Most urgent</span>
-        <span class="text-teal900">Can wait</span>
-      </span>
-    </div>
-
-    <!-- Lanes -->
-    <div id="careLanes" class="care-lanes scroll-mt-[130px] grid lg:grid-cols-3 gap-4 lg:gap-5 relative pl-5 lg:pl-0 items-stretch">
-
-      <!-- 000 -->
-      <div class="care-lane care-pre flex flex-col rounded-2xl bg-white border border-line border-t-4 border-t-urgent shadow-[0_2px_10px_-4px_rgba(178,58,58,0.18)] p-5 sm:p-6" data-lane="ed">
-        <div class="flex items-center gap-3">
-          <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-urgent text-white">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <h3 class="font-display font-bold text-xl tracking-tight text-urgentDk">Call 000</h3>
-            <p class="text-sm text-ink/70">Life-threatening, or getting worse fast</p>
-          </div>
-        </div>
-        <ul class="mt-5 space-y-1 text-[15px] text-ink/80">
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="heart">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Signs of a heart attack</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="stroke">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Signs of stroke: face drooping, arm weakness, slurred speech</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="unconscious">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Unconscious, collapsed or not breathing</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="choking">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Choking, or struggling to breathe</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="bleeding">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Severe bleeding, or vomiting blood</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="seizure">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>A seizure or fit</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="anaphylaxis">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Severe allergic reaction, with swelling of the face or throat</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="trauma">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Major injury, like a car crash or a fall from height</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="overdose">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Overdose or poisoning</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="selfharm">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-urgent" aria-hidden="true"></span>Thoughts of harming yourself or others</li>
-        </ul>
-        <button type="button" class="care-more self-start mt-2 py-1 text-[15px] font-medium underline underline-offset-4 text-teal700 hover:text-teal900 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded" aria-expanded="false" data-more="Show 5 more" data-less="Show fewer">Show 5 more</button>
-        <div class="flex-1"></div>
-        <a href="tel:000" class="focus-ring spring mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-urgent hover:bg-urgentDk hover:scale-[1.02] text-white font-medium px-5 py-3 transition-[transform,background-color] duration-300 active:scale-[0.97]">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.8"/></svg>
-          Call 000
-        </a>
-      </div>
-
-      <!-- SWIFT -->
-      <div class="care-lane care-pre care-lane-dark relative flex flex-col rounded-2xl bg-teal900 text-white shadow-[0_24px_48px_-18px_rgba(30,69,63,0.6),0_8px_16px_-8px_rgba(30,69,63,0.3)] p-5 sm:p-6 lg:-my-3 lg:py-9" data-lane="swift">
-        <div class="flex items-center gap-3">
-          <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-white">
-            <img src="brand_assets/logo/swift-mark.png" alt="" class="w-7 h-7" aria-hidden="true">
-          </span>
-          <div>
-            <h3 class="font-display font-bold text-xl tracking-tight text-white">Come to SWIFT</h3>
-            <p class="text-sm text-white/70">Needs care today, but isn&rsquo;t life-threatening</p>
-          </div>
-        </div>
-        <ul class="mt-5 space-y-1 text-[15px] text-white/85">
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="chest">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Chest pain or shortness of breath: call us first</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="head">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Headache, dizziness, vertigo or fainting</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="abdomen">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Abdominal pain</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="fever">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Fevers and infections, for ages 3 months and up</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="injury">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Sprains, strains and suspected broken bones</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="wounds">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Cuts that may need stitches, and burns</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="gut">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Vomiting, diarrhoea or dehydration</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="urinary">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Urinary infections and groin pain</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="ent">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Ear, eye, throat, sinus and nose problems</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="skin">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Bites, stings and skin infections</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="allergy">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Rashes, hives and mild allergic reactions</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="foreign">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Eye injuries, and something stuck in the skin or eye</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="back">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>Back and neck pain</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="leg">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-tealGlow" aria-hidden="true"></span>A painful or swollen leg</li>
-        </ul>
-        <button type="button" class="care-more self-start mt-2 py-1 text-[15px] font-medium underline underline-offset-4 text-white/85 hover:text-white decoration-white/40 hover:decoration-white focus-ring rounded" aria-expanded="false" data-more="Show 9 more" data-less="Show fewer">Show 9 more</button>
-        <div class="flex-1"></div>
-        <p class="mt-5 text-sm text-white/65">Walk in, no appointment needed.</p>
-        <div class="mt-4 grid grid-cols-1 xl:grid-cols-2 gap-2">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring spring inline-flex items-center justify-center rounded-full bg-white text-teal900 hover:bg-mint hover:scale-[1.02] font-medium px-4 py-3 text-[15px] transition-[transform,background-color] duration-300 active:scale-[0.97]">Get directions</a>
-          <a href="tel:0288599099" class="focus-ring spring inline-flex items-center justify-center rounded-full border border-white/50 text-white hover:bg-white/10 hover:scale-[1.02] font-medium px-4 py-3 text-[15px] transition-[transform,background-color] duration-300 active:scale-[0.97]">Check the wait</a>
-        </div>
-      </div>
-
-      <!-- GP -->
-      <div class="care-lane care-pre flex flex-col rounded-2xl bg-white border border-line border-t-4 border-t-line p-5 sm:p-6" data-lane="gp">
-        <div class="flex items-center gap-3">
-          <span class="shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-mint text-teal700">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-          </span>
-          <div>
-            <h3 class="font-display font-bold text-xl tracking-tight text-ink">See your GP</h3>
-            <p class="text-sm text-ink/70">Can wait a day or two, or is ongoing</p>
-          </div>
-        </div>
-        <ul class="mt-5 space-y-1 text-[15px] text-ink/80">
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="prescriptions">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Repeat prescriptions</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="certificates">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Medical certificates</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="referrals">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Referrals and test results</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="vaccination">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Vaccinations, flu shots and check-ups</li>
-          <li class="care-item flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="cold">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>A mild cold or runny nose</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="ongoing">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Managing a long-term condition</li>
-          <li class="care-item more-item hidden flex gap-2.5 rounded-lg px-2 py-1.5 -mx-2" data-item="mentalplan">
-            <span class="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-ink/30" aria-hidden="true"></span>Mental health care plans</li>
-        </ul>
-        <button type="button" class="care-more self-start mt-2 py-1 text-[15px] font-medium underline underline-offset-4 text-teal700 hover:text-teal900 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded" aria-expanded="false" data-more="Show 2 more" data-less="Show fewer">Show 2 more</button>
-        <div class="flex-1"></div>
-        <p class="mt-6 text-sm text-ink/70 leading-relaxed">Can't get in with your GP and it can't wait? <a href="#location" class="inline-block py-1.5 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Come to SWIFT.</a></p>
-      </div>
-    </div>
-    <p class="mt-6 text-[15px] text-ink/75">If you are unsure, <a href="tel:0288599099" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">call SWIFT</a> first. This guide doesn't replace medical advice. Outside our opening hours, a healthdirect nurse can help on <a href="tel:1800022222" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">1800 022 222</a>, free and 24/7.</p>
   </section>
 
   <!-- Quick routes: four tiles, like the reference's image row. Tablet and up only: on phones they repeat sections below. -->
@@ -978,6 +851,23 @@
 
 </main>
 
+<!-- Screening pop-up: shows only the options that apply to the symptom searched -->
+<dialog id="screen" class="screen-dialog p-0 bg-white text-ink" aria-labelledby="screenTitle">
+  <div class="sticky top-0 z-10 bg-white px-5 sm:px-7 pt-5 pb-4 border-b border-line flex items-start justify-between gap-4">
+    <div>
+      <p class="text-sm text-ink/70">Where to go for</p>
+      <h2 id="screenTitle" class="font-display font-bold text-2xl tracking-[-0.02em] text-ink"></h2>
+      <p id="screenDraft" class="mt-2 inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2.5 py-1">Draft, awaiting clinical sign-off</p>
+    </div>
+    <button type="button" id="screenClose" class="focus-ring shrink-0 w-10 h-10 flex items-center justify-center rounded-full text-ink/70 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color]" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="screenBody" class="px-5 sm:px-7 py-5 space-y-3"></div>
+  <p class="px-5 sm:px-7 pb-6 text-sm text-ink/75">If you are unsure, <a href="tel:0288599099" class="font-medium text-teal700 underline underline-offset-2 focus-ring rounded">call SWIFT</a> first. This guide doesn&rsquo;t replace medical advice.</p>
+</dialog>
+
+
 <!-- Footer -->
 <footer class="relative bg-ink text-white overflow-hidden">
   <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
@@ -1082,21 +972,16 @@
   })();
 
   (function () {
+    var form = document.getElementById('careFinder');
     var input = document.getElementById('careSearch');
-    var lanesEl = document.getElementById('careLanes');
-    var verdictEl = document.getElementById('careVerdict');
     var clearBtn = document.getElementById('careClear');
-    if (!input || !lanesEl || !verdictEl || !window.SWIFT_SYMPTOMS) return;
-
+    var hint = document.getElementById('careHint');
+    var dialog = document.getElementById('screen');
+    if (!form || !input || !dialog || !window.SWIFT_SYMPTOMS) return;
     var chips = document.querySelectorAll('.care-chip');
-    var lanes = lanesEl.querySelectorAll('.care-lane');
-    var items = lanesEl.querySelectorAll('.care-item');
     var SWIFT_TEL = 'tel:0288599099';
     var DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155';
-    // Most urgent first: when a search matches several terms, the most urgent outcome wins
     var ORDER = ['000', 'poisons', 'out-of-scope', 'call-first', 'swift', 'dental', 'gp'];
-    // Which column each outcome lights up
-    var LANE_FOR = { '000': 'ed', poisons: 'ed', 'call-first': 'swift', swift: 'swift', gp: 'gp' };
 
     // ---- Matching -----------------------------------------------------------------------
     function norm(t) {
@@ -1154,158 +1039,110 @@
       });
     }
 
-    // ---- Results ------------------------------------------------------------------------
-    function esc(s) {
-      return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
-    }
-    var btnBase = 'focus-ring spring inline-flex items-center justify-center rounded-full font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300 hover:scale-[1.02] active:scale-[0.97]';
-    var row = 'flex flex-col sm:flex-row sm:items-center gap-4 justify-between';
-
-    // Safety line under every result (client instruction, exact wording)
-    function safety(dark) {
-      return '<p class="mt-4 pt-3 border-t ' + (dark ? 'border-white/20 text-white/85' : 'border-line text-ink/75') + ' text-sm">If you are unsure, ' +
-        '<a href="' + SWIFT_TEL + '" class="font-medium underline underline-offset-2 ' + (dark ? 'decoration-white/50 hover:decoration-white' : 'text-teal700 decoration-teal500/40 hover:decoration-teal700') + ' focus-ring rounded">call SWIFT</a> first.</p>';
-    }
-    // Jumps to the three columns, where the matching symptoms are already highlighted
-    function see(dark) {
-      return '<a href="#careLanes" data-see-matches class="inline-block mt-2 py-1 text-[15px] font-medium underline underline-offset-4 decoration-current/40 hover:decoration-current ' + (dark ? '' : 'text-teal700 ') + 'focus-ring rounded">See matching symptoms</a>';
-    }
-    function card(cls, body, dark) { return '<div class="verdict-in rounded-2xl p-5 ' + cls + '">' + body + safety(dark) + '</div>'; }
-    function lead(label) { return '<p class="text-sm opacity-75">For &ldquo;' + esc(label) + '&rdquo;</p>'; }
-    var AGE = '<p class="text-[15px] mt-1 opacity-90">SWIFT sees children from 3 months old. For a baby under 3 months, call 000 or go to your nearest hospital emergency department.</p>';
-
-    function verdictHtml(outcome, label, hits, hasItem) {
-      var crisis = hits.some(function (h) { return h.item === 'selfharm'; });
-      var age = hits.some(function (h) { return h.note === 'age'; });
-      var l = label ? lead(label) : '';
-      switch (outcome) {
-        case '000':
-          return card('bg-urgent text-white shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Call 000 now</p><p class="text-white/85 text-[15px] mt-1">' +
-            (crisis ? 'If you or someone else is in danger, call 000. For 24/7 crisis support you can also call Lifeline on <a href="tel:131114" class="font-semibold underline underline-offset-2 focus-ring rounded">13 11 14</a>.'
-                    : 'This could be life-threatening. Don&rsquo;t drive yourself to SWIFT.') + '</p>' + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>', true);
-        case 'poisons':
-          return card('bg-urgent text-white shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Call 000, or the Poisons Information Centre</p><p class="text-white/85 text-[15px] mt-1">If the person is unwell, drowsy or not breathing normally, call 000. Otherwise call the Poisons Information Centre on <a href="tel:131126" class="font-semibold underline underline-offset-2 focus-ring rounded">13 11 26</a>, 24/7.</p></div>' +
-            '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>', true);
-        case 'out-of-scope':
-          return card('bg-white border-2 border-ink/15 text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            l + '<p class="font-display font-bold text-xl mt-0.5">This isn&rsquo;t a SWIFT walk-in</p><p class="text-ink/75 text-[15px] mt-1">Call us on <a href="' + SWIFT_TEL + '" class="font-medium text-teal700 underline underline-offset-2 focus-ring rounded">(02) 8859 9099</a> and we&rsquo;ll tell you where to go. In an emergency, call 000.</p>', false);
-        case 'call-first':
-          return card('bg-teal700 text-white shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]',
-            '<div class="' + row + '"><div>' + (label ? l : '<p class="text-sm opacity-75">No exact match</p>') +
-            '<p class="font-display font-bold text-xl mt-0.5">Call SWIFT first</p><p class="text-white/85 text-[15px] mt-1">' +
-            (label ? 'We&rsquo;ll ask a few questions and tell you whether to come in.' : 'Call us and we&rsquo;ll tell you whether to come in, or where to go instead.') + '</p>' +
-            (age ? AGE : '') + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="' + SWIFT_TEL + '" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Call (02) 8859 9099</a></div>', true);
-        case 'swift':
-          return card('bg-teal900 text-white shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Come to SWIFT</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p>' + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>', true);
-        case 'dental':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">See the dentist in our building</p><p class="text-ink/70 text-[15px] mt-1">An independent dental practice shares our building. Book with them directly.</p></div>' +
-            '<a href="services.html#dental" class="' + btnBase + ' shrink-0 bg-teal900 text-white hover:bg-teal700">About on-site dental</a></div>', false);
-        case 'gp':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            l + '<p class="font-display font-bold text-xl mt-0.5">See your GP</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can&rsquo;t get in soon, come to SWIFT.</p>' + (hasItem ? see(false) : ''), false);
+    // ---- Screening content: Dr Manivel's draft (items 3.3 to 3.5), awaiting clinical sign-off ----------
+    var PANELS = {
+      chest: { draft: true, options: [
+        ['000', 'Call 000 if', ['The pain is happening now or lasts more than a few minutes', 'It feels like pressure, heaviness or tightness', 'It spreads to the arm, jaw, neck or back', 'It comes with sweating, nausea, breathlessness or feeling faint', 'It starts suddenly and severely (tearing pain)', 'You have known heart disease and this feels different']],
+        ['first', 'Call SWIFT first if', ['The pain has settled', 'You are unsure', 'You are over 40 or have heart risk factors', 'The pain is new and unexplained']],
+        ['swift', 'Come to SWIFT if', ['Brief sharp pain, worse with movement, a deep breath or pressing on the chest', 'After a cough or minor strain, with none of the features above']] ] },
+      breath: { draft: true, options: [
+        ['000', 'Call 000 if', ['You cannot speak in full sentences', 'Lips or face look blue or grey', 'Breathing is getting worse fast', 'It comes with chest pain', 'Your asthma reliever is not helping', 'It started suddenly']],
+        ['first', 'Call SWIFT first if', ['You are unsure', 'Breathing is worse than usual but you can speak in full sentences', 'You have heart or lung disease']],
+        ['swift', 'Come to SWIFT if', ['Mild breathlessness with a cold', 'Known mild asthma that settles with your usual reliever']] ] },
+      headache: { draft: true, options: [
+        ['000', 'Call 000 if', ['A sudden, worst-ever headache', 'A stiff neck with fever or rash', 'Weakness, or a change in speech or vision', 'Drowsiness after a head injury']],
+        ['swift', 'Come to SWIFT if', ['None of these']] ] },
+      abdomen: { draft: true, options: [
+        ['000', 'Call 000 if', ['Severe or constant pain with a hard abdomen', 'Vomiting blood', 'Black or bloody stool', 'Pregnancy']],
+        ['swift', 'Come to SWIFT if', ['None of these']] ] },
+      fever: { draft: true, options: [
+        ['000', 'Call 000 if', ['A stiff neck', 'A rash that does not fade when pressed', 'Drowsiness or confusion', 'A baby under 3 months']],
+        ['swift', 'Come to SWIFT if', ['None of these. SWIFT sees children from 3 months old']] ] },
+      dizzy: { draft: true, options: [
+        ['000', 'Call 000 if', ['Face droop or arm weakness', 'Slurred speech', 'A new severe headache', 'You cannot walk']],
+        ['swift', 'Come to SWIFT if', ['None of these']] ] },
+      faint: { draft: true, options: [
+        ['000', 'Call 000 if they fainted', ['With chest pain, palpitations or breathlessness', 'During exercise or exertion', 'With a head injury', 'And are still unwell']],
+        ['first', 'Otherwise, call SWIFT first', ['We&rsquo;ll ask a few questions and tell you whether to come in']] ] }
+    };
+    // Which screening panel a search term opens (by its column item and wording)
+    function panelFor(h) {
+      var t = h.term;
+      if (h.item === 'chest') return /breath|breathe|wheez|asthma|dyspn|cough|pneumon|bronch/.test(t) ? 'breath' : 'chest';
+      if (h.item === 'abdomen') return 'abdomen';
+      if (h.item === 'fever') return h.outcome === 'call-first' ? 'fever' : null;
+      if (h.item === 'head') {
+        if (/faint|passed out|black ?out|collapse|syncope/.test(t)) return 'faint';
+        if (/dizz|light|giddy|balance|unsteady|vertigo|spinning|bppv/.test(t)) return 'dizzy';
+        if (/headache|migraine|head pain/.test(t)) return 'headache';
       }
-      return '';
+      return null;
     }
 
-    // ---- Columns: "N more" toggles --------------------------------------------------------
-    function setExpanded(lane, open, auto) {
-      lane._autoOpened = !!(open && auto);
-      var btn = lane.querySelector('.care-more');
-      if (!btn) return;
-      lane.querySelectorAll('.more-item').forEach(function (li) { li.classList.toggle('hidden', !open); });
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? btn.getAttribute('data-less') : btn.getAttribute('data-more');
+    // ---- Single results --------------------------------------------------------------------
+    var btn = 'focus-ring spring inline-flex items-center justify-center rounded-full font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300 hover:scale-[1.02] active:scale-[0.97]';
+    var ACTIONS = {
+      '000':   '<a href="tel:000" class="' + btn + ' bg-urgent text-white hover:bg-urgentDk">Call 000</a>',
+      first:   '<a href="' + SWIFT_TEL + '" class="' + btn + ' bg-teal900 text-white hover:bg-teal700">Call (02) 8859 9099</a>',
+      swift:   '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btn + ' bg-white text-teal900 hover:bg-mint">Get directions</a>'
+    };
+    var HEAD = { '000': 'text-urgentDk', first: 'text-teal900', swift: 'text-white' };
+    function option(kind, title, items) {
+      var dot = kind === 'swift' ? 'bg-tealGlow' : kind === '000' ? 'bg-urgent' : 'bg-teal500';
+      var txt = kind === 'swift' ? 'text-white/85' : 'text-ink/80';
+      return '<section class="opt opt-' + kind + '"><div class="flex flex-col sm:flex-row sm:items-start gap-3 sm:justify-between">' +
+        '<div><h3 class="font-display font-bold text-lg ' + HEAD[kind] + '">' + title + '</h3>' +
+        '<ul class="mt-2 space-y-1.5 text-[15px] leading-snug ' + txt + '">' +
+        items.map(function (i) { return '<li class="flex gap-2.5"><span class="shrink-0 mt-[7px] w-1.5 h-1.5 rounded-full ' + dot + '" aria-hidden="true"></span><span>' + i + '</span></li>'; }).join('') +
+        '</ul></div><div class="shrink-0">' + ACTIONS[kind] + '</div></div></section>';
     }
-    lanes.forEach(function (lane) {
-      var btn = lane.querySelector('.care-more');
-      if (btn) btn.addEventListener('click', function () { setExpanded(lane, btn.getAttribute('aria-expanded') !== 'true'); });
-    });
+    var SINGLE = {
+      '000': ['000', 'Call 000 now', ['This could be life-threatening. Don&rsquo;t drive yourself to SWIFT.']],
+      selfharm: ['000', 'Call 000 now', ['If you or someone else is in danger, call 000.', 'For 24/7 crisis support you can also call Lifeline on <a href="tel:131114" class="font-semibold underline">13 11 14</a>.']],
+      poisons: ['000', 'Call 000, or the Poisons Information Centre', ['If the person is unwell, drowsy or not breathing normally, call 000.', 'Otherwise call the Poisons Information Centre on <a href="tel:131126" class="font-semibold underline">13 11 26</a>, 24/7.']],
+      'out-of-scope': ['first', 'This isn&rsquo;t a SWIFT walk-in', ['Call us and we&rsquo;ll tell you where to go.', 'In an emergency, call 000.']],
+      'call-first': ['first', 'Call SWIFT first', ['We&rsquo;ll ask a few questions and tell you whether to come in.']],
+      swift: ['swift', 'Come to SWIFT', ['Walk in any day from 10am, no appointment needed.', 'Last registration is 9pm.']],
+      nomatch: ['first', 'Call SWIFT first', ['We couldn&rsquo;t match that symptom. Call us and we&rsquo;ll tell you whether to come in, or where to go instead.']]
+    };
+    function extra(html) { return '<section class="opt">' + html + '</section>'; }
 
-    // ---- Run ----------------------------------------------------------------------------
-    function reset() {
-      lanes.forEach(function (l) { if (l._autoOpened) setExpanded(l, false); });
-      lanesEl.classList.remove('is-filtering');
-      items.forEach(function (li) { li.classList.remove('is-match'); });
-      lanes.forEach(function (l) { l.classList.remove('has-match', 'is-verdict'); });
-      verdictEl.innerHTML = '';
+    function show(label, hits) {
+      var outcome = null;
+      for (var i = 0; i < ORDER.length && !outcome; i++) if (hits.some(function (h) { return h.outcome === ORDER[i]; })) outcome = ORDER[i];
+      var body = '', draft = false;
+      var winners = hits.filter(function (h) { return h.outcome === outcome; });
+      var panel = null;
+      if (outcome === 'call-first' || outcome === 'swift') winners.some(function (h) { return (panel = panelFor(h)); });
+      if (!hits.length) body = option.apply(null, SINGLE.nomatch);
+      else if (panel) { draft = PANELS[panel].draft; body = PANELS[panel].options.map(function (o) { return option(o[0], o[1], o[2]); }).join(''); }
+      else if (outcome === '000') body = option.apply(null, winners.some(function (h) { return h.item === 'selfharm'; }) ? SINGLE.selfharm : SINGLE['000']);
+      else if (outcome === 'dental') body = extra('<h3 class="font-display font-bold text-lg text-ink">See the dentist in our building</h3><p class="mt-1 text-[15px] text-ink/75">An independent dental practice shares our building. Book with them directly.</p><a href="services.html#dental" class="' + btn + ' mt-3 bg-teal900 text-white hover:bg-teal700">About on-site dental</a>');
+      else if (outcome === 'gp') body = extra('<h3 class="font-display font-bold text-lg text-ink">See your GP</h3><p class="mt-1 text-[15px] text-ink/75">If it gets worse or you can&rsquo;t get in soon, come to SWIFT.</p>');
+      else body = option.apply(null, SINGLE[outcome]);
+      if (hits.some(function (h) { return h.note === 'age'; }) && panel !== 'fever') body += extra('<p class="text-[15px] text-ink/75">SWIFT sees children from 3 months old. For a baby under 3 months, call 000 or go to your nearest hospital emergency department.</p>');
+      document.getElementById('screenTitle').textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      document.getElementById('screenDraft').classList.toggle('hidden', !draft);
+      document.getElementById('screenBody').innerHTML = body;
+      if (!dialog.open) dialog.showModal();
+      dialog.scrollTop = 0;
     }
 
-    function run(raw) {
+    function run(raw, label) {
       var q = norm(raw);
-      clearBtn.classList.toggle('hidden', raw.trim() === '');
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-q') === q ? 'true' : 'false'); });
-      if (q.length < 3) { reset(); return; }
-
-      var hits = matches(q);
-      var outcome = 'call-first', label = raw.trim();
-      if (hits.length) {
-        for (var i = 0; i < ORDER.length; i++) {
-          if (hits.some(function (h) { return h.outcome === ORDER[i]; })) { outcome = ORDER[i]; break; }
-        }
-      } else {
-        label = '';   // No match: any uncertainty shows Call SWIFT first
-      }
-      // Only the winning outcome's terms decide what lights up
-      var shown = hits.filter(function (h) { return h.outcome === outcome; });
-      var keys = {};
-      shown.forEach(function (h) { if (h.item) keys[h.item] = true; });
-
-      var hasItem = false;
-      lanes.forEach(function (l) { if (l._autoOpened) setExpanded(l, false); });
-      items.forEach(function (li) {
-        var hit = !!keys[li.getAttribute('data-item')];
-        li.classList.toggle('is-match', hit);
-        if (hit) {
-          hasItem = true;
-          if (li.classList.contains('more-item')) setExpanded(li.closest('.care-lane'), true, true);
-        }
-      });
-      var laneKey = LANE_FOR[outcome];
-      lanesEl.classList.toggle('is-filtering', hasItem);
-      lanes.forEach(function (l) {
-        var key = l.getAttribute('data-lane');
-        l.classList.toggle('has-match', hasItem && key === laneKey);
-        l.classList.toggle('is-verdict', hasItem && key === laneKey);
-      });
-      verdictEl.innerHTML = verdictHtml(outcome, label, shown, hasItem);
+      if (q.length < 3) { hint.textContent = 'Type a little more, or pick a common symptom.'; return; }
+      hint.textContent = 'Pick a common symptom, or type one and press Enter.';
+      show(label || raw.trim(), matches(q));
     }
 
-    // Show the band on wider screens (it sits above the columns), the columns themselves on phones
-    verdictEl.addEventListener('click', function (e) {
-      var link = e.target.closest('[data-see-matches]');
-      if (!link) return;
-      e.preventDefault();
-      var scale = document.getElementById('careScale');
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var first = lanesEl.querySelector('.care-item.is-match');
-      // Wide screens: the band and all three columns. Phones (columns stacked): the highlighted symptom itself.
-      if (scale && scale.offsetParent) scale.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      else (first || lanesEl).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: first ? 'center' : 'start' });
-    });
-
-    var timer;
-    input.addEventListener('input', function () {
-      clearTimeout(timer);
-      timer = setTimeout(function () { run(input.value); }, 180);
-    });
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && input.value) { input.value = ''; run(''); }
-    });
-    clearBtn.addEventListener('click', function () { input.value = ''; run(''); input.focus(); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value); });
+    input.addEventListener('input', function () { clearBtn.classList.toggle('hidden', input.value === ''); });
+    clearBtn.addEventListener('click', function () { input.value = ''; clearBtn.classList.add('hidden'); input.focus(); });
     chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        var q = chip.getAttribute('data-q');
-        input.value = chip.getAttribute('aria-pressed') === 'true' ? '' : q;
-        run(input.value);
-      });
+      chip.addEventListener('click', function () { input.value = chip.textContent.trim(); clearBtn.classList.remove('hidden'); run(chip.getAttribute('data-q'), chip.textContent.trim()); });
     });
+    document.getElementById('screenClose').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
   })();
 
   (function () {
