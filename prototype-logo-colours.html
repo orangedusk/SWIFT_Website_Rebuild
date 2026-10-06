@@ -134,6 +134,10 @@
   @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   .hero-in { opacity: 0; animation: heroIn .8s cubic-bezier(.22,1,.36,1) forwards; }
   @keyframes heroImgZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+  /* Everyday hero photo: shifted right on wide screens so the people clear the headline; centred on
+     phones, where only a narrow slice fits. A campaign's imagePos (inline style) overrides both. */
+  #heroImg { object-position: 62% 35%; }
+  @media (max-width: 639px) { #heroImg { object-position: 50% 35%; } }
   .hero-img-zoom { animation: heroImgZoom 1.8s cubic-bezier(.22,1,.36,1) forwards; }
   .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
 
@@ -304,7 +308,7 @@
        subtitle and button (see SwiftCampaign below); the triage panel underneath never changes. -->
   <section id="heroFrame" class="relative px-3 sm:px-5 pt-3 sm:pt-5">
     <div class="relative max-w-[1360px] mx-auto rounded-[28px] overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex flex-col justify-end">
-      <img id="heroImg" src="brand_assets/hero-doctor-patient.jpg" alt="A doctor sitting with an older patient" class="absolute inset-0 w-full h-full object-cover hero-img-zoom" style="object-position:62% 35%">
+      <img id="heroImg" src="brand_assets/hero-doctor-patient.jpg" alt="A doctor sitting with an older patient" class="absolute inset-0 w-full h-full object-cover hero-img-zoom">
       <div class="absolute inset-0 bg-teal900 mix-blend-multiply opacity-[0.14]" aria-hidden="true"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-transparent" aria-hidden="true"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" aria-hidden="true"></div>
@@ -1460,7 +1464,7 @@
     function apply(c) {
       img.src = c.image;
       img.alt = c.imageAlt || '';
-      img.style.objectPosition = c.imagePos || '50% 50%';
+      img.style.objectPosition = c.imagePos != null ? c.imagePos : '50% 50%';
       title.textContent = c.title;
       text.textContent = c.text;
       cta.textContent = c.ctaText;
