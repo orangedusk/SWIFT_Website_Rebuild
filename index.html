@@ -154,22 +154,8 @@
   #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
   #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
 
-  /* Right care: urgency lanes + symptom search */
+  /* Where to go: urgency lanes */
   .care-item { transition: opacity .25s ease, background-color .25s ease; }
-  .care-lanes.is-filtering .care-item { opacity: .35; }
-  .care-lanes.is-filtering .care-item.is-match { opacity: 1; background: rgba(255,255,255,0.9); }
-  .care-lanes.is-filtering .care-lane-dark .care-item.is-match { background: rgba(255,255,255,0.12); }
-  .care-lanes.is-filtering .care-lane { transition: opacity .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1); }
-  .care-lanes.is-filtering .care-lane:not(.has-match):not([data-lane="ed"]) { opacity: .55; }
-  .care-lanes.is-filtering .care-lane.is-verdict { transform: translateY(-4px); }
-  .care-chip { transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
-  .care-chip:hover { border-color: #4B9587; background: #fff; }
-  .care-chip:active { transform: scale(0.96); }
-  .care-chip[aria-pressed="true"] { background: #1E453F; border-color: #1E453F; color: #fff; }
-  #careSearch::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
-  #careSearch:focus { outline: none; border-color: #2C685E; box-shadow: 0 0 0 3px rgba(75,149,135,0.25); }
-  @keyframes verdictIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-  .verdict-in { animation: verdictIn .35s cubic-bezier(.22,1,.36,1); }
 
   /* Right care intro: scale draws left to right, lanes follow in urgency order (plays once) */
   /* Urgency colours: red 000, deep teal SWIFT, pale GP. Each third of the band sits over one column,
@@ -349,37 +335,15 @@
   </section>
 
   <!-- Triage panel: rises into the bottom of the hero so the search is on the first screen -->
-  <section id="where-to-go" class="relative z-10 scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="careFinderHeading">
-    <div class="grid lg:grid-cols-12 gap-4 lg:items-start">
-      <div class="hero-in lg:col-span-8 rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
-        <h2 id="careFinderHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink">Is specialist urgent care right for me?</h2>
-        <p class="mt-2 text-ink/70 leading-relaxed">Type a symptom and we&rsquo;ll tell you where to go.</p>
-          <!-- Symptom search: terms and routing live in symptoms.js. Results highlight in the three columns below. -->
-          <div id="careFinder" class="mt-6">
-            <label for="careSearch" class="sr-only">Search a symptom</label>
-            <div class="relative">
-              <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <input id="careSearch" type="search" autocomplete="off" placeholder="Try &ldquo;tummy pain&rdquo;" class="w-full rounded-full border border-line bg-white pl-12 pr-12 py-4 text-[16px] shadow-[0_1px_2px_rgba(30,69,63,0.06),0_16px_36px_-20px_rgba(30,69,63,0.4)] placeholder:text-ink/50 transition-[border-color,box-shadow] duration-200 hover:border-teal500" aria-describedby="careVerdict">
-              <button type="button" id="careClear" class="hidden absolute right-2 top-1/2 -translate-y-1/2 focus-ring w-9 h-9 flex items-center justify-center rounded-full text-ink/45 hover:text-ink hover:bg-mint active:scale-95 transition-[transform,background-color,color] duration-200" aria-label="Clear search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              </button>
-            </div>
-            <div class="mt-3 flex flex-wrap gap-2" aria-label="Common symptoms">
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="chest pain" aria-pressed="false">Chest pain</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="shortness of breath" aria-pressed="false">Shortness of breath</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="headache" aria-pressed="false">Headache</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="abdominal pain" aria-pressed="false">Abdominal pain</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="fever" aria-pressed="false">Fever</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="sprain" aria-pressed="false">Sprain</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="deep cut" aria-pressed="false">Deep cut</button>
-              <button type="button" class="care-chip focus-ring rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/75" data-q="dizziness" aria-pressed="false">Dizziness</button>
-            </div>
-
-            <!-- Verdict (filled by script) -->
-            <div id="careVerdict" aria-live="polite" class="empty:hidden mt-4"></div>
-          </div>
+  <!-- What we do: a two-line explainer under the hero (Berinder, 6 Oct meeting), beside the live
+       opening status and a way to meet the team. Replaces the symptom search, removed at the same meeting. -->
+  <section id="what-we-do" class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 -mt-24 sm:-mt-32 pb-14 sm:pb-20" aria-labelledby="whatWeDoHeading">
+    <div class="grid lg:grid-cols-12 gap-4">
+      <div class="hero-in lg:col-span-8 flex flex-col justify-center rounded-[24px] bg-white border border-line p-6 sm:p-8 shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.55)]" style="animation-delay:.4s">
+        <h2 id="whatWeDoHeading" class="font-display font-bold text-2xl sm:text-[1.75rem] leading-[1.1] tracking-[-0.02em] text-ink">What we do</h2>
+        <p class="mt-3 text-[17px] text-ink/75 leading-[1.7]">A private walk-in clinic led by emergency doctors, for illness and injury that can&rsquo;t wait for your GP but doesn&rsquo;t need a hospital emergency department.</p>
       </div>
-      <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 content-start items-start gap-4 lg:pt-36" style="animation-delay:.5s">
+      <div class="hero-in lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-4" style="animation-delay:.5s">
           <div class="rounded-[20px] bg-gradient-to-br from-foam to-mint p-5 flex items-start gap-3">
             <span class="relative mt-1.5 flex h-2.5 w-2.5 shrink-0">
               <span id="openDotPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal500 opacity-60"></span>
@@ -405,10 +369,10 @@
     </div>
   </section>
 
-  <!-- Right care: the three columns the search above highlights. Each leads with its rule and a short
+  <!-- Where to go: three columns, most to least urgent. Each leads with its rule and a short
        list, with the rest behind "more". Clinical wording is a draft until Dr Manivel signs it off. -->
-  <section id="right-care" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="rightCareHeading">
-    <h2 id="rightCareHeading" class="sr-only">Where to go, from most to least urgent</h2>
+  <section id="where-to-go" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="rightCareHeading">
+    <h2 id="rightCareHeading" class="font-display font-bold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.02em] text-ink mb-6">Where to go, from most to least urgent</h2>
 
     <!-- Urgency scale: one band whose colours sit over the three columns below -->
     <div id="careScale" class="care-scale scroll-mt-[130px] hidden lg:block relative h-12 rounded-full bg-line/50 overflow-hidden mb-5" aria-hidden="true">
@@ -1029,7 +993,6 @@
   </div>
 </footer>
 
-<script src="symptoms.js"></script>
 <script>
   (function () {
     var statusEl = document.getElementById('openStatus');
@@ -1075,7 +1038,7 @@
     function show(el) {
       el.classList.add('is-in');
       if (el.classList.contains('care-pre')) {
-        // Drop the intro stagger once it has played, so search highlighting responds instantly
+        // Drop the intro stagger once it has played
         setTimeout(function () { el.classList.remove('care-pre', 'is-in'); }, 1600);
       }
     }
@@ -1088,229 +1051,16 @@
     targets.forEach(function (el) { io.observe(el); });
   })();
 
+  // Where to go: "N more" toggles on each column
   (function () {
-    var input = document.getElementById('careSearch');
-    var lanesEl = document.getElementById('careLanes');
-    var verdictEl = document.getElementById('careVerdict');
-    var clearBtn = document.getElementById('careClear');
-    if (!input || !lanesEl || !verdictEl || !window.SWIFT_SYMPTOMS) return;
-
-    var chips = document.querySelectorAll('.care-chip');
-    var lanes = lanesEl.querySelectorAll('.care-lane');
-    var items = lanesEl.querySelectorAll('.care-item');
-    var SWIFT_TEL = 'tel:0288599099';
-    var DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155';
-    // Most urgent first: when a search matches several terms, the most urgent outcome wins
-    var ORDER = ['000', 'poisons', 'out-of-scope', 'call-first', 'swift', 'dental', 'gp'];
-    // Which column each outcome lights up
-    var LANE_FOR = { '000': 'ed', poisons: 'ed', 'call-first': 'swift', swift: 'swift', gp: 'gp' };
-
-    // ---- Matching -----------------------------------------------------------------------
-    function norm(t) {
-      return t.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
-    }
-    var TERMS = window.SWIFT_SYMPTOMS.map(function (r) {
-      return { term: norm(r[0]), outcome: r[1], item: r[2], note: r[3] || null };
-    });
-
-    // Edit distance, for one-letter typos ("diarhoea", "headake")
-    function lev(a, b) {
-      var m = a.length, n = b.length, prev = [], cur, i, j;
-      for (j = 0; j <= n; j++) prev[j] = j;
-      for (i = 1; i <= m; i++) {
-        cur = [i];
-        for (j = 1; j <= n; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-        prev = cur;
-      }
-      return prev[n];
-    }
-    function wordsClose(qw, tw) {
-      if (qw === tw) return true;
-      if (qw.length >= 3 && tw.indexOf(qw) === 0) return true;                 // partial word: "abdo", "dizz"
-      if (qw.replace(/s$/, '') === tw.replace(/s$/, '')) return true;            // plurals
-      if (qw.length >= 5 && Math.abs(qw.length - tw.length) <= 2) return lev(qw, tw) <= (qw.length >= 7 ? 2 : 1);
-      return false;
-    }
-    function sameWord(qw, tw) {
-      return qw === tw || qw.replace(/s$/, '') === tw.replace(/s$/, '') ||
-        (tw.length >= 5 && Math.abs(qw.length - tw.length) <= 2 && lev(qw, tw) <= (tw.length >= 7 ? 2 : 1));
-    }
-    // 1. Whole terms the patient typed, allowing typos ("i have a bad headache", "diarhoea").
-    //    When one whole term sits inside a longer one ("flu" in "flu shot"), the longer one wins.
-    // 2. Otherwise, terms that start with what they typed ("abdo", "tummy", "short of br").
-    function matches(q) {
-      var qws = q.split(' '), qjoined = q.replace(/ /g, '');
-      var whole = TERMS.filter(function (t) {
-        if (t.term.replace(/ /g, '') === qjoined) return true;                    // "ear ache" = "earache"
-        return t.term.split(' ').every(function (tw) { return qws.some(function (qw) { return sameWord(qw, tw); }); });
-      });
-      if (whole.length) {
-        return whole.filter(function (t) {
-          return !whole.some(function (o) {
-            return o !== t && o.term.length > t.term.length && t.term.split(' ').every(function (w) { return o.term.split(' ').indexOf(w) !== -1; });
-          });
-        });
-      }
-      return TERMS.filter(function (t) {
-        var tws = t.term.split(' ');
-        return qws.every(function (qw, i) {
-          // The last word may still be being typed: "short of br"
-          var typing = i === qws.length - 1 && qw.length >= 2;
-          return tws.some(function (tw) { return wordsClose(qw, tw) || (typing && tw.indexOf(qw) === 0); });
-        });
-      });
-    }
-
-    // ---- Results ------------------------------------------------------------------------
-    function esc(s) {
-      return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
-    }
-    var btnBase = 'focus-ring spring inline-flex items-center justify-center rounded-full font-medium px-5 py-2.5 text-[15px] transition-[transform,background-color] duration-300 hover:scale-[1.02] active:scale-[0.97]';
-    var row = 'flex flex-col sm:flex-row sm:items-center gap-4 justify-between';
-
-    // Safety line under every result (client instruction, exact wording)
-    function safety(dark) {
-      return '<p class="mt-4 pt-3 border-t ' + (dark ? 'border-white/20 text-white/85' : 'border-line text-ink/75') + ' text-sm">If you are unsure, ' +
-        '<a href="' + SWIFT_TEL + '" class="font-medium underline underline-offset-2 ' + (dark ? 'decoration-white/50 hover:decoration-white' : 'text-teal700 decoration-teal500/40 hover:decoration-teal700') + ' focus-ring rounded">call SWIFT</a> first.</p>';
-    }
-    // Jumps to the three columns, where the matching symptoms are already highlighted
-    function see(dark) {
-      return '<a href="#careLanes" data-see-matches class="inline-block mt-2 py-1 text-[15px] font-medium underline underline-offset-4 decoration-current/40 hover:decoration-current ' + (dark ? '' : 'text-teal700 ') + 'focus-ring rounded">See matching symptoms</a>';
-    }
-    function card(cls, body, dark) { return '<div class="verdict-in rounded-2xl p-5 ' + cls + '">' + body + safety(dark) + '</div>'; }
-    function lead(label) { return '<p class="text-sm opacity-75">For &ldquo;' + esc(label) + '&rdquo;</p>'; }
-    var AGE = '<p class="text-[15px] mt-1 opacity-90">SWIFT sees children from 3 months old. For a baby under 3 months, call 000 or go to your nearest hospital emergency department.</p>';
-
-    function verdictHtml(outcome, label, hits, hasItem) {
-      var crisis = hits.some(function (h) { return h.item === 'selfharm'; });
-      var age = hits.some(function (h) { return h.note === 'age'; });
-      var l = label ? lead(label) : '';
-      switch (outcome) {
-        case '000':
-          return card('bg-urgent text-white shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Call 000 now</p><p class="text-white/85 text-[15px] mt-1">' +
-            (crisis ? 'If you or someone else is in danger, call 000. For 24/7 crisis support you can also call Lifeline on <a href="tel:131114" class="font-semibold underline underline-offset-2 focus-ring rounded">13 11 14</a>.'
-                    : 'This could be life-threatening. Don&rsquo;t drive yourself to SWIFT.') + '</p>' + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>', true);
-        case 'poisons':
-          return card('bg-urgent text-white shadow-[0_14px_30px_-12px_rgba(178,58,58,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Call 000, or the Poisons Information Centre</p><p class="text-white/85 text-[15px] mt-1">If the person is unwell, drowsy or not breathing normally, call 000. Otherwise call the Poisons Information Centre on <a href="tel:131126" class="font-semibold underline underline-offset-2 focus-ring rounded">13 11 26</a>, 24/7.</p></div>' +
-            '<a href="tel:000" class="' + btnBase + ' shrink-0 bg-white text-urgentDk hover:bg-white/90">Call 000</a></div>', true);
-        case 'out-of-scope':
-          return card('bg-white border-2 border-ink/15 text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            l + '<p class="font-display font-bold text-xl mt-0.5">This isn&rsquo;t a SWIFT walk-in</p><p class="text-ink/75 text-[15px] mt-1">Call us on <a href="' + SWIFT_TEL + '" class="font-medium text-teal700 underline underline-offset-2 focus-ring rounded">(02) 8859 9099</a> and we&rsquo;ll tell you where to go. In an emergency, call 000.</p>', false);
-        case 'call-first':
-          return card('bg-teal700 text-white shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]',
-            '<div class="' + row + '"><div>' + (label ? l : '<p class="text-sm opacity-75">No exact match</p>') +
-            '<p class="font-display font-bold text-xl mt-0.5">Call SWIFT first</p><p class="text-white/85 text-[15px] mt-1">' +
-            (label ? 'We&rsquo;ll ask a few questions and tell you whether to come in.' : 'Call us and we&rsquo;ll tell you whether to come in, or where to go instead.') + '</p>' +
-            (age ? AGE : '') + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="' + SWIFT_TEL + '" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Call (02) 8859 9099</a></div>', true);
-        case 'swift':
-          return card('bg-teal900 text-white shadow-[0_14px_30px_-12px_rgba(30,69,63,0.55)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">Come to SWIFT</p><p class="text-white/80 text-[15px] mt-1">Walk in any day from 10am, no appointment needed. Last registration is 9pm.</p>' + (hasItem ? see(true) : '') + '</div>' +
-            '<a href="' + DIRECTIONS + '" target="_blank" rel="noopener" class="' + btnBase + ' shrink-0 bg-white text-teal900 hover:bg-mint">Get directions</a></div>', true);
-        case 'dental':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            '<div class="' + row + '"><div>' + l + '<p class="font-display font-bold text-xl mt-0.5">See the dentist in our building</p><p class="text-ink/70 text-[15px] mt-1">An independent dental practice shares our building. Book with them directly.</p></div>' +
-            '<a href="services.html#dental" class="' + btnBase + ' shrink-0 bg-teal900 text-white hover:bg-teal700">About on-site dental</a></div>', false);
-        case 'gp':
-          return card('bg-white border border-line text-ink shadow-[0_2px_10px_-4px_rgba(30,69,63,0.15)]',
-            l + '<p class="font-display font-bold text-xl mt-0.5">See your GP</p><p class="text-ink/70 text-[15px] mt-1">If it gets worse or you can&rsquo;t get in soon, come to SWIFT.</p>' + (hasItem ? see(false) : ''), false);
-      }
-      return '';
-    }
-
-    // ---- Columns: "N more" toggles --------------------------------------------------------
-    function setExpanded(lane, open, auto) {
-      lane._autoOpened = !!(open && auto);
+    document.querySelectorAll('#careLanes .care-lane').forEach(function (lane) {
       var btn = lane.querySelector('.care-more');
       if (!btn) return;
-      lane.querySelectorAll('.more-item').forEach(function (li) { li.classList.toggle('hidden', !open); });
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? btn.getAttribute('data-less') : btn.getAttribute('data-more');
-    }
-    lanes.forEach(function (lane) {
-      var btn = lane.querySelector('.care-more');
-      if (btn) btn.addEventListener('click', function () { setExpanded(lane, btn.getAttribute('aria-expanded') !== 'true'); });
-    });
-
-    // ---- Run ----------------------------------------------------------------------------
-    function reset() {
-      lanes.forEach(function (l) { if (l._autoOpened) setExpanded(l, false); });
-      lanesEl.classList.remove('is-filtering');
-      items.forEach(function (li) { li.classList.remove('is-match'); });
-      lanes.forEach(function (l) { l.classList.remove('has-match', 'is-verdict'); });
-      verdictEl.innerHTML = '';
-    }
-
-    function run(raw) {
-      var q = norm(raw);
-      clearBtn.classList.toggle('hidden', raw.trim() === '');
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-q') === q ? 'true' : 'false'); });
-      if (q.length < 3) { reset(); return; }
-
-      var hits = matches(q);
-      var outcome = 'call-first', label = raw.trim();
-      if (hits.length) {
-        for (var i = 0; i < ORDER.length; i++) {
-          if (hits.some(function (h) { return h.outcome === ORDER[i]; })) { outcome = ORDER[i]; break; }
-        }
-      } else {
-        label = '';   // No match: any uncertainty shows Call SWIFT first
-      }
-      // Only the winning outcome's terms decide what lights up
-      var shown = hits.filter(function (h) { return h.outcome === outcome; });
-      var keys = {};
-      shown.forEach(function (h) { if (h.item) keys[h.item] = true; });
-
-      var hasItem = false;
-      lanes.forEach(function (l) { if (l._autoOpened) setExpanded(l, false); });
-      items.forEach(function (li) {
-        var hit = !!keys[li.getAttribute('data-item')];
-        li.classList.toggle('is-match', hit);
-        if (hit) {
-          hasItem = true;
-          if (li.classList.contains('more-item')) setExpanded(li.closest('.care-lane'), true, true);
-        }
-      });
-      var laneKey = LANE_FOR[outcome];
-      lanesEl.classList.toggle('is-filtering', hasItem);
-      lanes.forEach(function (l) {
-        var key = l.getAttribute('data-lane');
-        l.classList.toggle('has-match', hasItem && key === laneKey);
-        l.classList.toggle('is-verdict', hasItem && key === laneKey);
-      });
-      verdictEl.innerHTML = verdictHtml(outcome, label, shown, hasItem);
-    }
-
-    // Show the band on wider screens (it sits above the columns), the columns themselves on phones
-    verdictEl.addEventListener('click', function (e) {
-      var link = e.target.closest('[data-see-matches]');
-      if (!link) return;
-      e.preventDefault();
-      var scale = document.getElementById('careScale');
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var first = lanesEl.querySelector('.care-item.is-match');
-      // Wide screens: the band and all three columns. Phones (columns stacked): the highlighted symptom itself.
-      if (scale && scale.offsetParent) scale.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      else (first || lanesEl).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: first ? 'center' : 'start' });
-    });
-
-    var timer;
-    input.addEventListener('input', function () {
-      clearTimeout(timer);
-      timer = setTimeout(function () { run(input.value); }, 180);
-    });
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && input.value) { input.value = ''; run(''); }
-    });
-    clearBtn.addEventListener('click', function () { input.value = ''; run(''); input.focus(); });
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        var q = chip.getAttribute('data-q');
-        input.value = chip.getAttribute('aria-pressed') === 'true' ? '' : q;
-        run(input.value);
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        lane.querySelectorAll('.more-item').forEach(function (li) { li.classList.toggle('hidden', !open); });
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? btn.getAttribute('data-less') : btn.getAttribute('data-more');
       });
     });
   })();

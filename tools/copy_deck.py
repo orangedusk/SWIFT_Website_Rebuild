@@ -209,11 +209,11 @@ def collect():
 
 
 SECTION_NAMES = {
-    'where-to-go': 'Is specialist urgent care right for me?', 'right-care': 'Where to go (three columns)',
+    'what-we-do': 'What we do', 'where-to-go': 'Where to go (three columns)',
     'quickRoutesHeading': 'Quick-link tiles', 'visit': 'What happens when you visit', 'services': 'Our clinical team treats',
     'other-care': 'Here for something else?', 'fees': 'Fees, up front', 'doctors': 'Our doctors',
     'facilities': 'Our clinic facilities', 'location': 'Find us', 'faq': 'Common questions',
-    'careFinderHeading': 'Is specialist urgent care right for me?', 'doctorsHeading': 'Our doctors',
+    'whatWeDoHeading': 'What we do', 'doctorsHeading': 'Our doctors',
     'facilitiesHeading': 'Our clinic facilities', 'otherCareHeading': 'Here for something else?',
     'medicare': 'How you pay', 'pathology': 'Pathology', 'emergency': 'Emergency & urgent care',
     'infusion': 'Infusions', 'wound': 'Wound care', 'radiology': 'Scans and imaging', 'extras': 'Other costs',
