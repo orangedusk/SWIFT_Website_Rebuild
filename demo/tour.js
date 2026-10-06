@@ -18,19 +18,22 @@
     { page: 'index.html', target: q('header'), title: 'Header', body: 'Stays in view as you scroll, with the clinic’s number and a Request appointment button on every page.' },
     { page: 'index.html', target: function () { var h = document.getElementById('heroHeadline'); return h && h.closest('section'); }, title: 'Hero', body: 'A full-width photo with SWIFT\'s promise, plus call and directions. Seasonal campaigns take over this space.' },
     { page: 'index.html', target: function () { var s = document.getElementById('openStatus'); return s && s.parentElement; }, title: 'Live opening status', body: 'Checks the time in Sydney and shows whether the clinic is open right now.' },
-    { page: 'index.html', target: q('#careFinder'), title: 'Is urgent care right for me?', body: 'Visitors search a symptom or tap a common one. The answer says call 000, call SWIFT first, come to SWIFT or see your GP, and every answer ends with: if you are unsure, call SWIFT first.' },
+    { page: 'index.html', target: q('#careFinder'), title: 'Is specialist urgent care right for me?', body: 'Visitors search a symptom or tap a common one. The answer says call 000, call SWIFT first, come to SWIFT or see your GP, and every answer ends with: if you are unsure, call SWIFT first.' },
     { page: 'index.html', target: q('#right-care'), title: 'Three ways to get care', body: 'Each column starts with a simple rule, then the most common reasons, with the rest one tap away. A search highlights its match here.' },
+    { page: 'index.html', target: byText('#right-care p', 'If you are unsure'), title: 'Safety line', body: 'Every search answer and this guide end the same way: if you are unsure, call SWIFT first. One tap calls the clinic.' },
+    { page: 'index.html', target: q('[aria-labelledby="quickRoutesHeading"]'), title: 'Quick links', body: 'Four shortcuts for the most common reasons to visit: kids and families, the team, fees and scans.' },
     { page: 'index.html', target: q('#visitStepper'), title: 'What happens when you visit', body: 'Seven steps from arrival to going home, so first-time patients know what to expect.' },
     { page: 'index.html', target: q('#services'), title: 'Services', body: 'Each tile opens that service on the Services page.' },
     { page: 'index.html', target: q('#other-care'), title: 'Here for something else?', body: 'Scans, dental and booked care, for visitors who aren’t here for urgent care.' },
-    { page: 'index.html', target: q('#fees'), title: 'Fees at a glance', body: 'The main fee up front, with a link to the full fee schedule.' },
-    { page: 'index.html', target: q('#doctors'), title: 'Our doctors', body: 'The clinic’s leaders, with a link to the full team.' },
+    { page: 'index.html', target: q('#fees'), title: 'Fees at a glance', body: 'A receipt for a walk-in visit. Visitors pick whether they have a Medicare card and see their own bill: the $396 facility fee, doctor charges, pathology and how they pay.' },
+    { page: 'index.html', target: q('#doctors'), title: 'Our doctors', body: 'Names the co-founders and links to the full team, where every doctor, nurse and advisor has a profile.' },
     { page: 'index.html', target: q('#facilities'), title: 'Our clinic facilities', body: 'Real photos of the Rouse Hill clinic. More can be added as they come in.' },
     { page: 'index.html', target: q('#location'), title: 'Location', body: 'Address, hours and a map, with one-tap directions.' },
     { page: 'index.html', target: q('#faq'), title: 'Common questions', body: 'Short answers to what patients ask most.' },
-    { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays, in the hero\'s photo slot. The question and search stay put. Not shown to patients.' },
+    { page: 'index.html', target: q('#campaignDemoBtn'), title: 'Campaign preview (demo tool)', body: 'Shows a seasonal campaign, like flu season or school holidays. It takes over the whole hero: image, headline and button. The symptom search below stays put. Not shown to patients.' },
     { page: 'index.html', target: q('#viewportSwitcher'), title: 'Device preview (demo tool)', body: 'Shows the site at tablet and mobile sizes without leaving your desk.' },
-    { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, find care, directions and the menu are always one tap away.' },
+    { page: 'index.html', target: q('#compareSwitcher'), title: 'Compare versions (demo tool)', body: 'Switches between this homepage and the saved prototypes: the logo-colour version and the split hero. A campaign you pick carries across.' },
+    { page: 'index.html', target: q('nav[aria-label="Quick actions"]'), title: 'Mobile quick actions', body: 'On phones, call, where to go, directions and the menu are always one tap away.' },
 
     // Services
     { page: 'services.html', target: q('nav[aria-label="Services on this page"]'), title: 'Services page', body: 'Every service on one page. This menu jumps straight to each one.' },
@@ -40,11 +43,12 @@
 
     // Fees
     { page: 'fees.html', target: byText('main .hero-in', '$396'), title: 'Fees page', body: 'The main walk-in fee is the first thing visitors see.' },
-    { page: 'fees.html', target: q('#medicare'), title: 'Medicare explained', body: 'What’s covered with and without a Medicare card, in plain words.' },
+    { page: 'fees.html', target: q('#medicare'), title: 'How you pay', body: 'Side by side: what you pay with a Medicare card and without one, plus what Medicare charges cover.' },
+    { page: 'fees.html', target: q('#pathology'), title: 'Pathology', body: 'What pathology includes and what it costs, with and without a Medicare card.' },
     { page: 'fees.html', target: q('section#emergency'), title: 'Detailed fee tables', body: 'Every fee from the current site: urgent care, infusions, wound care and scans. The menu on the left jumps between them.' },
 
     // Team
-    { page: 'team.html', target: function () { var g = document.getElementById('grp0'); return g && g.closest('section'); }, title: 'Meet the team', body: 'Doctors, nurses and advisors, with Dr Manivel and Dr Shahpuri first and everyone else A to Z by surname.' },
+    { page: 'team.html', target: function () { var g = document.getElementById('grp0'); return g && g.closest('section'); }, title: 'Meet the team', body: 'Doctors, nurses and advisors. Dr Manivel and Dr Shahpuri come first, then everyone else A to Z by surname. Qualifications show under each name.' },
     { page: 'team.html', target: q('#vijay-manivel'), title: 'Staff profiles', body: 'Each card opens a profile with a larger photo and bio, and has its own link to share.' },
 
     // Request appointment
