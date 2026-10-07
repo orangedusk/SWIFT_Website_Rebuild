@@ -75,7 +75,8 @@ def own_inline_links(n):
 def walk(n, section, out, state):
     """state['h'] holds the most recent section heading, used as the Section for each row."""
     if isinstance(n, str) or n.tag in SKIP: return
-    if 'hidden' in n.attrs and n.tag in ('section', 'div'): return          # switched-off content
+    # Switched-off content. The nearby-ED panel (#ed-now) starts hidden only until its live data loads.
+    if 'hidden' in n.attrs and n.tag in ('section', 'div') and n.attrs.get('id') != 'ed-now': return
     if n.attrs.get('id') == 'bookingEmbed': return                           # not live until online booking is connected
     if n.attrs.get('id') == 'visitTileContent': return                       # filled from the steps list (see visit_steps)
     if n.attrs.get('aria-hidden') == 'true': return
