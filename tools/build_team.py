@@ -111,7 +111,6 @@ main = '''
         <p id="profileRole" class="text-ink/75 mt-1"></p>
         <p id="profileBio" class="mt-5 text-ink/75 leading-relaxed"></p>
         <div id="profileActions" class="mt-7 pt-5 border-t border-line flex flex-wrap gap-3">
-          <a href="request-appointment.html" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 bg-teal900 hover:bg-teal700 text-white transition-[transform,background-color]">Request appointment</a>
           <a href="tel:0288599099" class="focus-ring spring inline-flex items-center justify-center rounded-full font-medium text-[15px] px-5 py-2.5 hover:scale-[1.03] active:scale-[0.97] duration-300 border border-ink/15 bg-white text-ink hover:border-teal700 hover:text-teal900 transition-[transform,border-color,color]">Call (02) 8859 9099</a>
         </div>
       </div>

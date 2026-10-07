@@ -41,8 +41,14 @@ PATHOLOGY = ['Bloods, swabs and urine tests',
              'Medicare card holders: bulk billed, no pathology charge',
              'No Medicare card: extra charge, paid separately',
              'Australian Clinical Labs (ACL) sends you its own invoice after your test']
-PAY_MEDICARE = ['Pay one amount: facility fee + Medicare charges', 'Get an instant refund of the Medicare part only']
-PAY_NO_MEDICARE = ['Pay one amount on discharge: facility fee + Medicare-equivalent charges', 'Pathology is billed separately by ACL']
+# How you pay, as two steps: (bold first line, plain second line). Same wording as the homepage receipt.
+PAY_MEDICARE = [('Pay one amount when you leave', 'Facility fee + Medicare charges'), ('Get an instant refund', 'Of the Medicare part only')]
+PAY_NO_MEDICARE = [('Pay one amount when you leave', 'Facility fee + Medicare-equivalent charges'), ('Tests and scans are invoiced separately', 'ACL and Imaging Specialists send their own invoices afterwards')]
+
+def steps(items):
+    return '<ol class="mt-4 space-y-3 text-[15px] leading-snug">' + ''.join(
+        '<li class="flex gap-3"><span class="shrink-0 mt-px flex items-center justify-center w-6 h-6 rounded-full bg-teal900 text-white text-[13px] font-display font-semibold" aria-hidden="true">%d</span>'
+        '<span><span class="block font-medium text-ink">%s</span><span class="block text-ink/70">%s</span></span></li>' % (i + 1, a, b) for i, (a, b) in enumerate(items)) + '</ol>'
 
 def bullets(items, dot='bg-teal500'):
     return '<ul class="mt-3 space-y-2 text-[15px] text-ink/80 leading-snug">' + ''.join(
@@ -166,7 +172,7 @@ main = '''
       </div>
     </div>
   </section>
-''' % (intro('Fees', 'Fees', "What you'll pay at SWIFT, with or without a Medicare card. No referral needed.", FEE_ASIDE), CARD, bullets(PAY_MEDICARE), CARD, bullets(PAY_NO_MEDICARE), bullets(MEDICARE_COVERS), emergency + pathology, infusion, wound, radiology)
+''' % (intro('Fees', 'Fees', "What you'll pay at SWIFT, with or without a Medicare card. No referral needed.", FEE_ASIDE), CARD, steps(PAY_MEDICARE), CARD, steps(PAY_NO_MEDICARE), bullets(MEDICARE_COVERS), emergency + pathology, infusion, wound, radiology)
 
 build('fees.html',
       'Fees — SWIFT Emergency &amp; Urgent Care, Rouse Hill',

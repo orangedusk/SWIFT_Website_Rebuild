@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
+<meta name="description" content="Answers about visiting SWIFT Emergency &amp; Urgent Care in Rouse Hill: appointments, opening hours, ages, fees, Medicare and on-site tests.">
+<link rel="icon" href="brand_assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="brand_assets/logo/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="brand_assets/logo/apple-touch-icon.png">
+
+<meta property="og:title" content="FAQs — SWIFT Emergency & Urgent Care, Rouse Hill">
+<meta property="og:description" content="Answers about visiting SWIFT Emergency &amp; Urgent Care in Rouse Hill: appointments, opening hours, ages, fees, Medicare and on-site tests.">
+<!-- Link preview image: absolute URL on the live domain (update if the site launches elsewhere) -->
+<meta property="og:image" content="https://www.swiftemergencycare.com.au/brand_assets/logo/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#182524',
+          teal900:  '#1E453F',
+          teal700:  '#2C685E',
+          teal600:  '#377E71',
+          teal500:  '#4B9587',
+          tealGlow: '#6FB3A3',
+          paper:    '#F6F8F7',
+          mint:     '#EAF1EF',
+          foam:     '#E1F0EA',
+          line:     '#D9E3E0',
+          urgent:   '#B23A3A',
+          urgentDk: '#8C2C2C',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"IBM Plex Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Analytics: replace G-XXXXXXXXXX with the client's real GA4 Measurement ID before launch -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  body { background: #F6F8F7; }
+  ::selection { background: #6FB3A3; color: #182524; }
+  .focus-ring:focus-visible { outline: 2px solid #4B9587; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-in { opacity: 0; animation: heroIn .8s cubic-bezier(.22,1,.36,1) forwards; }
+  .spring { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+
+  /* Mobile menu */
+  #mobileMenu.is-open { grid-template-rows: 1fr; border-top-color: #D9E3E0; }
+  /* Floating Fees button (phones and tablets), above the bottom bar */
+  .fee-fab { bottom: calc(env(safe-area-inset-bottom) + 76px); transition: opacity .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .fee-fab.is-hidden { opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; }
+  #menuBtn [data-bar="top"] { transform: translateY(-5px); }
+  #menuBtn [data-bar="bottom"] { transform: translateY(5px); }
+  #menuBtn[aria-expanded="true"] [data-bar="top"] { transform: translateY(0) rotate(45deg); }
+  #menuBtn[aria-expanded="true"] [data-bar="mid"] { opacity: 0; }
+  #menuBtn[aria-expanded="true"] [data-bar="bottom"] { transform: translateY(0) rotate(-45deg); }
+
+  /* Shared with the homepage: layered cards, chips, section headings */
+  .card-link { transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; box-shadow: 0 1px 2px rgba(30,69,63,.05), 0 12px 28px -20px rgba(30,69,63,.35); }
+  .card-link:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(30,69,63,.06), 0 22px 40px -22px rgba(30,69,63,.45); }
+  .card-link:active { transform: scale(.98); }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.75); border: 1px solid rgba(30,69,63,.14); color: #1E453F; font-size: 12px; font-weight: 500; line-height: 1; padding: 6px 10px; white-space: nowrap; }
+  .chip-solid { background: #1E453F; border-color: #1E453F; color: #fff; }
+  .chip-quiet { background: #F6F8F7; color: rgba(24,37,36,.75); }
+
+
+  /* FAQ accordions */
+  .faq-item summary { list-style: none; cursor: pointer; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover span:first-child { color: #1E453F; }
+  .faq-item .plus { transition: transform 0.2s ease; }
+  .faq-item[open] .plus { transform: rotate(45deg); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need an appointment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For urgent illness or injury you can walk in any time we're open. The only exception is the infusion clinic, which is by appointment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are your opening hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every day, 10am to 10pm. The last patient registration is at 9pm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What ages does SWIFT treat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Patients aged 3 months and up, from minor injuries to non-life-threatening illness. For a baby under 3 months, call 000 or go to your nearest hospital emergency department."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a referral?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You can walk in without a referral from your GP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I bring?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your Medicare card, if you have one, and a debit or credit card. SWIFT is cashless."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long will I wait?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on how busy we are. A triage nurse sees you first, and patients are seen in order of urgency, using the Australian Triage Scale. Call us on (02) 8859 9099 to check today's wait before you come in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a visit cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A walk-in visit is a $396 facility fee plus standard Medicare charges for the doctor consultation and any procedures. Reception explains the fees before you are seen. See detailed pricing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is SWIFT bulk billed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. SWIFT is a private clinic, so the facility fee applies to every walk-in visit. With a Medicare card, pathology and X-ray, CT and weekday ultrasound are bulk billed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a Medicare card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Without a Medicare card you pay the facility fee plus Medicare-equivalent charges when you leave. Pathology and scans are invoiced separately by Australian Clinical Labs (ACL) and Imaging Specialists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a return visit charged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A return visit for the same issue within 24 hours is bulk billed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is SWIFT different from a medical centre or hospital ED?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SWIFT is an emergency physician-led urgent care clinic for non-life-threatening cases. It sits in between a medical centre and a hospital-grade emergency department in regards to services provided, care offered and complexity of patients seen. SWIFT can manage more complex patients that are usually not managed in GP-led medical centres. However, for all life-threatening emergencies, patients will need to call 000 or present to the nearest emergency department."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I call 000 instead?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call 000 for anything life-threatening or getting worse fast: signs of a heart attack or stroke, someone unconscious or not breathing, struggling to breathe, severe bleeding, or a major injury. Don’t drive yourself to SWIFT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are X-ray and pathology on site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pathology is collected on site during your visit. X-ray, CT and ultrasound are in the same building, run by Imaging Specialists, an independent practice. About on-site imaging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I book an infusion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Infusions are the only care SWIFT books ahead, including iron infusions (about an hour), zoledronate and IV antibiotics. Request an infusion and we'll confirm a time."
+      }
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="font-body text-ink antialiased pb-[68px] lg:pb-0">
+<noscript><style>.hero-in { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<div id="top"></div>
+
+<!-- Emergency banner -->
+<div class="sticky top-0 z-50 bg-urgent text-white">
+  <a href="tel:000" class="focus-ring flex items-center justify-center gap-2 px-4 py-2.5 text-sm sm:text-base font-medium hover:bg-urgentDk transition-colors">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="shrink-0" aria-hidden="true"><path d="M12 9v4M12 16.5h.01M10.29 3.86 1.82 18a1.5 1.5 0 0 0 1.3 2.25h17.76a1.5 1.5 0 0 0 1.3-2.25L13.71 3.86a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Life-threatening emergency? Call <strong class="font-bold">000</strong> now.</span>
+  </a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-[41px] sm:top-[45px] z-40 bg-paper/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5 focus-ring rounded">
+      <img src="brand_assets/logo/swift-logo.png" alt="SWIFT Emergency &amp; Urgent Care" width="268" height="96" class="h-10 lg:h-12 w-auto">
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[15px]">
+      <a href="index.html#where-to-go" class="hover:text-teal700 focus-ring rounded">Where to go</a>
+      <a href="services.html" class="hover:text-teal700 focus-ring rounded">Services</a>
+      <a href="fees.html" class="hover:text-teal700 focus-ring rounded">Fees</a>
+      <a href="index.html#location" class="hover:text-teal700 focus-ring rounded">Location</a>
+      <a href="index.html#faq" class="hover:text-teal700 focus-ring rounded">FAQs</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:0288599099" class="hidden sm:inline-flex items-center gap-2 py-2 text-[15px] font-medium text-teal900 hover:text-teal700 active:text-teal900 focus-ring rounded">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        (02) 8859 9099
+      </a>
+      <a href="request-appointment.html" class="hidden sm:inline-flex focus-ring items-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-4 py-2 sm:px-5 sm:py-2.5 transition-colors active:scale-[0.97]">
+        Request an infusion
+      </a>
+      <button id="menuBtn" type="button" class="lg:hidden focus-ring relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-mint active:bg-line" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="top"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-opacity duration-200" data-bar="mid"></span>
+        <span aria-hidden="true" class="block w-5 h-[1.5px] bg-ink absolute transition-transform duration-300" data-bar="bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.22,1,.36,1)] border-t border-transparent">
+    <div class="overflow-hidden">
+      <nav class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-col gap-1 text-[15px]">
+        <a href="index.html#where-to-go" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Where to go</a>
+        <a href="services.html" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Services</a>
+        <a href="fees.html" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Fees</a>
+        <a href="index.html#location" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">Location</a>
+        <a href="index.html#faq" class="mobile-link py-2.5 hover:text-teal700 focus-ring rounded">FAQs</a>
+        <div class="border-t border-line mt-2 pt-3 flex flex-col gap-3 sm:hidden">
+          <a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
+          <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request an infusion</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile floating bottom bar -->
+<!-- Floating Fees button: phones and tablets, every page (6 Oct meeting). Hidden on the fees page,
+     while the homepage Fees section is on screen, and while the menu is open. -->
+<a id="feeFab" href="fees.html" class="fee-fab lg:hidden fixed right-4 z-[41] focus-ring inline-flex items-center gap-2 rounded-full bg-teal900 hover:bg-teal700 active:scale-[0.96] text-white text-[15px] font-medium pl-3.5 pr-4 py-2.5 shadow-[0_2px_6px_rgba(30,69,63,0.25),0_14px_30px_-10px_rgba(30,69,63,0.55)]">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2.5h10v19l-2.5-1.5-2 1.5-2-1.5-2.5 1.5V2.5Z"/><path d="M9.5 8h5M9.5 11.5h5M9.5 15h3"/></svg>
+  Fees
+</a>
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-line shadow-[0_-8px_24px_-8px_rgba(30,69,63,0.18)]" style="padding-bottom: env(safe-area-inset-bottom);" aria-label="Quick actions">
+  <div class="grid grid-cols-4">
+    <a href="tel:0288599099" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Call</span>
+    </a>
+    <a href="index.html#where-to-go" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h3.5l2-5 3 10 2-7 1.5 2H21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-[11px] font-medium">Where to go</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=G38%2C+32+Civic+Way%2C+Rouse+Hill+NSW+2155" target="_blank" rel="noopener" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="text-[11px] font-medium">Directions</span>
+    </a>
+    <button type="button" id="bottomMenuBtn" class="focus-ring flex flex-col items-center justify-center gap-1 py-2.5 text-ink/70 hover:text-teal700 active:scale-95 transition-[transform,color] duration-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="text-[11px] font-medium">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Page intro -->
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-12 pb-10 sm:pb-16">
+      <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-5" style="animation-delay:.02s">
+        <a href="index.html" class="inline-block py-1 hover:text-teal700 active:text-teal900 focus-ring rounded">Home</a>
+        <span aria-hidden="true" class="mx-1.5">/</span>
+        <span class="text-ink/80" aria-current="page">FAQs</span>
+      </nav>
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+        <div class="lg:col-span-7">
+          <h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">Frequently asked questions</h1>
+          <p class="hero-in mt-5 text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.2s">Visiting SWIFT, fees, and the care we provide.</p>
+        </div>
+        <div class="lg:col-span-5 hero-in" style="animation-delay:.3s">
+        <p class="text-ink/70 leading-[1.7]">Can&rsquo;t find your answer? Call us on <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">(02) 8859 9099</a>. In a life-threatening emergency, call <a href="tel:000" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">000</a>.</p>
+        </div>
+      </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24">
+    <div class="max-w-3xl space-y-12 sm:space-y-16">
+      <section id="visiting" class="scroll-mt-[125px] sm:scroll-mt-[129px]" aria-labelledby="visitingHeading">
+        <h2 id="visitingHeading" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Visiting SWIFT</h2>
+        <div class="mt-4 bg-white rounded-[20px] border border-line px-5 sm:px-7">
+        <details id="q-appointment" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Do I need an appointment?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">No. For urgent illness or injury you can walk in any time we're open. The only exception is the infusion clinic, which is by appointment.</p>
+        </details>
+        <details id="q-hours" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">What are your opening hours?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">Every day, 10am to 10pm. The last patient registration is at 9pm.</p>
+        </details>
+        <details id="q-ages" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">What ages does SWIFT treat?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 ">Patients aged 3 months and up, from minor injuries to non-life-threatening illness.</p>
+          <p class="text-ink/70 pr-8 pb-4 mt-3">For a baby under 3 months, call 000 or go to your nearest hospital emergency department.</p>
+        </details>
+        <details id="q-referral" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Do I need a referral?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">No. You can walk in without a referral from your GP.</p>
+        </details>
+        <details id="q-bring" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">What should I bring?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">Your Medicare card, if you have one, and a debit or credit card. SWIFT is cashless.</p>
+        </details>
+        <details id="q-wait" class="faq-item scroll-mt-[125px] border-b border-line py-1 last:border-b-0">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">How long will I wait?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">It depends on how busy we are. A triage nurse sees you first, and patients are seen in order of urgency, using the Australian Triage Scale. Call us on <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">(02) 8859 9099</a> to check today's wait before you come in.</p>
+        </details>
+        </div>
+      </section>
+      <section id="fees" class="scroll-mt-[125px] sm:scroll-mt-[129px]" aria-labelledby="feesHeading">
+        <h2 id="feesHeading" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Fees</h2>
+        <div class="mt-4 bg-white rounded-[20px] border border-line px-5 sm:px-7">
+        <details id="q-cost" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">How much does a visit cost?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">A walk-in visit is a $396 facility fee plus standard Medicare charges for the doctor consultation and any procedures. Reception explains the fees before you are seen. <a href="fees.html" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">See detailed pricing</a>.</p>
+        </details>
+        <details id="q-bulk-billed" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Is SWIFT bulk billed?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">No. SWIFT is a private clinic, so the facility fee applies to every walk-in visit. With a Medicare card, pathology and X-ray, CT and weekday ultrasound are bulk billed.</p>
+        </details>
+        <details id="q-medicare" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Do I need a Medicare card?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">No. Without a Medicare card you pay the facility fee plus Medicare-equivalent charges when you leave. Pathology and scans are invoiced separately by Australian Clinical Labs (ACL) and Imaging Specialists.</p>
+        </details>
+        <details id="q-return" class="faq-item scroll-mt-[125px] border-b border-line py-1 last:border-b-0">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Is a return visit charged?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">A return visit for the same issue within 24 hours is bulk billed.</p>
+        </details>
+        </div>
+      </section>
+      <section id="care" class="scroll-mt-[125px] sm:scroll-mt-[129px]" aria-labelledby="careHeading">
+        <h2 id="careHeading" class="font-display font-bold text-2xl sm:text-3xl leading-[1.12] tracking-[-0.02em] text-ink">Care at SWIFT</h2>
+        <div class="mt-4 bg-white rounded-[20px] border border-line px-5 sm:px-7">
+        <details id="q-different" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">How is SWIFT different from a medical centre or hospital ED?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 ">SWIFT is an emergency physician-led urgent care clinic for non-life-threatening cases. It sits in between a medical centre and a hospital-grade emergency department in regards to services provided, care offered and complexity of patients seen.</p>
+          <p class="text-ink/70 pr-8 pb-4 mt-3">SWIFT can manage more complex patients that are usually not managed in GP-led medical centres. However, for all life-threatening emergencies, patients will need to call 000 or present to the nearest emergency department.</p>
+        </details>
+        <details id="q-000" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">When should I call 000 instead?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">Call 000 for anything life-threatening or getting worse fast: signs of a heart attack or stroke, someone unconscious or not breathing, struggling to breathe, severe bleeding, or a major injury. Don&rsquo;t drive yourself to SWIFT.</p>
+        </details>
+        <details id="q-tests" class="faq-item scroll-mt-[125px] border-b border-line py-1">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Are X-ray and pathology on site?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">Yes. Pathology is collected on site during your visit. X-ray, CT and ultrasound are in the same building, run by Imaging Specialists, an independent practice. <a href="services.html#imaging" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">About on-site imaging</a>.</p>
+        </details>
+        <details id="q-infusion" class="faq-item scroll-mt-[125px] border-b border-line py-1 last:border-b-0">
+          <summary class="focus-ring flex items-center justify-between gap-4 py-3">
+            <span class="font-medium text-ink">Can I book an infusion?</span>
+            <span class="plus text-teal700 text-xl leading-none shrink-0" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-ink/70 pr-8 pb-4">Yes. Infusions are the only care SWIFT books ahead, including iron infusions (about an hour), zoledronate and IV antibiotics. <a href="request-appointment.html?service=infusion" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Request an infusion</a> and we'll confirm a time.</p>
+        </details>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative bg-ink text-white overflow-hidden">
+  <svg class="absolute top-0 left-0 w-full h-10 opacity-[0.12]" viewBox="0 0 720 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M0,20 L88,20 L100,6 L112,32 L124,2 L136,20 L208,20 L220,6 L232,32 L244,2 L256,20 L328,20 L340,6 L352,32 L364,2 L376,20 L448,20 L460,6 L472,32 L484,2 L496,20 L568,20 L580,6 L592,32 L604,2 L616,20 L720,20"
+      stroke="#6FB3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <img src="brand_assets/logo/swift-mark.png" alt="" class="h-9 w-9" aria-hidden="true">
+        <span class="font-display font-bold text-lg">SWIFT</span>
+      </div>
+      <p class="text-white/55 text-sm mt-4 max-w-sm leading-relaxed">
+        Emergency-physician-led specialist urgent care for illness and injury that can't wait. Not a replacement for 000 in a life-threatening emergency.
+      </p>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Explore</p>
+      <ul class="space-y-0.5 text-sm text-white/55">
+        <li><a href="index.html#where-to-go" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Where to go</a></li>
+        <li><a href="services.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Services</a></li>
+        <li><a href="fees.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Fees</a></li>
+        <li><a href="team.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Our team</a></li>
+        <li><a href="gallery.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Gallery</a></li>
+        <li><a href="index.html#location" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">Location</a></li>
+        <li><a href="faq.html" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium text-white/90 mb-3">Contact</p>
+      <ul class="space-y-0.5 text-sm text-white/55">
+        <li><a href="tel:0288599099" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">(02) 8859 9099</a></li>
+        <li><a href="mailto:info@swifteuc.com.au" class="inline-block py-1 hover:text-white active:text-white/80 focus-ring rounded">info@swifteuc.com.au</a></li>
+        <li>G38, 32 Civic Way, Rouse Hill NSW 2155</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40">
+      <p>© 2026 SWIFT Emergency & Urgent Care. All rights reserved.</p>
+      <p>Life-threatening emergency? Call 000.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var bottomBtn = document.getElementById('bottomMenuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    var triggers = bottomBtn ? [btn, bottomBtn] : [btn];
+
+    function closeMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (bottomBtn) bottomBtn.classList.remove('text-teal700');
+      menu.classList.remove('is-open');
+    }
+    function openMenu() {
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'true'); });
+      if (bottomBtn) bottomBtn.classList.add('text-teal700');
+      menu.classList.add('is-open');
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+    });
+    menu.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Floating Fees button: hidden on the fees page, while the homepage Fees section is on screen,
+    // and while the menu is open
+    var fab = document.getElementById('feeFab');
+    var fabHide = { menu: false, section: false };
+    function syncFab() {
+      if (!fab) return;
+      var hide = fabHide.menu || fabHide.section;
+      fab.classList.toggle('is-hidden', hide);
+      fab.setAttribute('aria-hidden', hide ? 'true' : 'false');
+      fab.tabIndex = hide ? -1 : 0;
+    }
+    if (fab) {
+      if ((location.pathname.split('/').pop() || 'index.html') === 'fees.html') fab.style.display = 'none';
+      var feesSection = document.getElementById('fees');
+      if (feesSection && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          fabHide.section = entries[0].isIntersecting; syncFab();
+        }, { threshold: 0.15 }).observe(feesSection);
+      }
+      new MutationObserver(function () { fabHide.menu = menu.classList.contains('is-open'); syncFab(); })
+        .observe(menu, { attributes: true, attributeFilter: ['class'] });
+    }
+  })();
+
+  // Deep link: faq.html#q-cost opens that question
+  (function () {
+    var t = location.hash && document.getElementById(location.hash.slice(1));
+    if (t && t.tagName === 'DETAILS') t.open = true;
+  })();
+
+</script>
+</body>
+</html>

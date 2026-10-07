@@ -5,7 +5,6 @@
 Sheets:
   Read me         how to fill it in
   Website copy    one row per piece of text: ID, Page, Section, Element, Current copy, New copy, Notes
-  Symptom search  every term in symptoms.js and where it sends the patient
 
 Shared parts (emergency banner, header, menus, footer) are listed once, under 'All pages'.
 Demo-only tools (tour, campaign examples, password screen, sample profiles) are not included.
@@ -16,7 +15,7 @@ from html.parser import HTMLParser
 
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '')
 PAGES = [('index.html', 'Home'), ('services.html', 'Services'), ('fees.html', 'Fees'),
-         ('team.html', 'Team'), ('request-appointment.html', 'Request appointment')]
+         ('team.html', 'Team'), ('gallery.html', 'Gallery'), ('faq.html', 'FAQs'), ('request-appointment.html', 'Request an infusion')]
 
 # Elements that hold one piece of copy each
 LEAF = {'h1', 'h2', 'h3', 'h4', 'p', 'li', 'a', 'button', 'summary', 'label', 'dt', 'dd',
@@ -209,12 +208,12 @@ def collect():
 
 
 SECTION_NAMES = {
-    'where-to-go': 'Is specialist urgent care right for me?', 'right-care': 'Where to go (three columns)',
+    'what-we-do': 'What we do', 'ed-now': 'Nearby emergency departments', 'where-to-go': 'Where to go (three columns)',
     'quickRoutesHeading': 'Quick-link tiles', 'visit': 'What happens when you visit', 'services': 'Our clinical team treats',
     'other-care': 'Here for something else?', 'fees': 'Fees, up front', 'doctors': 'Our doctors',
-    'facilities': 'Our clinic facilities', 'location': 'Find us', 'faq': 'Common questions',
-    'careFinderHeading': 'Is specialist urgent care right for me?', 'doctorsHeading': 'Our doctors',
-    'facilitiesHeading': 'Our clinic facilities', 'otherCareHeading': 'Here for something else?',
+    'reviews': 'What patients say', 'location': 'Find us', 'faq': 'FAQs',
+    'whatWeDoHeading': 'What we do', 'doctorsHeading': 'Our doctors',
+    'reviewsHeading': 'What patients say', 'otherCareHeading': 'Here for something else?',
     'medicare': 'How you pay', 'pathology': 'Pathology', 'emergency': 'Emergency & urgent care',
     'infusion': 'Infusions', 'wound': 'Wound care', 'radiology': 'Scans and imaging', 'extras': 'Other costs',
     'grp0': 'Our Doctors', 'grp1': 'Our Nurses', 'grp2': 'Our Advisors',
@@ -280,13 +279,12 @@ def write(path):
         ('1. Go to the "Website copy" sheet. Each row is one piece of text, grouped by page and section.', body),
         ('2. To change text, type the new wording in the yellow "New copy" column. Leave it blank if the current copy is fine.', body),
         ('3. Use "Notes" for questions or comments. Rows with a note but no new copy are treated as questions, not changes.', body),
-        ('4. In the "Symptom search" sheet, change where a search sends the patient by picking from the yellow "New outcome" list. Clinical routing is a draft until Dr Manivel signs it off.', body),
-        ('5. Don\'t change the ID, Page, Section or Current copy columns. They are how the new wording is put back into the website.', body),
+        ('4. Don\'t change the ID, Page, Section or Current copy columns. They are how the new wording is put back into the website.', body),
         ('', body),
         ('Good to know', Font(name=F, bold=True, size=11)),
         ('"All pages" rows (banner, header, menus, footer) appear on every page, so one change updates them everywhere.', body),
         ('Rows marked "(contains a link)" include linked words. Keep the linked words in your new copy, or note what the link should say.', body),
-        ('"Message (shown by the page)" rows appear only after an action, for example a search result or a form error.', body),
+        ('"Message (shown by the page)" rows appear only after an action, for example a form error.', body),
         ('The business name "SWIFT Emergency & Urgent Care" is kept as is (client instruction).', body),
         ('Demo-only content (the guided tour, campaign examples, sample doctor profiles) is not included.', body),
     ]
@@ -303,7 +301,7 @@ def write(path):
         ws.column_dimensions[c.column_letter].width = w
     rows = build_rows()
     # Example row: shows the format; starts with EXAMPLE so tools/apply_copy.py skips it
-    ex = ['EXAMPLE (ignored)', 'Home', 'Common questions', 'Question', 'What ages does SWIFT treat?',
+    ex = ['EXAMPLE (ignored)', 'Home', 'FAQs', 'Question', 'What ages does SWIFT treat?',
           'Which ages does SWIFT see?', 'Example only: shows how to suggest new wording']
     for j, v in enumerate(ex, 1):
         c = ws.cell(row=2, column=j, value=v); c.font = example_font; c.alignment = wrap
@@ -316,29 +314,14 @@ def write(path):
             if j == 6: c.fill = input_fill
     ws.freeze_panes = 'A2'; ws.auto_filter.ref = 'A1:G%d' % (len(rows) + 2)
 
-    # Symptom search
-    ws = wb.create_sheet('Symptom search')
-    heads = ['Search term', 'Category', 'Current outcome', 'Highlights in column', 'New outcome', 'Notes']
-    widths = [30, 40, 44, 20, 44, 40]
-    for i, (h, w) in enumerate(zip(heads, widths), 1):
-        c = ws.cell(row=1, column=i, value=h); c.font = hdr_font; c.fill = hdr_fill
-        ws.column_dimensions[c.column_letter].width = w
-    srows = symptom_rows()
-    for r, row in enumerate(srows, 2):
-        for j, v in enumerate(row, 1):
-            c = ws.cell(row=r, column=j, value=v); c.font = body; c.alignment = wrap; c.border = border
-        for j in (5, 6):
-            c = ws.cell(row=r, column=j); c.font = body; c.border = border
-            if j == 5: c.fill = input_fill
-    dv = DataValidation(type='list', formula1='"%s"' % ','.join(v.replace(',', ';') for v in OUTCOMES.values()), allow_blank=True)
-    dv.error = 'Pick an outcome from the list'; ws.add_data_validation(dv); dv.add('E2:E%d' % (len(srows) + 1))
-    ws.freeze_panes = 'A2'; ws.auto_filter.ref = 'A1:F%d' % (len(srows) + 1)
+    # The symptom search was removed at the 6 Oct meeting, so its sheet is no longer exported.
+    # symptom_rows() stays for tools/apply_copy.py and in case the search returns.
 
     wb.save(path)
-    return len(rows), len(srows)
+    return len(rows), 0
 
 
 if __name__ == '__main__':
     out = ROOT + 'SWIFT_copy_deck.xlsx'
     n, m = write(out)
-    print('wrote', out, '|', n, 'copy rows,', m, 'search terms')
+    print('wrote', out, '|', n, 'copy rows')

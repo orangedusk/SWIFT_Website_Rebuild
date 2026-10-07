@@ -16,7 +16,7 @@ from openpyxl import load_workbook
 
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '')
 SOURCES = ['index.html', 'request-appointment.html', 'tools/build_fees.py', 'tools/build_services.py',
-           'tools/build_team.py', 'tools/build_page.py']
+           'tools/build_team.py', 'tools/build_gallery.py', 'tools/build_faq.py', 'tools/build_page.py']
 OUTCOME_CODES = {'Call 000': '000', 'Call 000 or Poisons Information (13 11 26)': 'poisons',
                  'Not a SWIFT walk-in (call SWIFT; 000 in an emergency)': 'out-of-scope',
                  'Call SWIFT first': 'call-first', 'Come to SWIFT': 'swift', 'On-site dentist': 'dental',
@@ -111,7 +111,7 @@ def main(path, apply):
 
     if apply and changed:
         for f in SOURCES: open(ROOT + f, 'w').write(files[f])
-        for s in ('fees', 'team', 'services'):
+        for s in ('fees', 'team', 'services', 'gallery', 'faq'):
             subprocess.run([sys.executable, ROOT + 'tools/build_%s.py' % s], check=True, stdout=subprocess.DEVNULL)
         print('\nPages rebuilt. Check the site, then commit on the demo branch.')
     elif not apply and (changed or sym_changes):
