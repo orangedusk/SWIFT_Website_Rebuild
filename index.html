@@ -421,6 +421,26 @@
     </div>
   </section>
 
+  <!-- Nearby EDs right now: live counts from NSW Health's emergency wait site (emergencywait.health.nsw.gov.au),
+       read in the visitor's browser. Hidden until data arrives; stays hidden if the feed fails or is over an hour old.
+       DRAFT: the feed is not an official open-data service; awaiting NSW Health's permission (6 Oct meeting). -->
+  <section id="ed-now" class="max-w-6xl mx-auto px-5 sm:px-8 pb-14 sm:pb-20" aria-labelledby="edNowHeading" hidden>
+    <div class="rounded-[24px] bg-white border border-line p-5 sm:p-8 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+        <div>
+          <h2 id="edNowHeading" class="font-display font-bold text-2xl sm:text-[1.75rem] leading-[1.1] tracking-[-0.02em] text-ink">Nearby emergency departments, right now</h2>
+          <p class="mt-2 text-[15px] text-ink/75">In an emergency, <a href="tel:000" class="font-semibold text-urgentDk underline underline-offset-2 focus-ring rounded">call 000</a>. Patients in an emergency department are seen in order of urgency, not arrival.</p>
+        </div>
+        <p class="text-sm text-ink/60 shrink-0"><span id="edUpdated"></span> &middot; Source: NSW Health <span class="ml-1 inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2 py-0.5 align-middle">Draft</span></p>
+      </div>
+      <ul id="edList" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-live="polite"></ul>
+      <div class="mt-6 pt-5 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[15px]">
+        <p class="text-ink/75">Not an emergency? SWIFT sees walk-ins 10am to 10pm, no appointment needed. <a href="tel:0288599099" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Call to check our wait</a></p>
+        <a href="https://www.emergencywait.health.nsw.gov.au/" target="_blank" rel="noopener" class="shrink-0 inline-block py-1 text-sm font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">All NSW emergency department waiting times</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Where to go: three columns, most to least urgent. Each leads with its rule and a short
        list, with the rest behind "more". Clinical wording is a draft until Dr Manivel signs it off. -->
   <section id="where-to-go" class="scroll-mt-[105px] sm:scroll-mt-[109px] max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-24" aria-labelledby="rightCareHeading">
@@ -1246,6 +1266,67 @@
     var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(update, 60); }, { passive: true });
     window.addEventListener('resize', update);
     update();
+  })();
+
+  // Nearby EDs right now: patients waiting to start treatment, from NSW Health's emergency wait site.
+  // The panel stays hidden unless at least one hospital returns figures less than an hour old.
+  (function () {
+    var section = document.getElementById('ed-now');
+    var list = document.getElementById('edList');
+    if (!section || !list || !window.fetch) return;
+    var API = 'https://rted-web-external.citc.health.nsw.gov.au/api/GetHospitalWaitingDetails/';
+    var SWIFT_AT = [-33.6878, 150.9221];   // G38, 32 Civic Way, Rouse Hill (approximate)
+    // NSW Health hospital IDs, closest first; locations from the same service
+    var EDS = [
+      { id: 19, name: 'Blacktown Hospital', place: 'Blacktown', at: [-33.7769, 150.9173] },
+      { id: 132, name: 'Mount Druitt Hospital', place: 'Mount Druitt', at: [-33.7648, 150.8274] },
+      { id: 209, name: 'Westmead Hospital', place: 'Westmead', at: [-33.8043, 150.9879] },
+      { id: 181, name: 'The Children’s Hospital at Westmead', place: 'Westmead, for children', at: [-33.8015, 150.9895] }
+    ];
+    function km(a, b) {
+      var r = Math.PI / 180, dLat = (b[0] - a[0]) * r, dLon = (b[1] - a[1]) * r;
+      var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      return Math.round(6371 * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h)));
+    }
+    function get(ed) {
+      var ctrl = 'AbortController' in window ? new AbortController() : null;
+      var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      return fetch(API + ed.id, ctrl ? { signal: ctrl.signal } : {}).then(function (r) { return r.json(); })
+        .then(function (d) {
+          clearTimeout(t);
+          var w = (d.waitingDetails || [])[0];
+          var u = (d.historicalDetails || []).filter(function (h) { return h.statisticIdentifier === 'usual_patients'; })[0];
+          if (!w || typeof w.waitCount !== 'number' || w.totalDurationSinceLastUpdate > 60) return null;
+          return { ed: ed, now: w.waitCount, usual: u ? u.statisticValue : null, age: w.totalDurationSinceLastUpdate };
+        })
+        .catch(function () { clearTimeout(t); return null; });
+    }
+    function cue(now, usual) {
+      if (usual === null || usual === undefined) return '';
+      var text = now < usual * 0.75 ? 'Quieter than usual' : now > usual * 1.25 ? 'Busier than usual' : 'About usual';
+      var cls = text === 'Busier than usual' ? 'bg-[#FFF4D6] text-[#7A5600]' : 'bg-mint text-teal900';
+      return '<span class="inline-flex items-center rounded-full ' + cls + ' text-xs font-medium px-2 py-0.5">' + text + '</span>';
+    }
+    function load() {
+      Promise.all(EDS.map(get)).then(function (rows) {
+        rows = rows.filter(Boolean);
+        if (!rows.length) { section.hidden = true; return; }
+        list.innerHTML = rows.map(function (r) {
+          return '<li class="rounded-[18px] bg-paper border border-line p-4 flex flex-col">' +
+            '<p class="font-medium text-ink leading-snug">' + r.ed.name + '</p>' +
+            '<p class="text-sm text-ink/60">' + r.ed.place + ', about ' + km(SWIFT_AT, r.ed.at) + ' km away</p>' +
+            '<p class="mt-4 flex items-baseline gap-2"><span class="font-display font-extrabold text-4xl tracking-[-0.03em] text-ink tabular-nums">' + r.now + '</span>' +
+            '<span class="text-sm text-ink/75 leading-tight">waiting to start treatment</span></p>' +
+            '<p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink/60">' + (r.usual !== null ? 'Usually ' + r.usual + ' at this time' : '') + cue(r.now, r.usual) + '</p>' +
+            '</li>';
+        }).join('');
+        var age = Math.max.apply(null, rows.map(function (r) { return r.age; }));
+        document.getElementById('edUpdated').textContent = age < 2 ? 'Updated just now' : 'Updated ' + age + ' minutes ago';
+        section.hidden = false;
+      });
+    }
+    load();
+    setInterval(load, 15 * 60 * 1000);
   })();
 
   (function () {

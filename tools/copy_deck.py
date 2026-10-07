@@ -208,7 +208,7 @@ def collect():
 
 
 SECTION_NAMES = {
-    'what-we-do': 'What we do', 'where-to-go': 'Where to go (three columns)',
+    'what-we-do': 'What we do', 'ed-now': 'Nearby emergency departments', 'where-to-go': 'Where to go (three columns)',
     'quickRoutesHeading': 'Quick-link tiles', 'visit': 'What happens when you visit', 'services': 'Our clinical team treats',
     'other-care': 'Here for something else?', 'fees': 'Fees, up front', 'doctors': 'Our doctors',
     'reviews': 'What patients say', 'location': 'Find us', 'faq': 'FAQs',
