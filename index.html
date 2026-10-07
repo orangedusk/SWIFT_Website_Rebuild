@@ -176,12 +176,6 @@
   .review-slide { width: 88%; }
   @media (min-width: 768px) { .review-slide { width: 72%; } }
   @media (min-width: 1024px) { .review-slide { width: 64%; } }
-  /* Nearby EDs: one dot per patient. Filled = waiting now, hollow = usual for this hour, amber = over usual */
-  .ed-dot { display: inline-block; width: 10px; height: 10px; border-radius: 9999px; border: 1.5px solid #C3D3CF; flex: none; }
-  .ed-dot.is-now { background: #2C685E; border-color: #2C685E; }
-  .ed-dot.is-over { background: #D29A2A; border-color: #D29A2A; }
-  .ed-dots .ed-dot { opacity: 0; animation: edDot .3s ease forwards; }
-  @keyframes edDot { to { opacity: 1; } }
   /* Floating Fees button (phones and tablets), above the bottom bar */
   .fee-fab { bottom: calc(env(safe-area-inset-bottom) + 76px); transition: opacity .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1); }
   .fee-fab.is-hidden { opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; }
@@ -442,8 +436,7 @@
       </div>
       <ul id="edList" class="divide-y divide-line"></ul>
     </div>
-    <div class="mt-3 flex flex-col sm:flex-row sm:justify-between gap-1.5 text-sm text-ink/60">
-      <p class="flex items-center gap-4"><span class="inline-flex items-center gap-1.5"><span class="ed-dot is-now" aria-hidden="true"></span>Waiting now</span><span class="inline-flex items-center gap-1.5"><span class="ed-dot" aria-hidden="true"></span>Usual for this hour</span></p>
+    <div class="mt-3 flex sm:justify-end text-sm text-ink/60">
       <p><span id="edUpdated"></span>, <a href="https://www.emergencywait.health.nsw.gov.au/" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-teal900 focus-ring rounded">NSW Health</a></p>
     </div>
     <p class="mt-2 text-sm text-ink/75">In an emergency, <a href="tel:000" class="font-semibold text-urgentDk underline underline-offset-2 focus-ring rounded">call 000</a>.</p>
@@ -1286,10 +1279,10 @@
     var SWIFT_AT = [-33.6878, 150.9221];   // G38, 32 Civic Way, Rouse Hill (approximate)
     // NSW Health hospital IDs, closest first; locations from the same service
     var EDS = [
-      { id: 19, name: 'Blacktown Hospital', place: 'Blacktown', at: [-33.7769, 150.9173] },
-      { id: 132, name: 'Mount Druitt Hospital', place: 'Mount Druitt', at: [-33.7648, 150.8274] },
-      { id: 209, name: 'Westmead Hospital', place: 'Westmead', at: [-33.8043, 150.9879] },
-      { id: 181, name: 'Children’s Hospital, Westmead', place: 'For children', at: [-33.8015, 150.9895] }
+      { id: 19, name: 'Blacktown Hospital ED', place: 'Blacktown', at: [-33.7769, 150.9173] },
+      { id: 132, name: 'Mount Druitt Hospital ED', place: 'Mount Druitt', at: [-33.7648, 150.8274] },
+      { id: 209, name: 'Westmead Hospital ED', place: 'Westmead', at: [-33.8043, 150.9879] },
+      { id: 181, name: 'Children’s Hospital, Westmead ED', place: 'For children', at: [-33.8015, 150.9895] }
     ];
     function km(a, b) {
       var r = Math.PI / 180, dLat = (b[0] - a[0]) * r, dLon = (b[1] - a[1]) * r;
@@ -1313,21 +1306,15 @@
       Promise.all(EDS.map(get)).then(function (rows) {
         rows = rows.filter(Boolean);
         if (!rows.length) { section.hidden = true; return; }
-        var MAX = 20;
         list.innerHTML = rows.map(function (r) {
-          var usual = r.usual === null || r.usual === undefined ? r.now : r.usual;
-          var shown = Math.min(Math.max(r.now, usual), MAX), dots = '';
-          for (var i = 0; i < shown; i++) {
-            var cls = i < r.now ? (i < usual ? ' is-now' : ' is-over') : '';
-            dots += '<span class="ed-dot' + cls + '" style="animation-delay:' + (i * 25) + 'ms"></span>';
-          }
-          var extra = r.now > MAX ? '<span class="text-sm text-ink/60">+' + (r.now - MAX) + '</span>' : '';
-          var label = r.ed.name + ': ' + r.now + (r.now === 1 ? ' patient' : ' patients') + ' waiting' + (r.usual !== null && r.usual !== undefined ? ', usually ' + r.usual + ' at this hour' : '');
-          return '<li class="grid grid-cols-[1fr_auto] sm:grid-cols-[minmax(0,18rem)_1fr_auto] items-center gap-x-5 gap-y-2 px-5 sm:px-7 py-4">' +
-            '<p class="col-span-2 sm:col-span-1"><span class="font-medium text-ink">' + r.ed.name + '</span><span class="ml-2 text-sm text-ink/55">' + km(SWIFT_AT, r.ed.at) + ' km</span></p>' +
-            '<p class="ed-dots flex flex-wrap items-center gap-1.5" role="img" aria-label="' + label + '">' + dots + extra + '</p>' +
-            '<p class="font-display font-bold text-2xl tabular-nums text-ink text-right w-10" aria-hidden="true">' + r.now + '</p>' +
-            '</li>';
+          var hasUsual = r.usual !== null && r.usual !== undefined;
+          var busier = hasUsual && r.now > r.usual * 1.25;
+          return '<li class="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-1 px-5 sm:px-7 py-4">' +
+            '<p><span class="font-medium text-ink">' + r.ed.name + '</span><span class="ml-2 text-sm text-ink/55">' + km(SWIFT_AT, r.ed.at) + ' km</span></p>' +
+            '<p class="flex items-baseline gap-2 sm:justify-end">' +
+              '<span class="font-display font-bold text-xl tabular-nums ' + (busier ? 'text-[#A86A00]' : 'text-teal900') + '">' + r.now + ' waiting</span>' +
+              (hasUsual ? '<span class="text-[15px] text-ink/55 tabular-nums">(usually ' + r.usual + ')</span>' : '') +
+            '</p></li>';
         }).join('');
         var age = Math.max.apply(null, rows.map(function (r) { return r.age; }));
         document.getElementById('edUpdated').textContent = age < 2 ? 'Updated just now' : 'Updated ' + age + ' min ago';
