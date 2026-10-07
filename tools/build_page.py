@@ -40,11 +40,11 @@ def intro(crumb, title, text, aside=''):
             + bc + body + '\n  </section>\n')
 
 REQ_BTN = '''      <a href="request-appointment.html" class="hidden sm:inline-flex focus-ring items-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-4 py-2 sm:px-5 sm:py-2.5 transition-colors active:scale-[0.97]">
-        Request appointment
+        Request an infusion
       </a>
       <button id="menuBtn"'''
 REQ_BTN_MOBILE = '''<a href="tel:0288599099" class="mobile-link font-medium text-teal900">(02) 8859 9099</a>
-          <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request appointment</a>'''
+          <a href="request-appointment.html" class="mobile-link focus-ring inline-flex items-center justify-center rounded-full bg-teal700 hover:bg-teal600 text-white text-sm font-medium px-5 py-2.5 transition-colors active:scale-[0.97]">Request an infusion</a>'''
 
 def site_links(html):
     return (html.replace('index.html#services"', 'services.html"')

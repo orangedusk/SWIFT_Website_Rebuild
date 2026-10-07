@@ -15,7 +15,7 @@
     // Homepage
     { page: 'index.html', title: 'Welcome to the new SWIFT website', body: 'This tour walks through each feature and page. Use Next or your arrow keys, and press Esc to leave at any time.' },
     { page: 'index.html', target: q('div.sticky.bg-urgent'), title: 'Emergency banner', body: 'Stays at the top of every page. One tap calls 000.' },
-    { page: 'index.html', target: q('header'), title: 'Header', body: 'Stays in view as you scroll, with the clinic’s number and a Request appointment button on every page.' },
+    { page: 'index.html', target: q('header'), title: 'Header', body: 'Stays in view as you scroll, with the clinic’s number and a Request an infusion button on every page.' },
     { page: 'index.html', target: function () { var h = document.getElementById('heroHeadline'); return h && h.closest('section'); }, title: 'Hero', body: 'A full-width photo with SWIFT\'s promise, call and directions, a note that SWIFT is private with a $396 facility fee, and the Google rating above the headline (links to the reviews). Seasonal campaigns take over this space; the fee note stays.' },
     { page: 'index.html', target: function () { var s = document.getElementById('openStatus'); return s && s.parentElement; }, title: 'Live opening status', body: 'Checks the time in Sydney and shows whether the clinic is open right now.' },
     { page: 'index.html', target: function () { var h = document.getElementById('whatWeDoHeading'); return h && h.parentElement; }, title: 'What we do', body: 'Two lines under the hero that say what SWIFT is: a private walk-in clinic led by emergency doctors, for care that can’t wait for a GP but doesn’t need a hospital.' },
@@ -58,9 +58,9 @@
     { page: 'faq.html', target: q('#visiting'), title: 'FAQs', body: 'Every question in one place, grouped into visiting, fees and care. The homepage shows the top five. Each question has its own link, e.g. faq.html#q-cost.' },
 
     // Request appointment
-    { page: 'request-appointment.html', target: byText('main .hero-in', 'need an appointment'), title: 'Request an appointment', body: 'Reminds urgent patients they can just walk in, before they start a form.' },
-    { page: 'request-appointment.html', target: q('#serviceGroup'), title: 'Choose a service', body: 'One tap to pick what to book. Links from other pages can preselect a service.' },
-    { page: 'request-appointment.html', target: q('#apptForm'), title: 'A simple, checked form', body: 'Clear error messages and a confirmation once sent. It’s ready to connect to Best Practice online booking.' },
+    { page: 'request-appointment.html', target: byText('main .hero-in', 'need an appointment'), title: 'Request an infusion', body: 'Reminds urgent patients they can just walk in, before they start a form.' },
+    { page: 'request-appointment.html', target: q('#serviceGroup'), title: 'Which infusion?', body: 'One tap to pick the infusion. A placeholder list until SWIFT confirms its types. Links from other pages preselect iron infusion.' },
+    { page: 'request-appointment.html', target: q('#apptForm'), title: 'A simple, checked form', body: 'Clear error messages and a confirmation once sent. Requests will be emailed to SWIFT’s inbox once the form-to-email service is set up at go-live.' },
     { page: 'request-appointment.html', title: 'That’s the tour', body: 'Every page and feature, start to finish. Press Finish to go back to the homepage.', finish: true },
   ];
 

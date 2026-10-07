@@ -133,7 +133,7 @@ SWIFT_SERVICES = [
      '<strong class="font-medium text-ink">Zoledronate</strong> for osteoporosis or high calcium: under 1 hour',
      '<strong class="font-medium text-ink">IV antibiotics</strong> after a SWIFT visit or on your GP\'s prescription',
      'Open 10am to 10pm, every day'],
-    [btn('request-appointment.html?service=infusion', 'Request appointment'), btn('fees.html#infusion', 'See infusion fees', False)],
+    [btn('request-appointment.html?service=infusion', 'Request an infusion'), btn('fees.html#infusion', 'See infusion fees', False)],
     extra='''
           <details class="svc-more mt-5 rounded-[14px] bg-paper border border-line">
             <summary class="focus-ring flex items-center justify-between gap-3 px-4 py-3 text-[15px] font-medium text-ink rounded-[14px] hover:bg-mint/60 transition-colors">Before a zoledronate infusion

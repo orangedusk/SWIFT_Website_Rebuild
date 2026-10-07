@@ -6,13 +6,13 @@
 <!-- Demo branch only: keep this preview site out of search engines. Never merge to main. -->
 <meta name="robots" content="noindex, nofollow">
 <script src="demo/gate.js"></script>
-<title>Request an appointment — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
-<meta name="description" content="Request an appointment at SWIFT Rouse Hill for a doctor consultation, iron infusion, physiotherapy or specialist review. Urgent illness or injury? Walk in, no appointment needed.">
+<title>Request an infusion appointment — SWIFT Emergency &amp; Urgent Care, Rouse Hill</title>
+<meta name="description" content="Request an infusion appointment at SWIFT Rouse Hill: iron infusions, zoledronate and IV antibiotics. Urgent illness or injury needs no appointment: walk in 10am to 10pm.">
 <link rel="icon" href="brand_assets/logo/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="brand_assets/logo/favicon-64.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="brand_assets/logo/apple-touch-icon.png">
 
-<meta property="og:title" content="Request an appointment — SWIFT Emergency & Urgent Care">
+<meta property="og:title" content="Request an infusion appointment — SWIFT Emergency & Urgent Care">
 <meta property="og:description" content="Doctor consultations, iron infusions, physiotherapy and specialist reviews by appointment at SWIFT Rouse Hill.">
 <!-- Link preview image: absolute URL on the live domain (update if the site launches elsewhere) -->
 <meta property="og:image" content="https://www.swiftemergencycare.com.au/brand_assets/logo/social-preview.png">
@@ -216,12 +216,12 @@
       <nav aria-label="Breadcrumb" class="hero-in text-sm text-ink/70 mb-6" style="animation-delay:.02s">
         <a href="index.html" class="inline-block py-1 hover:text-teal700 active:text-teal900 focus-ring rounded">Home</a>
         <span aria-hidden="true" class="mx-1.5">/</span>
-        <span class="text-ink/80" aria-current="page">Request an appointment</span>
+        <span class="text-ink/80" aria-current="page">Request an infusion appointment</span>
       </nav>
       <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
         <div class="lg:col-span-7">
-          <h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">Request an appointment</h1>
-          <p class="hero-in mt-5 text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.2s">For planned care like doctor consultations, iron infusions, physiotherapy and specialist reviews. Send us your details and we'll call to confirm a time.</p>
+          <h1 class="hero-in text-balance font-display font-extrabold text-[2.6rem] leading-[1.02] sm:text-[3.5rem] tracking-[-0.03em] text-ink" style="animation-delay:.08s">Request an infusion appointment</h1>
+          <p class="hero-in mt-5 text-lg text-ink/70 leading-[1.7] max-w-xl" style="animation-delay:.2s">For iron and other infusions, the only care we book ahead. Send us your details and we'll call to confirm a time.</p>
         </div>
         <div class="lg:col-span-5 hero-in" style="animation-delay:.3s">
           <!-- Walk-in reminder: the key triage message on this page -->
@@ -243,48 +243,16 @@
     <div class="grid lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-start">
 
       <div>
-        <!-- Online booking (Best Health Booking, synced with Bp Premier).
-             To go live: paste the embed code from Best Practice inside #bookingEmbedMount,
-             then set BOOKING_EMBED_ENABLED = true in the script at the bottom of this page.
-             While disabled, the request form below is shown instead. -->
-        <div id="bookingEmbed" class="hidden bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.45)] p-5 sm:p-8">
-          <h2 class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Choose a time</h2>
-          <p class="text-sm text-ink/70 mt-1">Pick an available appointment and you'll get a confirmation straight away.</p>
-          <div id="bookingEmbedMount" class="mt-6 min-h-[480px]">
-            <!-- Best Health Booking embed code goes here -->
-          </div>
-          <p class="mt-6 pt-5 border-t border-line text-sm text-ink/70">
-            Can't find a time that works?
-            <button type="button" id="showRequestForm" class="font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded active:text-teal900">Send us a request instead</button>
-            or call <a href="tel:0288599099" class="font-medium text-teal700 hover:text-teal900 focus-ring rounded">(02) 8859 9099</a>.
-          </p>
-        </div>
-
         <form id="apptForm" novalidate class="bg-white rounded-[20px] border border-line shadow-[0_2px_4px_rgba(30,69,63,0.06),0_30px_60px_-30px_rgba(30,69,63,0.45)] p-5 sm:p-8">
 
           <!-- Service -->
           <fieldset>
-            <legend class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">What would you like to book?</legend>
-            <p class="text-sm text-ink/70 mt-1">Choose one. You can tell us more further down.</p>
-            <p id="serviceError" class="hidden mt-3 text-sm font-medium text-urgent" role="alert">Choose a service so we know who to book you with.</p>
+            <legend class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Which infusion?</legend>
+            <p class="text-sm text-ink/70 mt-1">Choose one. You can tell us more further down. <span class="inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2 py-0.5 align-middle">Placeholder list</span></p>
+            <!-- PLACEHOLDER infusion types (from the services page) until Diana sends SWIFT's list. -->
+            <p id="serviceError" class="hidden mt-3 text-sm font-medium text-urgent" role="alert">Choose an infusion so we know what to prepare.</p>
 
             <div class="mt-5 grid sm:grid-cols-2 gap-3" id="serviceGroup">
-              <label class="block h-full cursor-pointer">
-                <input type="radio" name="service" value="Doctor consultation" data-key="consult" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
-                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="20" cy="11" r="2" stroke="currentColor" stroke-width="1.7"/></svg>
-                  </span>
-                  <span class="pr-6">
-                    <span class="block font-medium text-ink">Doctor consultation</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">Follow-ups and non-urgent concerns</span>
-                  </span>
-                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                </span>
-              </label>
-
               <label class="block h-full cursor-pointer">
                 <input type="radio" name="service" value="Iron infusion" data-key="infusion" class="service-input sr-only">
                 <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
@@ -293,7 +261,7 @@
                   </span>
                   <span class="pr-6">
                     <span class="block font-medium text-ink">Iron infusion</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">Usually done in under an hour</span>
+                    <span class="block text-sm text-ink/70 mt-0.5">About 1 hour. Bring your Ferinject, or we can supply it</span>
                   </span>
                   <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -302,30 +270,14 @@
               </label>
 
               <label class="block h-full cursor-pointer">
-                <input type="radio" name="service" value="Physiotherapy" data-key="physio" class="service-input sr-only">
-                <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
-                  <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1.7"/><path d="M9 21l2.5-6.5L14 17v4M7 12l3-4.5h4l2.5 3.5L19 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                  <span class="pr-6">
-                    <span class="block font-medium text-ink">Physiotherapy</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">Recovery after an injury or procedure</span>
-                  </span>
-                  <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                </span>
-              </label>
-
-              <label class="block h-full cursor-pointer">
-                <input type="radio" name="service" value="Orthopaedic follow-up" data-key="ortho" class="service-input sr-only">
+                <input type="radio" name="service" value="Zoledronate infusion" data-key="zoledronate" class="service-input sr-only">
                 <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 5.5a2.5 2.5 0 1 0-3 3l10 10a2.5 2.5 0 1 0 3-3l-10-10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
                   </span>
                   <span class="pr-6">
-                    <span class="block font-medium text-ink">Orthopaedic follow-up</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">Fractures and joint injuries</span>
+                    <span class="block font-medium text-ink">Zoledronate</span>
+                    <span class="block text-sm text-ink/70 mt-0.5">Under 1 hour, for osteoporosis or high calcium</span>
                   </span>
                   <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -334,14 +286,14 @@
               </label>
 
               <label class="block h-full cursor-pointer">
-                <input type="radio" name="service" value="Cardiology review" data-key="cardiology" class="service-input sr-only">
+                <input type="radio" name="service" value="IV antibiotics" data-key="antibiotics" class="service-input sr-only">
                 <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 12h2.5l1.2-2 2 4 1.3-2H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-35 12 12)" stroke="currentColor" stroke-width="1.7"/><path d="M10 9.2l4 5.6" stroke="currentColor" stroke-width="1.7" transform="rotate(0)"/></svg>
                   </span>
                   <span class="pr-6">
-                    <span class="block font-medium text-ink">Cardiology review</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">With our specialist cardiology team</span>
+                    <span class="block font-medium text-ink">IV antibiotics</span>
+                    <span class="block text-sm text-ink/70 mt-0.5">After a SWIFT visit or on your GP&rsquo;s prescription</span>
                   </span>
                   <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -350,14 +302,14 @@
               </label>
 
               <label class="block h-full cursor-pointer">
-                <input type="radio" name="service" value="Something else" data-key="other" class="service-input sr-only">
+                <input type="radio" name="service" value="Something else or not sure" data-key="other" class="service-input sr-only">
                 <span class="service-tile h-full relative flex items-start gap-3 rounded-xl bg-white border border-dashed border-line p-4 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_12px_28px_-20px_rgba(30,69,63,0.35)]">
                   <span class="tile-icon shrink-0 flex items-center justify-center w-9 h-9 rounded-lg bg-mint text-teal700 transition-colors">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                   </span>
                   <span class="pr-6">
-                    <span class="block font-medium text-ink">Something else</span>
-                    <span class="block text-sm text-ink/70 mt-0.5">Describe it in the notes below</span>
+                    <span class="block font-medium text-ink">Something else or not sure</span>
+                    <span class="block text-sm text-ink/70 mt-0.5">We&rsquo;ll talk it through when we call</span>
                   </span>
                   <span class="tick absolute top-3 right-3 w-5 h-5 rounded-full bg-teal700 flex items-center justify-center" aria-hidden="true">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -444,7 +396,7 @@
               </div>
               <div class="sm:col-span-2">
                 <label for="notes" class="block text-sm font-medium text-ink mb-1.5">Anything we should know? <span class="font-normal text-ink/65">(optional)</span></label>
-                <textarea id="notes" name="notes" rows="4" maxlength="1000" placeholder="For example, the reason for your visit or a referral you already have" class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] leading-relaxed placeholder:text-ink/35 resize-y"></textarea>
+                <textarea id="notes" name="notes" rows="4" maxlength="1000" placeholder="For example, your GP's prescription or the date of your last infusion" class="field w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] leading-relaxed placeholder:text-ink/35 resize-y"></textarea>
               </div>
             </div>
           </fieldset>
@@ -492,12 +444,10 @@
             <li class="flex gap-3">
               <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-tealGlow text-ink text-sm font-semibold">1</span>
               <p class="text-[15px] text-white/80 leading-relaxed pt-0.5" data-step-request>You send your request with a preferred day and time.</p>
-              <p class="hidden text-[15px] text-white/80 leading-relaxed pt-0.5" data-step-booking>You pick an available time that suits you.</p>
             </li>
             <li class="flex gap-3">
               <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full border border-white/40 text-white text-sm font-semibold">2</span>
               <p class="text-[15px] text-white/80 leading-relaxed pt-0.5" data-step-request>Our team calls you during opening hours to confirm a time.</p>
-              <p class="hidden text-[15px] text-white/80 leading-relaxed pt-0.5" data-step-booking>You get a confirmation with your appointment details.</p>
             </li>
             <li class="flex gap-3">
               <span class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full border border-white/40 text-white text-sm font-semibold">3</span>
@@ -588,34 +538,11 @@
 </footer>
 
 <script>
-  /* Where form submissions are sent. Leave empty until a backend is chosen
-     (e.g. Formspree, a clinic CRM or practice-management webhook); while empty,
-     the form validates and shows the success state without sending anything. */
+  /* Where infusion requests are sent: a form-to-email service that forwards each request to SWIFT's
+     inbox (6 Oct meeting: email, not Best Practice). Leave empty until it is set up at go-live
+     (e.g. Formspree or a small Cloudflare Worker); while empty, the form validates and shows the
+     success state without sending anything. */
   var APPT_FORM_ENDPOINT = '';
-
-  /* Set to true once the Best Health Booking embed code is pasted into #bookingEmbedMount.
-     The request form then becomes a fallback behind "Send us a request instead". */
-  var BOOKING_EMBED_ENABLED = false;
-
-  (function () {
-    if (!BOOKING_EMBED_ENABLED) return;
-    var embed = document.getElementById('bookingEmbed');
-    var form = document.getElementById('apptForm');
-    function useSteps(mode) {
-      document.querySelectorAll('[data-step-request]').forEach(function (el) { el.classList.toggle('hidden', mode !== 'request'); });
-      document.querySelectorAll('[data-step-booking]').forEach(function (el) { el.classList.toggle('hidden', mode !== 'booking'); });
-    }
-    embed.classList.remove('hidden');
-    form.classList.add('hidden');
-    useSteps('booking');
-    document.getElementById('showRequestForm').addEventListener('click', function () {
-      embed.classList.add('hidden');
-      form.classList.remove('hidden');
-      useSteps('request');
-      form.querySelector('.service-input').focus();
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  })();
 
   (function () {
     var btn = document.getElementById('menuBtn');
@@ -759,7 +686,7 @@
 
     function showSuccess(data) {
       document.getElementById('successName').textContent = data.firstName;
-      document.getElementById('successService').textContent = data.service.toLowerCase();
+      document.getElementById('successService').textContent = data.service === 'Something else or not sure' ? 'an infusion' : data.service.toLowerCase();
       document.getElementById('successPhone').textContent = data.phone;
       form.classList.add('hidden');
       success.classList.remove('hidden');
