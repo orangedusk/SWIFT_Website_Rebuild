@@ -179,6 +179,12 @@
   .review-slide { width: 88%; }
   @media (min-width: 768px) { .review-slide { width: 72%; } }
   @media (min-width: 1024px) { .review-slide { width: 64%; } }
+  /* Nearby EDs: one dot per patient. Filled = waiting now, hollow = usual for this hour, amber = over usual */
+  .ed-dot { display: inline-block; width: 10px; height: 10px; border-radius: 9999px; border: 1.5px solid #C3D3CF; flex: none; }
+  .ed-dot.is-now { background: #2C685E; border-color: #2C685E; }
+  .ed-dot.is-over { background: #D29A2A; border-color: #D29A2A; }
+  .ed-dots .ed-dot { opacity: 0; animation: edDot .3s ease forwards; }
+  @keyframes edDot { to { opacity: 1; } }
   /* Floating Fees button (phones and tablets), above the bottom bar */
   .fee-fab { bottom: calc(env(safe-area-inset-bottom) + 76px); transition: opacity .25s ease, transform .35s cubic-bezier(.34,1.56,.64,1); }
   .fee-fab.is-hidden { opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; }
@@ -425,20 +431,25 @@
        read in the visitor's browser. Hidden until data arrives; stays hidden if the feed fails or is over an hour old.
        DRAFT: the feed is not an official open-data service; awaiting NSW Health's permission (6 Oct meeting). -->
   <section id="ed-now" class="max-w-6xl mx-auto px-5 sm:px-8 pb-14 sm:pb-20" aria-labelledby="edNowHeading" hidden>
-    <div class="rounded-[24px] bg-white border border-line p-5 sm:p-8 shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
-        <div>
-          <h2 id="edNowHeading" class="font-display font-bold text-2xl sm:text-[1.75rem] leading-[1.1] tracking-[-0.02em] text-ink">Nearby emergency departments, right now</h2>
-          <p class="mt-2 text-[15px] text-ink/75">In an emergency, <a href="tel:000" class="font-semibold text-urgentDk underline underline-offset-2 focus-ring rounded">call 000</a>. Patients in an emergency department are seen in order of urgency, not arrival.</p>
-        </div>
-        <p class="text-sm text-ink/60 shrink-0"><span id="edUpdated"></span> &middot; Source: NSW Health <span class="ml-1 inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2 py-0.5 align-middle">Draft</span></p>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-5">
+      <div>
+        <h2 id="edNowHeading" class="font-display font-bold text-2xl sm:text-[1.75rem] leading-[1.1] tracking-[-0.02em] text-ink">Weighing up where to go?</h2>
+        <p class="mt-2 text-[15px] text-ink/70">Patients waiting to start treatment at nearby emergency departments.</p>
       </div>
-      <ul id="edList" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-live="polite"></ul>
-      <div class="mt-6 pt-5 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[15px]">
-        <p class="text-ink/75">Not an emergency? SWIFT sees walk-ins 10am to 10pm, no appointment needed. <a href="tel:0288599099" class="inline-block py-1 font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">Call to check our wait</a></p>
-        <a href="https://www.emergencywait.health.nsw.gov.au/" target="_blank" rel="noopener" class="shrink-0 inline-block py-1 text-sm font-medium text-teal700 hover:text-teal900 underline underline-offset-2 decoration-teal500/40 hover:decoration-teal700 focus-ring rounded">All NSW emergency department waiting times</a>
-      </div>
+      <span class="self-start sm:self-auto inline-flex items-center rounded-full bg-[#FFF4D6] text-[#7A5600] text-xs font-medium px-2 py-0.5">Draft</span>
     </div>
+    <div class="rounded-[24px] bg-white border border-line overflow-hidden shadow-[0_1px_2px_rgba(30,69,63,0.05),0_18px_40px_-26px_rgba(30,69,63,0.45)]">
+      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 sm:px-7 py-4 bg-teal900 text-white">
+        <p><span class="font-display font-semibold text-lg">SWIFT, Rouse Hill</span><span class="block sm:inline sm:ml-3 text-sm text-white/75">Walk in 10am to 10pm</span></p>
+        <a href="tel:0288599099" class="focus-ring spring inline-flex items-center rounded-full bg-white text-teal900 hover:bg-mint active:scale-[0.97] text-[15px] font-medium px-4 py-2 transition-[transform,background-color] duration-200">Call for today&rsquo;s wait</a>
+      </div>
+      <ul id="edList" class="divide-y divide-line"></ul>
+    </div>
+    <div class="mt-3 flex flex-col sm:flex-row sm:justify-between gap-1.5 text-sm text-ink/60">
+      <p class="flex items-center gap-4"><span class="inline-flex items-center gap-1.5"><span class="ed-dot is-now" aria-hidden="true"></span>Waiting now</span><span class="inline-flex items-center gap-1.5"><span class="ed-dot" aria-hidden="true"></span>Usual for this hour</span></p>
+      <p><span id="edUpdated"></span>, <a href="https://www.emergencywait.health.nsw.gov.au/" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-teal900 focus-ring rounded">NSW Health</a></p>
+    </div>
+    <p class="mt-2 text-sm text-ink/75">In an emergency, <a href="tel:000" class="font-semibold text-urgentDk underline underline-offset-2 focus-ring rounded">call 000</a>.</p>
   </section>
 
   <!-- Where to go: three columns, most to least urgent. Each leads with its rule and a short
@@ -1281,7 +1292,7 @@
       { id: 19, name: 'Blacktown Hospital', place: 'Blacktown', at: [-33.7769, 150.9173] },
       { id: 132, name: 'Mount Druitt Hospital', place: 'Mount Druitt', at: [-33.7648, 150.8274] },
       { id: 209, name: 'Westmead Hospital', place: 'Westmead', at: [-33.8043, 150.9879] },
-      { id: 181, name: 'Children’s Hospital at Westmead', place: 'For children', at: [-33.8015, 150.9895] }
+      { id: 181, name: 'Children’s Hospital, Westmead', place: 'For children', at: [-33.8015, 150.9895] }
     ];
     function km(a, b) {
       var r = Math.PI / 180, dLat = (b[0] - a[0]) * r, dLon = (b[1] - a[1]) * r;
@@ -1301,27 +1312,28 @@
         })
         .catch(function () { clearTimeout(t); return null; });
     }
-    function cue(now, usual) {
-      if (usual === null || usual === undefined) return '';
-      var text = now < usual * 0.75 ? 'Quieter than usual' : now > usual * 1.25 ? 'Busier than usual' : 'About usual';
-      var cls = text === 'Busier than usual' ? 'bg-[#FFF4D6] text-[#7A5600]' : 'bg-mint text-teal900';
-      return '<span class="inline-flex items-center rounded-full ' + cls + ' text-xs font-medium px-2 py-0.5">' + text + '</span>';
-    }
     function load() {
       Promise.all(EDS.map(get)).then(function (rows) {
         rows = rows.filter(Boolean);
         if (!rows.length) { section.hidden = true; return; }
+        var MAX = 20;
         list.innerHTML = rows.map(function (r) {
-          return '<li class="rounded-[18px] bg-paper border border-line p-4 flex flex-col">' +
-            '<p class="font-medium text-ink leading-snug">' + r.ed.name + '</p>' +
-            '<p class="text-sm text-ink/60">' + r.ed.place + ', about ' + km(SWIFT_AT, r.ed.at) + ' km away</p>' +
-            '<p class="mt-4 flex items-baseline gap-2"><span class="font-display font-extrabold text-4xl tracking-[-0.03em] text-ink tabular-nums">' + r.now + '</span>' +
-            '<span class="text-sm text-ink/75 leading-tight">waiting to start treatment</span></p>' +
-            '<p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink/60">' + (r.usual !== null ? 'Usually ' + r.usual + ' at this time' : '') + cue(r.now, r.usual) + '</p>' +
+          var usual = r.usual === null || r.usual === undefined ? r.now : r.usual;
+          var shown = Math.min(Math.max(r.now, usual), MAX), dots = '';
+          for (var i = 0; i < shown; i++) {
+            var cls = i < r.now ? (i < usual ? ' is-now' : ' is-over') : '';
+            dots += '<span class="ed-dot' + cls + '" style="animation-delay:' + (i * 25) + 'ms"></span>';
+          }
+          var extra = r.now > MAX ? '<span class="text-sm text-ink/60">+' + (r.now - MAX) + '</span>' : '';
+          var label = r.ed.name + ': ' + r.now + (r.now === 1 ? ' patient' : ' patients') + ' waiting' + (r.usual !== null && r.usual !== undefined ? ', usually ' + r.usual + ' at this hour' : '');
+          return '<li class="grid grid-cols-[1fr_auto] sm:grid-cols-[minmax(0,18rem)_1fr_auto] items-center gap-x-5 gap-y-2 px-5 sm:px-7 py-4">' +
+            '<p class="col-span-2 sm:col-span-1"><span class="font-medium text-ink">' + r.ed.name + '</span><span class="ml-2 text-sm text-ink/55">' + km(SWIFT_AT, r.ed.at) + ' km</span></p>' +
+            '<p class="ed-dots flex flex-wrap items-center gap-1.5" role="img" aria-label="' + label + '">' + dots + extra + '</p>' +
+            '<p class="font-display font-bold text-2xl tabular-nums text-ink text-right w-10" aria-hidden="true">' + r.now + '</p>' +
             '</li>';
         }).join('');
         var age = Math.max.apply(null, rows.map(function (r) { return r.age; }));
-        document.getElementById('edUpdated').textContent = age < 2 ? 'Updated just now' : 'Updated ' + age + ' minutes ago';
+        document.getElementById('edUpdated').textContent = age < 2 ? 'Updated just now' : 'Updated ' + age + ' min ago';
         section.hidden = false;
       });
     }
